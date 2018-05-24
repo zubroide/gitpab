@@ -6,7 +6,18 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "ext-PDO": "*",
+        "ext-fileinfo": "*",
+        "ext-json": "*",
+        "ext-libxml": "*",
+        "ext-mbstring": "*",
+        "ext-openssl": "*",
+        "ext-pcntl": "*",
+        "ext-pdo_pgsql": "*",
+        "ext-tokenizer": "*",
+        "ext-zip": "*",
         "fideloper/proxy": "~3.3",
+        "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0"
     },
