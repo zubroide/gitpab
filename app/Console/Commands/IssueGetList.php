@@ -2,11 +2,13 @@
 
 namespace App\Console\Commands;
 
-use App\Model\Service\GitlabIssueService;
+use App\Model\Service\Eloquent\EloquentIssueService;
+use App\Model\Service\Gitlab\GitlabIssueService;
 use App\Providers\AppServiceProvider;
 
 /**
- * @property GitlabIssueService $service
+ * @property EloquentIssueService $eloquentService
+ * @property GitlabIssueService $gitlabService
  */
 class IssueGetList extends GitlabCommandAbstract
 {
@@ -32,7 +34,8 @@ class IssueGetList extends GitlabCommandAbstract
     public function __construct()
     {
         parent::__construct();
-        $this->service = app(AppServiceProvider::GITLAB_ISSUE_SERVICE);
+        $this->eloquentService = app(AppServiceProvider::ELOQUENT_ISSUE_SERVICE);
+        $this->gitlabService = app(AppServiceProvider::GITLAB_ISSUE_SERVICE);
     }
 
     protected function getHeaders(): array

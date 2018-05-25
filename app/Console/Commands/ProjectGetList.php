@@ -2,11 +2,13 @@
 
 namespace App\Console\Commands;
 
-use App\Model\Service\GitlabProjectService;
+use App\Model\Service\Eloquent\EloquentProjectService;
+use App\Model\Service\Gitlab\GitlabProjectService;
 use App\Providers\AppServiceProvider;
 
 /**
- * @property GitlabProjectService $service
+ * @property EloquentProjectService $eloquentService
+ * @property GitlabProjectService $gitlabService
  */
 class ProjectGetList extends GitlabCommandAbstract
 {
@@ -32,7 +34,8 @@ class ProjectGetList extends GitlabCommandAbstract
     public function __construct()
     {
         parent::__construct();
-        $this->service = app(AppServiceProvider::GITLAB_PROJECT_SERVICE);
+        $this->eloquentService = app(AppServiceProvider::ELOQUENT_PROJECT_SERVICE);
+        $this->gitlabService = app(AppServiceProvider::GITLAB_PROJECT_SERVICE);
     }
 
     protected function getHeaders(): array

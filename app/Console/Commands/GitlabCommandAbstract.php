@@ -2,7 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Model\Service\GitlabServiceAbstract;
+use App\Model\Service\Eloquent\EloquentServiceAbstract;
+use App\Model\Service\Gitlab\GitlabServiceAbstract;
 use Illuminate\Console\Command;
 
 abstract class GitlabCommandAbstract extends Command
@@ -11,7 +12,12 @@ abstract class GitlabCommandAbstract extends Command
     /**
      * @var GitlabServiceAbstract
      */
-    protected $service;
+    protected $gitlabService;
+
+    /**
+     * @var EloquentServiceAbstract
+     */
+    protected $eloquentService;
 
     /**
      * @return string[]
@@ -27,7 +33,7 @@ abstract class GitlabCommandAbstract extends Command
     public function handle()
     {
         $urlParameters = $this->getUrlParameters();
-        $list = $this->service->getList($urlParameters);
+        $list = $this->gitlabService->getList($urlParameters);
 
         // Print list
         $headers = $this->getHeaders();
@@ -41,7 +47,7 @@ abstract class GitlabCommandAbstract extends Command
         }
         $this->table($headers, $data);
 
-        $this->service->storeList($list);
+        $this->eloquentService->storeList($list);
         $this->info('Data stored in database');
     }
 

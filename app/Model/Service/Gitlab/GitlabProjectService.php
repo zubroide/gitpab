@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model\Service;
+namespace App\Model\Service\Gitlab;
 
 
 use Illuminate\Support\Collection;
