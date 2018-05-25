@@ -42,15 +42,19 @@ class ProjectGetList extends Command
         /** @var GitlabProjectService $service */
         $service = app(AppServiceProvider::GITLAB_PROJECT_SERVICE);
         $list = $service->getList();
+
+        // Print list
         $headers = ['id', "path_with_namespace", 'name', "created_at"];
         $data = [];
         foreach ($list as $item) {
             $row = [];
             foreach ($headers as $header) {
-                $row[$header] = $item->$header;
+                $row[$header] = $item[$header];
             }
             $data[] = $row;
         }
         $this->table($headers, $data);
+
+        $service->storeList($list);
     }
 }
