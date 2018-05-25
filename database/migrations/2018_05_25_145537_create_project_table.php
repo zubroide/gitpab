@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProjectsTable extends Migration
+class CreateProjectTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,12 +18,11 @@ class CreateProjectsTable extends Migration
         DB::beginTransaction();
         try {
             Schema::create('project', function (Blueprint $table) {
-                $table->string('id')->primary();
+                $table->bigInteger('id')->primary();
                 $table->string('name');
                 $table->text('description')->nullable();
                 $table->string('path_with_namespace');
-                $table->string('namespace_id');
-                $table->string('namespace_full_path');
+                $table->bigInteger('namespace_id');
                 $table->string('web_url')->unique();
                 $table->string('ssh_url_to_repo')->unique();
                 $table->string('http_url_to_repo')->unique();

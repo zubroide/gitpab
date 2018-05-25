@@ -23,8 +23,7 @@ class GitlabProjectService extends GitlabServiceAbstract
         $list = parent::getList($urlParameters, $requestParameters);
 
         foreach ($list as $key => $item) {
-            $item['namespace_id'] = $item['namespace']['id'];
-            $item['namespace_full_path'] = $item['namespace']['full_path'];
+            $item['namespace_id'] = $item['namespace']['id'] ?? null;
             $list->put($key, $item);
         }
 

@@ -43,12 +43,17 @@ abstract class GitlabServiceAbstract
      */
     public function getList(array $urlParameters = [], array $requestParameters = []): Collection
     {
-        $urlParameters[':token'] = $urlParameters[':token'] ?? $this->token;
-
         $url = $this->getListUrl();
         foreach ($urlParameters as $key => $value) {
             $url = str_replace($key, $value, $url);
         }
+
+        $requestParameters['private_token'] = $requestParameters['private_token'] ?? $this->token;
+        $parts = [];
+        foreach ($requestParameters as $key => $value) {
+            $parts[] = $key . '=' . $value;
+        }
+        $url .= '?' . implode('&', $parts);
 
         $response = $this->client->get($url);
         $content = $response->getBody()->getContents();

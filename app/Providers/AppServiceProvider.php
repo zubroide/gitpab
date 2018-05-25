@@ -9,7 +9,10 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+    const GITLAB_ISSUE_SERVICE = 'service.gitlab.issue';
     const GITLAB_PROJECT_SERVICE = 'service.gitlab.project';
+
+    const ISSUE_REPOSITORY = 'repository.issue';
     const PROJECT_REPOSITORY = 'repository.project';
 
     /**
@@ -30,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $repositories = [
+            self::ISSUE_REPOSITORY => Repository\IssueRepositoryEloquent::class,
             self::PROJECT_REPOSITORY => Repository\ProjectRepositoryEloquent::class,
         ];
         foreach ($repositories as $key => $class) {
@@ -37,6 +41,10 @@ class AppServiceProvider extends ServiceProvider
         }
 
         $gitlabServices = [
+            self::GITLAB_ISSUE_SERVICE => [
+                'class' => Service\GitlabIssueService::class,
+                'repo' => self::ISSUE_REPOSITORY,
+            ],
             self::GITLAB_PROJECT_SERVICE => [
                 'class' => Service\GitlabProjectService::class,
                 'repo' => self::PROJECT_REPOSITORY,

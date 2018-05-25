@@ -10,8 +10,7 @@ namespace App\Model\Entity;
  * @property string name
  * @property string description
  * @property string path_with_namespace
- * @property string namespace_id
- * @property string namespace_full_path
+ * @property int namespace_id
  * @property string web_url
  * @property string ssh_url_to_repo
  * @property string http_url_to_repo
@@ -34,7 +33,6 @@ class Project extends EntityAbstract
         'description',
         'path_with_namespace',
         'namespace_id',
-        'namespace_full_path',
         'web_url',
         'ssh_url_to_repo',
         'http_url_to_repo',

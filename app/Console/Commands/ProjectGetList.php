@@ -4,9 +4,11 @@ namespace App\Console\Commands;
 
 use App\Model\Service\GitlabProjectService;
 use App\Providers\AppServiceProvider;
-use Illuminate\Console\Command;
 
-class ProjectGetList extends Command
+/**
+ * @property GitlabProjectService $service
+ */
+class ProjectGetList extends GitlabCommandAbstract
 {
     /**
      * The name and signature of the console command.
@@ -20,7 +22,7 @@ class ProjectGetList extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Get project list from Gitlab';
 
     /**
      * Create a new command instance.
@@ -30,31 +32,17 @@ class ProjectGetList extends Command
     public function __construct()
     {
         parent::__construct();
+        $this->service = app(AppServiceProvider::GITLAB_PROJECT_SERVICE);
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    protected function getHeaders(): array
     {
-        /** @var GitlabProjectService $service */
-        $service = app(AppServiceProvider::GITLAB_PROJECT_SERVICE);
-        $list = $service->getList();
-
-        // Print list
-        $headers = ['id', "path_with_namespace", 'name', "created_at"];
-        $data = [];
-        foreach ($list as $item) {
-            $row = [];
-            foreach ($headers as $header) {
-                $row[$header] = $item[$header];
-            }
-            $data[] = $row;
-        }
-        $this->table($headers, $data);
-
-        $service->storeList($list);
+        return [
+            'id',
+            'path_with_namespace',
+            'name',
+            'created_at',
+        ];
     }
+
 }
