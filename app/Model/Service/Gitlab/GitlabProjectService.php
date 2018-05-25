@@ -2,7 +2,6 @@
 
 namespace App\Model\Service\Gitlab;
 
-
 use Illuminate\Support\Collection;
 
 class GitlabProjectService extends GitlabServiceAbstract
