@@ -2,7 +2,7 @@
 
 namespace App\Model\Repository;
 
-use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
 use Prettus\Repository\Eloquent\BaseRepository;
 

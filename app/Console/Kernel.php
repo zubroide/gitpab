@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\IssueGetList::class,
         Commands\NoteGetList::class,
+        Commands\NoteProcessCommand::class,
         Commands\ProjectGetList::class,
     ];
 
