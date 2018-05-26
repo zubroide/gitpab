@@ -25,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
     const GITLAB_NOTE_SERVICE = 'service.gitlab.note';
     const GITLAB_PROJECT_SERVICE = 'service.gitlab.project';
 
+    const UPDATE_SERVICE = 'service.update';
+
     const ISSUE_REPOSITORY = 'repository.issue';
     const NOTE_REPOSITORY = 'repository.note';
     const PROJECT_REPOSITORY = 'repository.project';
@@ -82,6 +84,8 @@ class AppServiceProvider extends ServiceProvider
                 return new $class($repo);
             });
         }
+
+        $this->app->bind(self::UPDATE_SERVICE, Service\UpdateService::class);
 
         $gitlabServices = [
             self::GITLAB_ISSUE_SERVICE => Service\Gitlab\GitlabIssueService::class,

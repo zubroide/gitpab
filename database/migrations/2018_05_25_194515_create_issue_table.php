@@ -24,7 +24,7 @@ class CreateIssueTable extends Migration
                 $table->string('title')->nullable();
                 $table->text('description')->nullable();
                 $table->bigInteger('author_id');
-                $table->bigInteger('assignee_id');
+                $table->bigInteger('assignee_id')->nullable();
                 $table->timestamp('gitlab_created_at')->nullable();
                 $table->timestamp('gitlab_updated_at')->nullable();
                 $table->string('web_url');
