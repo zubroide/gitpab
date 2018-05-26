@@ -21,11 +21,6 @@ abstract class EloquentServiceAbstract
      */
     protected $repository;
 
-    public function __construct(RepositoryAbstractEloquent $repository)
-    {
-        $this->repository = $repository;
-    }
-
     public function getCompleteList(array $parameters): \Traversable
     {
         $query = $this->repository->getListQuery($parameters);

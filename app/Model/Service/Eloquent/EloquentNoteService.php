@@ -4,10 +4,16 @@ namespace App\Model\Service\Eloquent;
 
 use App\Model\Entity\Note;
 use App\Model\Service\ServiceException;
+use App\Providers\AppServiceProvider;
 use Illuminate\Support\Collection;
 
 class EloquentNoteService extends EloquentServiceAbstract
 {
+    public function __construct()
+    {
+        $this->repository = app(AppServiceProvider::NOTE_REPOSITORY);
+    }
+
     /**
      * @param \Traversable $list
      * @return Collection

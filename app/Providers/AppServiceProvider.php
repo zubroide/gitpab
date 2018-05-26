@@ -60,29 +60,13 @@ class AppServiceProvider extends ServiceProvider
         }
 
         $eloquentServices = [
-            self::ELOQUENT_ISSUE_SERVICE => [
-                'class' => Service\Eloquent\EloquentIssueService::class,
-                'repo' => self::ISSUE_REPOSITORY,
-            ],
-            self::ELOQUENT_NOTE_SERVICE => [
-                'class' => Service\Eloquent\EloquentNoteService::class,
-                'repo' => self::NOTE_REPOSITORY,
-            ],
-            self::ELOQUENT_PROJECT_SERVICE => [
-                'class' => Service\Eloquent\EloquentProjectService::class,
-                'repo' => self::PROJECT_REPOSITORY,
-            ],
-            self::ELOQUENT_SPENT_SERVICE => [
-                'class' => Service\Eloquent\EloquentSpentService::class,
-                'repo' => self::SPENT_REPOSITORY,
-            ],
+            self::ELOQUENT_ISSUE_SERVICE => Service\Eloquent\EloquentIssueService::class,
+            self::ELOQUENT_NOTE_SERVICE => Service\Eloquent\EloquentNoteService::class,
+            self::ELOQUENT_PROJECT_SERVICE => Service\Eloquent\EloquentProjectService::class,
+            self::ELOQUENT_SPENT_SERVICE => Service\Eloquent\EloquentSpentService::class,
         ];
-        foreach ($eloquentServices as $key => $item) {
-            $this->app->bind($key, function () use ($item) {
-                $class = $item['class'];
-                $repo = app($item['repo']);
-                return new $class($repo);
-            });
+        foreach ($eloquentServices as $key => $class) {
+            $this->app->bind($key, $class);
         }
 
         $this->app->bind(self::UPDATE_SERVICE, Service\UpdateService::class);
