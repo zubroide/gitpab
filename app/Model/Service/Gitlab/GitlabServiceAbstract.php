@@ -41,18 +41,32 @@ abstract class GitlabServiceAbstract
      */
     public function getList(array $urlParameters = [], array $requestParameters = []): Collection
     {
-        $url = $this->getListUrl();
+        $data = new Collection();
+
+        $baseUrl = $this->getListUrl();
         foreach ($urlParameters as $key => $value) {
-            $url = str_replace($key, $value, $url);
+            $baseUrl = str_replace($key, $value, $baseUrl);
         }
 
-        $parts = $this->prepareRequestParameters($requestParameters);
-        $url .= '?' . implode('&', $parts);
+        $page = $requestParameters['page'] ?? null;
+        $currentPage = $page ?: 1;
 
-        $response = $this->client->get($url);
-        $content = $response->getBody()->getContents();
+        do {
+            $requestParameters['page'] = $currentPage;
+            $parts = $this->prepareRequestParameters($requestParameters);
+            $url = $baseUrl . '?' . implode('&', $parts);
 
-        return collect(json_decode($content, true));
+            $response = $this->client->get($url);
+            $content = $response->getBody()->getContents();
+
+            $items = json_decode($content, true);
+            $data = $data->merge($items);
+
+            $currentPage++;
+        }
+        while (!empty($items) && !$page);
+
+        return $data;
     }
 
     public function getItem(array $urlParameters = [], array $parameters = [])
