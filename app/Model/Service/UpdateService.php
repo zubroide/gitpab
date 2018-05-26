@@ -3,9 +3,12 @@
 namespace App\Model\Service;
 
 use App\Model\Service\Eloquent\EloquentIssueService;
+use App\Model\Service\Eloquent\EloquentNoteService;
+use App\Model\Service\Eloquent\EloquentSpentService;
 use App\Model\Service\Import\Import;
 use App\Model\Service\Import\ImportFactory;
 use App\Providers\AppServiceProvider;
+use Illuminate\Support\Collection;
 
 class UpdateService
 {
@@ -21,6 +24,12 @@ class UpdateService
     /** @var EloquentIssueService */
     protected $issueEloquentService;
 
+    /** @var EloquentNoteService */
+    protected $noteEloquentService;
+
+    /** @var EloquentSpentService */
+    protected $spentEloquentService;
+
     public function __construct()
     {
         $this->projectImportService = ImportFactory::make(AppServiceProvider::PROJECT);
@@ -28,6 +37,8 @@ class UpdateService
         $this->noteImportService = ImportFactory::make(AppServiceProvider::NOTE);
 
         $this->issueEloquentService = app(AppServiceProvider::ELOQUENT_ISSUE_SERVICE);
+        $this->noteEloquentService = app(AppServiceProvider::ELOQUENT_NOTE_SERVICE);
+        $this->spentEloquentService = app(AppServiceProvider::ELOQUENT_SPENT_SERVICE);
     }
 
     /**
@@ -69,5 +80,28 @@ class UpdateService
         }
 
         return $result;
+    }
+
+    /**
+     * @param null $projectId
+     * @param null $issueId
+     * @return Collection
+     * @throws ServiceException
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     */
+    public function processNotes($projectId = null, $issueId = null): Collection
+    {
+        $parameters = [
+            'project_id' => $projectId,
+            'issue_id' => $issueId,
+            'order' => 'note.id',
+            'orderDirection' => 'asc',
+        ];
+        $list = $this->noteEloquentService->getCompleteList($parameters);
+        $spentList = $this->noteEloquentService->parseSpentTime($list);
+
+        $this->spentEloquentService->storeList($spentList);
+
+        return $spentList;
     }
 }

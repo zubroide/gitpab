@@ -42,17 +42,11 @@ class NoteProcessCommand extends Command
      */
     public function handle()
     {
-        $this->noteService = app(AppServiceProvider::ELOQUENT_NOTE_SERVICE);
-        $this->spentService = app(AppServiceProvider::ELOQUENT_SPENT_SERVICE);
-
-        $parameters = [
-            'project_id' => $this->option('project_id'),
-            'issue_id' => $this->option('issue_id'),
-            'order' => 'note.id',
-            'orderDirection' => 'asc',
-        ];
-        $list = $this->noteService->getCompleteList($parameters);
-        $spentList = $this->noteService->parseSpentTime($list);
+        $updateService = app(AppServiceProvider::UPDATE_SERVICE);
+        $spentList = $updateService->processNotes(
+            $this->option('project_id'),
+            $this->option('issue_id')
+        );
 
         // Print list
         $headers = [
@@ -69,8 +63,6 @@ class NoteProcessCommand extends Command
             $data[] = $row;
         }
         $this->table($headers, $data);
-
-        $this->spentService->storeList($spentList);
         $this->info('Data stored in database');
     }
 
