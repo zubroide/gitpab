@@ -13,7 +13,7 @@ class ImportAll extends Command
      *
      * @var string
      */
-    protected $signature = 'import:all';
+    protected $signature = 'import:all {--full : Import all (not only changed data) }';
 
     /**
      * The console command description.
@@ -32,7 +32,7 @@ class ImportAll extends Command
     {
         /** @var UpdateService $service */
         $service = app(AppServiceProvider::UPDATE_SERVICE);
-        $counts = $service->update();
+        $counts = $service->update($this->option('full'));
 
         $data = [];
         foreach ($counts as $key => $value) {

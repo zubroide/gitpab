@@ -27,12 +27,13 @@ class Import
 
     /**
      * @param array $urlParameters
+     * @param array $requestParameters
      * @return Collection
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function import(array $urlParameters): Collection
+    public function import(array $urlParameters = [], array $requestParameters = []): Collection
     {
-        $list = $this->gitlabService->getList($urlParameters);
+        $list = $this->gitlabService->getList($urlParameters, $requestParameters);
         $this->eloquentService->storeList($list);
         return $list;
     }
