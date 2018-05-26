@@ -3,9 +3,6 @@
 namespace App\Model\Entity;
 
 /**
- * Class Filter
- * @package App\Model\Entities
- *
  * @property int id
  * @property int iid
  * @property int project_id

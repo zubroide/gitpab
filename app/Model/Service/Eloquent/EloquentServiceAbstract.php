@@ -83,7 +83,8 @@ abstract class EloquentServiceAbstract
         catch (QueryException  $e) {
             // Record exists
             if ($e->getCode() == 23505) {
-                $result = $this->repository->update($attributes, $attributes['id']);
+                $pk = $this->repository->getPkFieldName();
+                $result = $this->repository->update($attributes, $attributes[$pk]);
             }
             else {
                 throw $e;

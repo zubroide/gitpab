@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Model\Service\Eloquent\EloquentNoteService;
+use App\Model\Service\Eloquent\EloquentSpentService;
 use App\Providers\AppServiceProvider;
 use Illuminate\Console\Command;
 
@@ -37,15 +38,17 @@ class NoteProcessCommand extends Command
      *
      * @return mixed
      * @throws \Prettus\Validator\Exceptions\ValidatorException
+     * @throws \App\Model\Service\ServiceException
      */
     public function handle()
     {
         $this->noteService = app(AppServiceProvider::ELOQUENT_NOTE_SERVICE);
+        $this->spentService = app(AppServiceProvider::ELOQUENT_SPENT_SERVICE);
 
         $parameters = [
             'issue_id' => $this->option('issue_id'),
-            'order' => 'gitlab_created_at',
-            'orderDirection' => 'desc',
+            'order' => 'id',
+            'orderDirection' => 'asc',
         ];
         $list = $this->noteService->getCompleteList($parameters);
         $spentList = $this->noteService->parseSpentTime($list);
@@ -66,8 +69,8 @@ class NoteProcessCommand extends Command
         }
         $this->table($headers, $data);
 
-//        $this->eloquentService->storeList($list);
-//        $this->info('Data stored in database');
+        $this->spentService->storeList($spentList);
+        $this->info('Data stored in database');
     }
 
     protected function getUrlParameters(): array

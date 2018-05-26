@@ -3,9 +3,6 @@
 namespace App\Model\Entity;
 
 /**
- * Class Filter
- * @package App\Model\Entities
- *
  * @property int id
  * @property string name
  * @property string description

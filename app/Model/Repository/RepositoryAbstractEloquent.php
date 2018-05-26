@@ -71,4 +71,9 @@ abstract class RepositoryAbstractEloquent extends BaseRepository
         return $this->model->count();
     }
 
+    public function getPkFieldName()
+    {
+        return $this->model->getKeyName();
+    }
+
 }
