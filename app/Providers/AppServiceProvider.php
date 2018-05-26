@@ -84,7 +84,7 @@ class AppServiceProvider extends ServiceProvider
         foreach ($gitlabServices as $key => $class) {
             $this->app->bind($key, function () use ($class) {
                 $guzzle = new Client();
-                return new $class($guzzle, config('gitlab.token'));
+                return new $class($guzzle, config('gitlab.token'), config('gitlab.default_per_page'));
             });
         }
     }

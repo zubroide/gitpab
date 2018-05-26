@@ -18,10 +18,16 @@ abstract class GitlabServiceAbstract
      */
     protected $token;
 
-    public function __construct(ClientInterface $client, string $token)
+    /**
+     * @var int
+     */
+    protected $perPageDefault;
+
+    public function __construct(ClientInterface $client, string $token, int $perPageDefault = 100)
     {
         $this->client = $client;
         $this->token = $token;
+        $this->perPageDefault = $perPageDefault;
     }
 
     abstract protected function getListUrl(): string;
@@ -40,11 +46,7 @@ abstract class GitlabServiceAbstract
             $url = str_replace($key, $value, $url);
         }
 
-        $requestParameters['private_token'] = $requestParameters['private_token'] ?? $this->token;
-        $parts = [];
-        foreach ($requestParameters as $key => $value) {
-            $parts[] = $key . '=' . $value;
-        }
+        $parts = $this->prepareRequestParameters($requestParameters);
         $url .= '?' . implode('&', $parts);
 
         $response = $this->client->get($url);
@@ -56,6 +58,23 @@ abstract class GitlabServiceAbstract
     public function getItem(array $urlParameters = [], array $parameters = [])
     {
 
+    }
+
+    /**
+     * @param array $requestParameters
+     * @return array
+     */
+    protected function prepareRequestParameters(array $requestParameters): array
+    {
+        $requestParameters['private_token'] = $requestParameters['private_token'] ?? $this->token;
+        $requestParameters['per_page'] = $requestParameters['per_page'] ?? $this->perPageDefault;
+
+        $parts = [];
+        foreach ($requestParameters as $key => $value) {
+            $parts[] = $key . '=' . $value;
+        }
+
+        return $parts;
     }
 
 }

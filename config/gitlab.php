@@ -12,4 +12,6 @@ return [
 
     'token' => env('GITLAB_PRIVATE_TOKEN'),
 
+    'default_per_page' => env('GITLAB_DEFAULT_PER_PAGE', 100),
+
 ];
