@@ -71,7 +71,7 @@ abstract class GitlabServiceAbstract
 
     public function getItem(array $urlParameters = [], array $parameters = [])
     {
-
+        // @todo
     }
 
     /**
@@ -82,6 +82,7 @@ abstract class GitlabServiceAbstract
     {
         $requestParameters['private_token'] = $requestParameters['private_token'] ?? $this->token;
         $requestParameters['per_page'] = $requestParameters['per_page'] ?? $this->perPageDefault;
+        $requestParameters['order_by'] = $requestParameters['order_by'] ?? 'updated_at';
 
         $parts = [];
         foreach ($requestParameters as $key => $value) {
