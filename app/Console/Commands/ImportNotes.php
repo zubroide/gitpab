@@ -4,14 +4,14 @@ namespace App\Console\Commands;
 
 use App\Providers\AppServiceProvider;
 
-class NoteGetList extends GitlabCommandAbstract
+class ImportNotes extends GitlabCommandAbstract
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'note:get-list {--P|project_id= : Project id} {--I|issue_id= : Issue id}';
+    protected $signature = 'import:notes {--P|project_id= : Project id} {--I|issue_id= : Issue id}';
 
     /**
      * The console command description.

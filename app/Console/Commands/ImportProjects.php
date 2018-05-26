@@ -4,14 +4,14 @@ namespace App\Console\Commands;
 
 use App\Providers\AppServiceProvider;
 
-class ProjectGetList extends GitlabCommandAbstract
+class ImportProjects extends GitlabCommandAbstract
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'project:get-list';
+    protected $signature = 'import:projects';
 
     /**
      * The console command description.
