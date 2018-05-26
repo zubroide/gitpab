@@ -2,14 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Model\Service\Eloquent\EloquentIssueService;
-use App\Model\Service\Gitlab\GitlabIssueService;
 use App\Providers\AppServiceProvider;
 
-/**
- * @property EloquentIssueService $eloquentService
- * @property GitlabIssueService $gitlabService
- */
 class IssueGetList extends GitlabCommandAbstract
 {
     /**
@@ -26,16 +20,9 @@ class IssueGetList extends GitlabCommandAbstract
      */
     protected $description = 'Get issue list for specified project from Gitlab';
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    protected function getEntityName(): string
     {
-        parent::__construct();
-        $this->eloquentService = app(AppServiceProvider::ELOQUENT_ISSUE_SERVICE);
-        $this->gitlabService = app(AppServiceProvider::GITLAB_ISSUE_SERVICE);
+        return AppServiceProvider::ISSUE;
     }
 
     protected function getHeaders(): array

@@ -2,22 +2,13 @@
 
 namespace App\Console\Commands;
 
-use App\Model\Service\Eloquent\EloquentServiceAbstract;
-use App\Model\Service\Gitlab\GitlabServiceAbstract;
+use App\Model\Service\Import\ImportFactory;
 use Illuminate\Console\Command;
 
 abstract class GitlabCommandAbstract extends Command
 {
 
-    /**
-     * @var GitlabServiceAbstract
-     */
-    protected $gitlabService;
-
-    /**
-     * @var EloquentServiceAbstract
-     */
-    protected $eloquentService;
+    abstract protected function getEntityName(): string;
 
     /**
      * @return string[]
@@ -32,8 +23,10 @@ abstract class GitlabCommandAbstract extends Command
      */
     public function handle()
     {
+        $importService = ImportFactory::make($this->getEntityName());
+
         $urlParameters = $this->getUrlParameters();
-        $list = $this->gitlabService->getList($urlParameters);
+        $list = $importService->import($urlParameters);
 
         // Print list
         $headers = $this->getHeaders();
@@ -47,7 +40,6 @@ abstract class GitlabCommandAbstract extends Command
         }
         $this->table($headers, $data);
 
-        $this->eloquentService->storeList($list);
         $this->info('Data stored in database');
     }
 

@@ -2,14 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Model\Service\Eloquent\EloquentNoteService;
-use App\Model\Service\Gitlab\GitlabNoteService;
 use App\Providers\AppServiceProvider;
 
-/**
- * @property EloquentNoteService $eloquentService
- * @property GitlabNoteService $gitlabService
- */
 class NoteGetList extends GitlabCommandAbstract
 {
     /**
@@ -26,17 +20,11 @@ class NoteGetList extends GitlabCommandAbstract
      */
     protected $description = 'Get comments for specified project issue from Gitlab';
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    protected function getEntityName(): string
     {
-        parent::__construct();
-        $this->eloquentService = app(AppServiceProvider::ELOQUENT_NOTE_SERVICE);
-        $this->gitlabService = app(AppServiceProvider::GITLAB_NOTE_SERVICE);
+        return AppServiceProvider::NOTE;
     }
+
 
     protected function getHeaders(): array
     {

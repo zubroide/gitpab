@@ -9,6 +9,13 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+    const ISSUE = 'issue';
+    const NOTE = 'note';
+    const PROJECT = 'project';
+
+    const ELOQUENT_SERVICE_NAMESPACE = 'service.eloquent';
+    const GITLAB_SERVICE_NAMESPACE = 'service.gitlab';
+
     const ELOQUENT_ISSUE_SERVICE = 'service.eloquent.issue';
     const ELOQUENT_NOTE_SERVICE = 'service.eloquent.note';
     const ELOQUENT_PROJECT_SERVICE = 'service.eloquent.project';

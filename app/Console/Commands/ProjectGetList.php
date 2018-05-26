@@ -2,14 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Model\Service\Eloquent\EloquentProjectService;
-use App\Model\Service\Gitlab\GitlabProjectService;
 use App\Providers\AppServiceProvider;
 
-/**
- * @property EloquentProjectService $eloquentService
- * @property GitlabProjectService $gitlabService
- */
 class ProjectGetList extends GitlabCommandAbstract
 {
     /**
@@ -26,16 +20,9 @@ class ProjectGetList extends GitlabCommandAbstract
      */
     protected $description = 'Get project list from Gitlab';
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    protected function getEntityName(): string
     {
-        parent::__construct();
-        $this->eloquentService = app(AppServiceProvider::ELOQUENT_PROJECT_SERVICE);
-        $this->gitlabService = app(AppServiceProvider::GITLAB_PROJECT_SERVICE);
+        return AppServiceProvider::PROJECT;
     }
 
     protected function getHeaders(): array
