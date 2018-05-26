@@ -14,7 +14,7 @@ class NoteProcessCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'note:process {--I|issue_id= : Issue id}';
+    protected $signature = 'note:process {--P|project_id= : Project id} {--I|issue_id= : Issue id}';
 
     /**
      * The console command description.
@@ -46,8 +46,9 @@ class NoteProcessCommand extends Command
         $this->spentService = app(AppServiceProvider::ELOQUENT_SPENT_SERVICE);
 
         $parameters = [
+            'project_id' => $this->option('project_id'),
             'issue_id' => $this->option('issue_id'),
-            'order' => 'id',
+            'order' => 'note.id',
             'orderDirection' => 'asc',
         ];
         $list = $this->noteService->getCompleteList($parameters);

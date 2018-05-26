@@ -25,7 +25,14 @@ class NoteRepositoryEloquent extends RepositoryAbstractEloquent
 
         if ($issueId = Arr::get($parameters, 'issue_id'))
         {
-            $query->where('issue_id', '=', $issueId);
+            $query->where('note.issue_id', '=', $issueId);
+        }
+
+        if ($projectId = Arr::get($parameters, 'project_id'))
+        {
+            $query
+                ->join('issue', 'issue.id', '=', 'note.issue_id')
+                ->where('issue.project_id', '=', $projectId);
         }
 
         return $query;

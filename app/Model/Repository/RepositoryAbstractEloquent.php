@@ -14,7 +14,7 @@ abstract class RepositoryAbstractEloquent extends BaseRepository
      */
     public function getListQuery(array $parameters): Builder
     {
-        return $this->model->select();
+        return $this->model->select($this->model->getTable() . '.*');
     }
 
     /**
