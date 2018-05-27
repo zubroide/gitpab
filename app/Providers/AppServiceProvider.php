@@ -19,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
     const ELOQUENT_CONTRIBUTOR_SERVICE = 'service.eloquent.contributor';
     const ELOQUENT_ISSUE_SERVICE       = 'service.eloquent.issue';
     const ELOQUENT_NOTE_SERVICE        = 'service.eloquent.note';
+    const ELOQUENT_NAMESPACES_SERVICE  = 'service.eloquent.namespaces';
     const ELOQUENT_PROJECT_SERVICE     = 'service.eloquent.project';
     const ELOQUENT_SPENT_SERVICE       = 'service.eloquent.spent';
 
@@ -30,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
 
     const CONTRIBUTOR_REPOSITORY = 'repository.contributor';
     const ISSUE_REPOSITORY       = 'repository.issue';
+    const NAMESPACES_REPOSITORY  = 'repository.namespaces';
     const NOTE_REPOSITORY        = 'repository.note';
     const PROJECT_REPOSITORY     = 'repository.project';
     const SPENT_REPOSITORY       = 'repository.spent';
@@ -54,6 +56,7 @@ class AppServiceProvider extends ServiceProvider
         $repositories = [
             self::CONTRIBUTOR_REPOSITORY => Repository\ContributorRepositoryEloquent::class,
             self::ISSUE_REPOSITORY       => Repository\IssueRepositoryEloquent::class,
+            self::NAMESPACES_REPOSITORY  => Repository\NamespacesRepositoryEloquent::class,
             self::NOTE_REPOSITORY        => Repository\NoteRepositoryEloquent::class,
             self::PROJECT_REPOSITORY     => Repository\ProjectRepositoryEloquent::class,
             self::SPENT_REPOSITORY       => Repository\SpentRepositoryEloquent::class,
@@ -65,6 +68,7 @@ class AppServiceProvider extends ServiceProvider
         $eloquentServices = [
             self::ELOQUENT_CONTRIBUTOR_SERVICE => Service\Eloquent\EloquentContributorService::class,
             self::ELOQUENT_ISSUE_SERVICE       => Service\Eloquent\EloquentIssueService::class,
+            self::ELOQUENT_NAMESPACES_SERVICE  => Service\Eloquent\EloquentNamespacesService::class,
             self::ELOQUENT_NOTE_SERVICE        => Service\Eloquent\EloquentNoteService::class,
             self::ELOQUENT_PROJECT_SERVICE     => Service\Eloquent\EloquentProjectService::class,
             self::ELOQUENT_SPENT_SERVICE       => Service\Eloquent\EloquentSpentService::class,
