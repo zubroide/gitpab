@@ -5,32 +5,29 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProjectTable extends Migration
+class CreateContributorTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
-     * @throws Throwable
      */
     public function up()
     {
         DB::beginTransaction();
         try {
-            Schema::create('project', function (Blueprint $table) {
+            Schema::create('contributor', function (Blueprint $table) {
                 $table->bigInteger('id')->primary();
                 $table->string('name');
-                $table->text('description')->nullable();
-                $table->string('path_with_namespace');
-                $table->bigInteger('namespace_id')->index();
-                $table->string('web_url')->unique();
-                $table->string('ssh_url_to_repo')->unique();
-                $table->string('http_url_to_repo')->unique();
-                $table->bigInteger('creator_id');
+                $table->string('username');
+                $table->string('state');
+                $table->text('avatar_url')->nullable();
+                $table->string('web_url');
                 $table->timestamps();
             });
 
-            DB::statement('CREATE INDEX ON project (LOWER(name));');
+            DB::statement('CREATE INDEX ON contributor (LOWER(name));');
+            DB::statement('CREATE INDEX ON contributor (LOWER(username));');
             DB::commit();
         }
         catch (\Throwable $e) {
@@ -46,6 +43,6 @@ class CreateProjectTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('project');
+        Schema::dropIfExists('contributor');
     }
 }

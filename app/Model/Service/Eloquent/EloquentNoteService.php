@@ -9,9 +9,20 @@ use Illuminate\Support\Collection;
 
 class EloquentNoteService extends EloquentServiceAbstract
 {
+    use StoreContributorsTrait;
+
     public function __construct()
     {
         $this->repository = app(AppServiceProvider::NOTE_REPOSITORY);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function storeList(Collection $list)
+    {
+        $this->storeContributors($list, ['author']);
+        parent::storeList($list);
     }
 
     /**

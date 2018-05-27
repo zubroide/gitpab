@@ -15,7 +15,11 @@ class CreateSpentTable extends Migration
     {
         Schema::create('spent', function (Blueprint $table) {
             $table->bigInteger('note_id')->primary();
-            $table->foreign('note_id')->references('id')->on('note')->onDelete('CASCADE');
+            $table->foreign('note_id')
+                ->references('id')
+                ->on('note')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
             $table->decimal('hours');
             $table->text('description')->nullable();
             $table->timestamps();

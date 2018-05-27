@@ -19,12 +19,26 @@ class CreateIssueTable extends Migration
             Schema::create('issue', function (Blueprint $table) {
                 $table->bigInteger('id')->primary();
                 $table->integer('iid');
-                $table->bigInteger('project_id');
-                $table->foreign('project_id')->references('id')->on('project')->onDelete('CASCADE');
+                $table->bigInteger('project_id')->index();
+                $table->foreign('project_id')
+                    ->references('id')
+                    ->on('project')
+                    ->onUpdate('CASCADE')
+                    ->onDelete('CASCADE');
                 $table->string('title')->nullable();
                 $table->text('description')->nullable();
-                $table->bigInteger('author_id');
-                $table->bigInteger('assignee_id')->nullable();
+                $table->bigInteger('author_id')->index();
+                $table->foreign('author_id')
+                    ->references('id')
+                    ->on('contributor')
+                    ->onUpdate('CASCADE')
+                    ->onDelete('CASCADE');
+                $table->bigInteger('assignee_id')->index()->nullable();
+                $table->foreign('assignee_id')
+                    ->references('id')
+                    ->on('contributor')
+                    ->onUpdate('CASCADE')
+                    ->onDelete('CASCADE');
                 $table->timestamp('gitlab_created_at')->nullable();
                 $table->timestamp('gitlab_updated_at')->nullable();
                 $table->string('web_url');

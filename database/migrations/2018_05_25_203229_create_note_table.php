@@ -18,10 +18,19 @@ class CreateNoteTable extends Migration
         try {
             Schema::create('note', function (Blueprint $table) {
                 $table->bigInteger('id')->primary();
-                $table->bigInteger('issue_id');
-                $table->foreign('issue_id')->references('id')->on('issue')->onDelete('CASCADE');
+                $table->bigInteger('issue_id')->index();
+                $table->foreign('issue_id')
+                    ->references('id')
+                    ->on('issue')
+                    ->onUpdate('CASCADE')
+                    ->onDelete('CASCADE');
                 $table->text('body')->nullable();
-                $table->bigInteger('author_id');
+                $table->bigInteger('author_id')->index();
+                $table->foreign('author_id')
+                    ->references('id')
+                    ->on('contributor')
+                    ->onUpdate('CASCADE')
+                    ->onDelete('CASCADE');
                 $table->timestamp('gitlab_created_at')->nullable();
                 $table->timestamp('gitlab_updated_at')->nullable();
                 $table->timestamps();
