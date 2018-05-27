@@ -60,7 +60,7 @@ class UpdateService
         foreach ($projectList as $project) {
             $requestParameters = [];
             if (!$full) {
-                $updatedAtFrom = $this->issueEloquentService->getLastUpdateAt();
+                $updatedAtFrom = $this->issueEloquentService->getLastUpdateAt($project['id']);
                 if ($updatedAtFrom) {
                     $requestParameters['updated_after'] = $updatedAtFrom;
                 }

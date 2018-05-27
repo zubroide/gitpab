@@ -27,9 +27,9 @@ class EloquentIssueService extends EloquentServiceAbstract
         parent::storeList($list);
     }
 
-    public function getLastUpdateAt()
+    public function getLastUpdateAt(int $projectId)
     {
-        $issue = $this->repository->getLastUpdatedIssue();
+        $issue = $this->repository->getLastUpdatedIssue($projectId);
         if (!$issue) {
             return null;
         }

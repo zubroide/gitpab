@@ -17,8 +17,11 @@ class IssueRepositoryEloquent extends RepositoryAbstractEloquent
         return Issue::class;
     }
 
-    public function getLastUpdatedIssue()
+    public function getLastUpdatedIssue(int $projectId)
     {
-        return $this->model->orderBy('gitlab_updated_at', 'desc')->first();
+        return $this->model
+            ->where('project_id', '=', $projectId)
+            ->orderBy('gitlab_updated_at', 'desc')
+            ->first();
     }
 }
