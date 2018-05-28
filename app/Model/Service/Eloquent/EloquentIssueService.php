@@ -13,9 +13,13 @@ class EloquentIssueService extends EloquentServiceAbstract
 {
     use StoreContributorsTrait;
 
+    /** @var int[]|null */
+    protected $filterProjectIds = null;
+
     public function __construct()
     {
         $this->repository = app(AppServiceProvider::ISSUE_REPOSITORY);
+        $this->filterProjectIds = config('gitlab.restrictions.project_ids');
     }
 
     /**
@@ -23,6 +27,15 @@ class EloquentIssueService extends EloquentServiceAbstract
      */
     public function storeList(Collection $list)
     {
+        // If selected only concrete projects, we update only them
+        if ($this->filterProjectIds !== null) {
+            foreach ($list as $key => $item) {
+                if (!in_array($item['id'], $this->filterProjectIds)) {
+                    $list->pull($key);
+                }
+            }
+        }
+
         $this->storeContributors($list, ['author', 'assignee']);
         parent::storeList($list);
     }
