@@ -45,6 +45,7 @@ class UpdateService
      * @param bool $full
      * @return array
      * @throws \Prettus\Validator\Exceptions\ValidatorException
+     * @throws ServiceException
      */
     public function update(bool $full = false)
     {
@@ -76,6 +77,8 @@ class UpdateService
                     ':issue_id' => $issue['id'],
                 ]);
                 $result['notes'] += $noteList->count();
+
+                $this->processNotes($project['id'], $issue['id']);
             }
         }
 
@@ -83,6 +86,7 @@ class UpdateService
     }
 
     /**
+     * Parse spent time by every note
      * @param null $projectId
      * @param null $issueId
      * @return Collection

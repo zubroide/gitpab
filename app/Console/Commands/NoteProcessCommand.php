@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Model\Service\Eloquent\EloquentNoteService;
 use App\Model\Service\Eloquent\EloquentSpentService;
+use App\Model\Service\UpdateService;
 use App\Providers\AppServiceProvider;
 use Illuminate\Console\Command;
 
@@ -42,6 +43,7 @@ class NoteProcessCommand extends Command
      */
     public function handle()
     {
+        /** @var UpdateService $updateService */
         $updateService = app(AppServiceProvider::UPDATE_SERVICE);
         $spentList = $updateService->processNotes(
             $this->option('project_id'),
