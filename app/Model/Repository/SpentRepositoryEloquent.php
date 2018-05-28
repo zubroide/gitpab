@@ -41,6 +41,7 @@ class SpentRepositoryEloquent extends RepositoryAbstractEloquent
         $query = $query
             ->select([
                 'note.gitlab_created_at',
+                'project.path_with_namespace as project',
                 'issue.iid',
                 'issue.title as issue_title',
                 'spent.hours',
@@ -48,6 +49,7 @@ class SpentRepositoryEloquent extends RepositoryAbstractEloquent
             ])
             ->join('note', 'note.id', '=', 'spent.note_id')
             ->join('issue', 'issue.id', '=', 'note.issue_id')
+            ->join('project', 'project.id', '=', 'issue.project_id')
             ->orderBy('issue.iid', 'asc')
             ->orderBy('note.gitlab_created_at', 'asc');
 
