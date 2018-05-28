@@ -39,8 +39,8 @@ class CreateIssueTable extends Migration
                     ->on('contributor')
                     ->onUpdate('CASCADE')
                     ->onDelete('CASCADE');
-                $table->timestamp('gitlab_created_at')->nullable();
-                $table->timestamp('gitlab_updated_at')->nullable();
+                $table->timestamp('gitlab_created_at', 3)->nullable();
+                $table->timestamp('gitlab_updated_at', 3)->nullable();
                 $table->string('web_url');
                 $table->timestamps();
             });
