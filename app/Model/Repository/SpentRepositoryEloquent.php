@@ -49,9 +49,7 @@ class SpentRepositoryEloquent extends RepositoryAbstractEloquent
             ])
             ->join('note', 'note.id', '=', 'spent.note_id')
             ->join('issue', 'issue.id', '=', 'note.issue_id')
-            ->join('project', 'project.id', '=', 'issue.project_id')
-            ->orderBy('issue.iid', 'asc')
-            ->orderBy('note.gitlab_created_at', 'asc');
+            ->join('project', 'project.id', '=', 'issue.project_id');
 
         if ($dateStart = Arr::get($parameters, 'date_start')) {
             $query->where('note.gitlab_created_at', '>=', $dateStart);
@@ -72,6 +70,14 @@ class SpentRepositoryEloquent extends RepositoryAbstractEloquent
         if ($issueId = Arr::get($parameters, 'issue_id')) {
             $query->where('note.issue_id', '=', $issueId);
         }
+
+        if ($order = Arr::get($parameters, 'order')) {
+            $query->orderBy($order);
+        }
+
+        $query
+            ->orderBy('issue.iid', 'asc')
+            ->orderBy('note.gitlab_created_at', 'asc');
 
         return $query->get();
     }

@@ -20,6 +20,7 @@ class StatSpentTime extends Command
         {--user-id= : User ID }
         {--project-id= : Project ID }
         {--issue-id= : Issue ID }
+        {--order= : Order by column }
     ';
 
     /**
@@ -44,6 +45,7 @@ class StatSpentTime extends Command
             'user_id' => $this->option('user-id'),
             'project_id' => $this->option('project-id'),
             'issue_id' => $this->option('issue-id'),
+            'order' => $this->option('order'),
         ]);
 
         $total = 0;
