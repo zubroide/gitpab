@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Import;
 
 use App\Model\Service\Import\ImportFactory;
 use Illuminate\Console\Command;
 
-abstract class GitlabCommandAbstract extends Command
+abstract class ImportCommandAbstract extends Command
 {
 
     abstract protected function getEntityName(): string;

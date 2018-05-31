@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Import;
 
 use App\Providers\AppServiceProvider;
 
-class ImportNotes extends GitlabCommandAbstract
+class ImportNotes extends ImportCommandAbstract
 {
     /**
      * The name and signature of the console command.
