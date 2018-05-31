@@ -18,7 +18,7 @@ class ImportNotes extends ImportCommandAbstract
      *
      * @var string
      */
-    protected $description = 'Get comments for specified project issue from Gitlab';
+    protected $description = 'Import comments for specified project issue from Gitlab';
 
     protected function getEntityName(): string
     {

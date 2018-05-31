@@ -27,6 +27,7 @@ class ImportAll extends Command
      *
      * @return mixed
      * @throws \Prettus\Validator\Exceptions\ValidatorException
+     * @throws \App\Model\Service\ServiceException
      */
     public function handle()
     {

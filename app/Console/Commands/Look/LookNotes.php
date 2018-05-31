@@ -18,7 +18,7 @@ class LookNotes extends LookCommandAbstract
      *
      * @var string
      */
-    protected $description = 'Get comments for specified project issue from Gitlab';
+    protected $description = 'Display comments for specified project issue from Gitlab';
 
     protected function getEntityName(): string
     {

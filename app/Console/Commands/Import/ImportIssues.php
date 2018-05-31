@@ -18,7 +18,7 @@ class ImportIssues extends ImportCommandAbstract
      *
      * @var string
      */
-    protected $description = 'Get issue list for specified project from Gitlab';
+    protected $description = 'Import issue list for specified project from Gitlab';
 
     protected function getEntityName(): string
     {

@@ -18,7 +18,7 @@ class ImportProjects extends ImportCommandAbstract
      *
      * @var string
      */
-    protected $description = 'Get project list from Gitlab';
+    protected $description = 'Import project list from Gitlab';
 
     protected function getEntityName(): string
     {

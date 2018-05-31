@@ -18,7 +18,7 @@ class LookIssues extends LookCommandAbstract
      *
      * @var string
      */
-    protected $description = 'Get issue list for specified project from Gitlab';
+    protected $description = 'Display issue list for specified project from Gitlab';
 
     protected function getEntityName(): string
     {
