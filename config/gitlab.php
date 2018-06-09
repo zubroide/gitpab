@@ -6,11 +6,11 @@ return [
 
     'urls' => [
         'host' => $gitlabHost,
-        'project-list' => $gitlabHost . 'api/v3/projects',
-        'project-item' => $gitlabHost . 'api/v3/projects/:project_id',
-        'project-issue-list' => $gitlabHost . 'api/v3/projects/:project_id/issues',
-        'project-issue-item' => $gitlabHost . 'api/v3/projects/:project_id/issues/:issue_id',
-        'project-issue-note-list' => $gitlabHost . 'api/v3/projects/:project_id/issues/:issue_id/notes',
+        'project-list' => $gitlabHost . 'api/v4/projects',
+        'project-item' => $gitlabHost . 'api/v4/projects/:project_id',
+        'project-issue-list' => $gitlabHost . 'api/v4/projects/:project_id/issues',
+        'project-issue-item' => $gitlabHost . 'api/v4/projects/:project_id/issues/:issue_iid',
+        'project-issue-note-list' => $gitlabHost . 'api/v4/projects/:project_id/issues/:issue_iid/notes',
     ],
 
     'token' => env('GITLAB_PRIVATE_TOKEN'),

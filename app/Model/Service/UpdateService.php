@@ -74,7 +74,7 @@ class UpdateService
             foreach ($issueList as $issue) {
                 $noteList = $this->noteImportService->import([
                     ':project_id' => $project['id'],
-                    ':issue_id' => $issue['id'],
+                    ':issue_iid' => $issue['iid'],
                 ]);
                 $result['notes'] += $noteList->count();
 

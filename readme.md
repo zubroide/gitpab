@@ -1,12 +1,10 @@
 # Gitpab
 
-<p align="center">
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
 
 ## Who I am?
 
-I am is calculator of time spent in Gitlab by every user in period.
+I am calculator of time spent in Gitlab by every user in period.
 Just mark time spent in Gitlab and build report using me.
 
 ## Installation

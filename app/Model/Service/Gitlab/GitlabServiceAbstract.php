@@ -8,6 +8,9 @@ use Illuminate\Support\Collection;
 
 abstract class GitlabServiceAbstract
 {
+
+    const BOOLEAN_TRUE = 'true';
+
     /**
      * @var Client
      */

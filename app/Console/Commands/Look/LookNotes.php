@@ -11,7 +11,7 @@ class LookNotes extends LookCommandAbstract
      *
      * @var string
      */
-    protected $signature = 'look:notes {--P|project_id= : Project id} {--I|issue_id= : Issue id}';
+    protected $signature = 'look:notes {--P|project_id= : Project id} {--I|issue= : Issue number}';
 
     /**
      * The console command description.
@@ -46,14 +46,14 @@ class LookNotes extends LookCommandAbstract
             throw new \Exception('project_id must be specified');
         }
 
-        if (!$this->option('issue_id'))
+        if (!$this->option('issue'))
         {
-            throw new \Exception('issue_id must be specified');
+            throw new \Exception('Issue number must be specified');
         }
 
         return [
             ':project_id' => $this->option('project_id'),
-            ':issue_id' => $this->option('issue_id'),
+            ':issue_iid' => $this->option('issue'),
         ];
     }
 

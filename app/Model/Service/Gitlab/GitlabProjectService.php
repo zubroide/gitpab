@@ -19,6 +19,10 @@ class GitlabProjectService extends GitlabServiceAbstract
 
     public function getList(array $urlParameters = [], array $requestParameters = []): Collection
     {
+        if (!isset($requestParameters['membership'])){
+            $requestParameters['membership'] = self::BOOLEAN_TRUE;
+        }
+
         $list = parent::getList($urlParameters, $requestParameters);
 
         foreach ($list as $key => $item) {
