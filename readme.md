@@ -59,3 +59,17 @@ Filter:
  - `issue-id` - by issue,
  - `order` - for example: `issue.iid`, `project.path_with_namespace`
  
+ Result:
+
+ ```
+ +---------------------+-------------------+--------------+-------+----------------------------------+
+ | gitlab_created_at   | project           | issue        | hours | description                      |
+ +---------------------+-------------------+--------------+-------+----------------------------------+
+ | 2018-05-18 12:23:56 | my-group/project1 | #5 My time   | 1.00  | Some work                        |
+ | 2018-05-18 12:24:56 | my-group/project1 | #5 My time   | 0.50  | Export data into pdf             |
+ | 2018-05-19 20:19:49 | my-group/project1 | #5 My time   | 1.00  | Create templates                 |
+ | 2018-05-19 21:56:30 | my-group/project1 | #5 My time   | 0.50  | Reading requirements             |
+ | 2018-05-18 12:23:56 | my-group/project2 | #152 My time | 1.00  | Skype call                       |
+ | 2018-05-18 12:24:56 | my-group/project2 | #152 My time | 0.50  | Discussion about export into xml |
+ +-------------------------+--------------------+--------------+-------+-----------------------------+
+```
