@@ -43,3 +43,19 @@ php artisan import:all
 ```
 
 You can run it in schedule (every hour by defaults): `php artisan schedule:run`.
+
+Now you can build report about spent time using command
+
+```bash
+php artisan stat:spent-time --start=2018-05-01 --finish=2018-06-01
+```
+
+Filter:
+
+ - `start` - start date,
+ - `finish` - finish date,
+ - `user-id` - by assignee,
+ - `project-id` - by project,
+ - `issue-id` - by issue,
+ - `order` - for example: `issue.iid`, `project.path_with_namespace`
+ 
