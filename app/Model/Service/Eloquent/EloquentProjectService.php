@@ -5,7 +5,7 @@ namespace App\Model\Service\Eloquent;
 use App\Providers\AppServiceProvider;
 use Illuminate\Support\Collection;
 
-class EloquentProjectService extends EloquentServiceAbstract
+class EloquentProjectService extends CrudServiceAbstract
 {
     use StoreNamespacesTrait;
 

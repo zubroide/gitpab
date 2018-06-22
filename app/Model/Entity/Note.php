@@ -30,4 +30,13 @@ class Note extends EntityAbstract
         'gitlab_updated_at',
     ];
 
+    public function author()
+    {
+        return $this->belongsTo(Contributor::class);
+    }
+
+    public function issue()
+    {
+        return $this->belongsTo(Issue::class);
+    }
 }

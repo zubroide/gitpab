@@ -38,4 +38,14 @@ class Issue extends EntityAbstract
         'web_url',
     ];
 
+    public function assignee()
+    {
+        return $this->belongsTo(Contributor::class);
+    }
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
+
 }

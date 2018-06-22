@@ -175,19 +175,19 @@ return [
             'text'       => 'Projects',
             'icon'       => 'gear',
             'icon_color' => 'blue',
-            'url'        => 'projects',
+            'url'        => 'project',
         ],
         [
             'text'       => 'Issues',
             'icon'       => 'tasks',
             'icon_color' => 'red',
-            'url'        => 'issues',
+            'url'        => 'issue',
         ],
         [
             'text'       => 'Comments',
             'icon'       => 'comment',
             'icon_color' => 'green',
-            'url'        => 'comments',
+            'url'        => 'note',
         ],
         [
             'text'       => 'Spent time',

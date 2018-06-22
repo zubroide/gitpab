@@ -29,4 +29,9 @@ class Spent extends EntityAbstract
         'description',
     ];
 
+    public function note()
+    {
+        return $this->belongsTo(Note::class, 'note_id', 'id');
+    }
+
 }

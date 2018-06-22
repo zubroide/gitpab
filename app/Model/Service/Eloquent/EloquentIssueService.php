@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 /**
  * @property IssueRepositoryEloquent $repository
  */
-class EloquentIssueService extends EloquentServiceAbstract
+class EloquentIssueService extends CrudServiceAbstract
 {
     use StoreContributorsTrait;
 

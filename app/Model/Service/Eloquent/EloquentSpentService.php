@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 /**
  * @property SpentRepositoryEloquent $repository
  */
-class EloquentSpentService extends EloquentServiceAbstract
+class EloquentSpentService extends CrudServiceAbstract
 {
     public function __construct()
     {

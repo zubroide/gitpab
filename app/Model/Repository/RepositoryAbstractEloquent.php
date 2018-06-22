@@ -5,6 +5,7 @@ namespace App\Model\Repository;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
 use Prettus\Repository\Eloquent\BaseRepository;
+use Prettus\Repository\Events\RepositoryEntityUpdated;
 
 abstract class RepositoryAbstractEloquent extends BaseRepository
 {
@@ -74,6 +75,26 @@ abstract class RepositoryAbstractEloquent extends BaseRepository
     public function getPkFieldName()
     {
         return $this->model->getKeyName();
+    }
+
+    /**
+     * CRUD restore
+     * @param $id
+     * @return mixed
+     */
+    public function restore($id)
+    {
+        $model = $this
+            ->model
+            ->withTrashed()
+            ->where($this->model->getKeyName(), '=', $id)
+            ->update([
+                'deleted_at' => null,
+            ]);
+
+        event(new RepositoryEntityUpdated($this, $this->model));
+
+        return $this->parserResult($model);
     }
 
 }

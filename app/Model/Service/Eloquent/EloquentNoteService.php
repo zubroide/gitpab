@@ -7,7 +7,7 @@ use App\Model\Service\ServiceException;
 use App\Providers\AppServiceProvider;
 use Illuminate\Support\Collection;
 
-class EloquentNoteService extends EloquentServiceAbstract
+class EloquentNoteService extends CrudServiceAbstract
 {
     use StoreContributorsTrait;
 
