@@ -7,7 +7,7 @@ class ListRequest extends FormRequest
     protected $orderFields = ['id', 'name'];
     protected $defaultOrder = 'id';
     protected $defaultOrderDirection = 'desc';
-    protected $defaultLimit = 40;
+    protected $defaultLimit = 100;
 
     /**
      * Get the validation rules that apply to the request.

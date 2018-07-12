@@ -12,7 +12,7 @@ abstract class EloquentServiceAbstract
 {
     const DEFAULT_ORDER_COLUMN = 'id';
     const DEFAULT_ORDER_DIRECTION = 'desc';
-    const DEFAULT_LIMIT = 20;
+    const DEFAULT_LIMIT = 100;
 
     protected $useSimplePagination = false;
 

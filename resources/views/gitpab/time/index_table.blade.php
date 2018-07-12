@@ -62,9 +62,15 @@ $createdExist = isset($itemsList->first()['created_at']);
             <td class="col-md-1">{{ $item->note_id }}</td>
             <td class="col-md-1">{{ $item->hours }}</td>
             <td class="col-md-4">
-                <a href="{{ route($showRoute, [$item->note_id]) }}">
-                    {{ (isset($columnTitleName)) ? $item->{$columnTitleName} : $item->title }}
+                <a href="{{ route('issue.show', [$item->note->issue]) }}">
+                    {{ $item->note->issue->title }}
                 </a>
+                @if ((isset($columnTitleName)) ? $item->{$columnTitleName} : $item->title)
+                    / <br/>
+                    <a href="{{ route($showRoute, [$item->note_id]) }}">
+                        {{ (isset($columnTitleName)) ? $item->{$columnTitleName} : $item->title }}
+                    </a>
+                @endif
             </td>
             <td class="col-md-2">
                 {{ $item->note->author->name ?? null }}
