@@ -30,7 +30,7 @@ class EloquentIssueService extends CrudServiceAbstract
         // If selected only concrete projects, we update only them
         if ($this->filterProjectIds !== null) {
             foreach ($list as $key => $item) {
-                if (!in_array($item['id'], $this->filterProjectIds)) {
+                if (!in_array($item['project_id'], $this->filterProjectIds)) {
                     $list->pull($key);
                 }
             }
