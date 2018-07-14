@@ -30,6 +30,28 @@ class SpentRepositoryEloquent extends RepositoryAbstractEloquent
             $query->where('note.issue_id', '=', $issueId);
         }
 
+        if ($issueIid = Arr::get($parameters, 'issue_iid'))
+        {
+            $query->where('issue.iid', '=', $issueIid);
+        }
+
+        if ($projectIds = Arr::get($parameters, 'projects'))
+        {
+            $query
+                ->join('issue', 'issue.id', '=', 'note.issue_id')
+                ->whereIn('issue.project_id', $projectIds);
+        }
+
+        if ($authorIds = Arr::get($parameters, 'authors'))
+        {
+            $query->whereIn('note.author_id', $authorIds);
+        }
+
+        if ($id = Arr::get($parameters, 'id'))
+        {
+            $query->where('note.id', '=', $id);
+        }
+
         return $query;
     }
 

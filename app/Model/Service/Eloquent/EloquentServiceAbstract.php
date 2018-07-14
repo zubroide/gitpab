@@ -32,13 +32,13 @@ abstract class EloquentServiceAbstract
     {
         $query = $this->repository->getListQuery($parameters);
         $this->setQueryOrder($query, $parameters);
-        return $this->paginateListQuery($query, Arr::get($parameters, 'limit', self::DEFAULT_LIMIT));
+        return $this->paginateListQuery($query, Arr::get($parameters, 'limit', static::DEFAULT_LIMIT));
     }
 
     protected function setQueryOrder($query, array $params)
     {
-        $order = Arr::get($params, 'order', self::DEFAULT_ORDER_COLUMN);
-        $orderDirection = Arr::get($params, 'orderDirection', self::DEFAULT_ORDER_DIRECTION);
+        $order = Arr::get($params, 'order', static::DEFAULT_ORDER_COLUMN);
+        $orderDirection = Arr::get($params, 'orderDirection', static::DEFAULT_ORDER_DIRECTION);
 
         if (!empty($order) && !empty($orderDirection))
         {

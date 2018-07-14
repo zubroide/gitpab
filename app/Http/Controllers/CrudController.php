@@ -46,10 +46,10 @@ abstract class CrudController extends Controller
 
     /**
      * CRUD - Entity list
-     * @param ListRequest $request
+     * @param FormRequest $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(ListRequest $request)
+    public function index(FormRequest $request)
     {
         $view = $this->getView('index');
 

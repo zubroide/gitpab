@@ -11,6 +11,8 @@ use Illuminate\Support\Collection;
  */
 class EloquentSpentService extends CrudServiceAbstract
 {
+    const DEFAULT_ORDER_COLUMN = 'spent.note_id';
+
     public function __construct()
     {
         $this->repository = app(AppServiceProvider::SPENT_REPOSITORY);
