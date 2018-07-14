@@ -36,9 +36,11 @@ $jsoptions = json_encode($jsoptions);
 </div>
 
 
+@section('js')
 <script>
     $(function () {
         //Initialize Select2 Elements
         $("select[name='{{ $name }}'].select2").select2({!! $jsoptions !!});
     });
 </script>
+@append

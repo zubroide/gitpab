@@ -42,6 +42,18 @@
                 ])
             </div>
         </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                @include('partial.form.element.date_range', [
+                    'name' => 'date_range',
+                    'input' => [
+                        'date_start' => $request->get('date_start'),
+                        'date_end' => $request->get('date_end'),
+                    ],
+                    'label' => 'Created at',
+                ])
+            </div>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-4">

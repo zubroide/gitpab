@@ -46,7 +46,7 @@
     </div>
 @endsection
 
-@section('beforeBodyCloseJs')
+@section('js')
     <script type="text/javascript">
         $(document).ready(function () {
             $('.crud_destroy_btn_js').ajaxActionHelper({
@@ -59,4 +59,4 @@
             });
         });
     </script>
-@append
+@append<!-- ./wrapper -->

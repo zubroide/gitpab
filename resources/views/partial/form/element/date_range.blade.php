@@ -19,6 +19,8 @@ $endDate = isset($input['date_end']) ? $input['date_end'] : old('date_end');
         <span class="help-block">{{ $errors->first('date_end') }}</span>
     </div>
 </div>
+
+@section('js')
 <script>
     $(function () {
         var element = $("#reportrange_{{ $name }}"),
@@ -72,3 +74,4 @@ $endDate = isset($input['date_end']) ? $input['date_end'] : old('date_end');
         }
     });
 </script>
+@append

@@ -52,6 +52,16 @@ class SpentRepositoryEloquent extends RepositoryAbstractEloquent
             $query->where('note.id', '=', $id);
         }
 
+        if ($dateStart = Arr::get($parameters, 'date_start'))
+        {
+            $query->where('note.created_at', '>=', $dateStart. ' 00:00:00');
+        }
+
+        if ($dateEnd = Arr::get($parameters, 'date_end'))
+        {
+            $query->where('note.created_at', '<=', $dateEnd. ' 23:59:59');
+        }
+
         return $query;
     }
 
