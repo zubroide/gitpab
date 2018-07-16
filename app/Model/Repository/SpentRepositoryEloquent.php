@@ -23,7 +23,8 @@ class SpentRepositoryEloquent extends RepositoryAbstractEloquent
     public function getListQuery(array $parameters): Builder
     {
         $query = parent::getListQuery($parameters)
-            ->join('note', 'note.id', '=', 'spent.note_id');
+            ->join('note', 'note.id', '=', 'spent.note_id')
+            ->join('issue', 'issue.id', '=', 'note.issue_id');
 
         if ($issueId = Arr::get($parameters, 'issue_id'))
         {
@@ -37,9 +38,7 @@ class SpentRepositoryEloquent extends RepositoryAbstractEloquent
 
         if ($projectIds = Arr::get($parameters, 'projects'))
         {
-            $query
-                ->join('issue', 'issue.id', '=', 'note.issue_id')
-                ->whereIn('issue.project_id', $projectIds);
+            $query->whereIn('issue.project_id', $projectIds);
         }
 
         if ($authorIds = Arr::get($parameters, 'authors'))
@@ -54,12 +53,15 @@ class SpentRepositoryEloquent extends RepositoryAbstractEloquent
 
         if ($dateStart = Arr::get($parameters, 'date_start'))
         {
-            $query->where('note.created_at', '>=', $dateStart. ' 00:00:00');
+            $date = new \DateTime($dateStart);
+            $query->where('note.gitlab_created_at', '>=', $date->format('Y-m-d'));
         }
 
         if ($dateEnd = Arr::get($parameters, 'date_end'))
         {
-            $query->where('note.created_at', '<=', $dateEnd. ' 23:59:59');
+            $date = new \DateTime($dateEnd);
+            $date->add(new \DateInterval('P1D'));
+            $query->where('note.gitlab_created_at', '<', $date->format('Y-m-d'));
         }
 
         return $query;

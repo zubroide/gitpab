@@ -45,18 +45,3 @@
         </div>
     </div>
 @endsection
-
-@section('js')
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.crud_destroy_btn_js').ajaxActionHelper({
-                type: 'DELETE'
-            });
-        });
-        $(document).ready(function () {
-            $('.crud_restore_btn_js').ajaxActionHelper({
-                type: 'PUT'
-            });
-        });
-    </script>
-@append<!-- ./wrapper -->

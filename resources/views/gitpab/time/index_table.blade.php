@@ -61,7 +61,7 @@ $createdExist = isset($itemsList->first()['created_at']);
         <tr>
             <td class="col-md-1">{{ $item->note_id }}</td>
             <td class="col-md-1">{{ $item->hours }}</td>
-            <td class="col-md-4">
+            <td class="col-md-5">
                 <a href="{{ route('issue.show', [$item->note->issue]) }}">
                     #{{ $item->note->issue->iid }} {{ $item->note->issue->title }}
                 </a>
@@ -79,8 +79,8 @@ $createdExist = isset($itemsList->first()['created_at']);
                 {{ $item->note->issue->project->name ?? null }}
             </td>
             @if ($createdExist)
-                <td class="col-md-2">
-                    {{ $item->created_at }}
+                <td class="col-md-1">
+                    {{ \App\Helper\Date::formatDate($item->note->gitlab_created_at) }}
                 </td>
             @endif
         </tr>

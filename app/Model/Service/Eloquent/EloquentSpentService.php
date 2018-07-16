@@ -11,7 +11,7 @@ use Illuminate\Support\Collection;
  */
 class EloquentSpentService extends CrudServiceAbstract
 {
-    const DEFAULT_ORDER_COLUMN = 'spent.note_id';
+    const DEFAULT_ORDER_COLUMN = 'note.gitlab_created_at';
 
     public function __construct()
     {
