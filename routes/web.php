@@ -16,6 +16,7 @@ use App\Http\Controllers\IssueController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TimeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -33,5 +34,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('issue', '\\' . IssueController::class);
     Route::resource('note', '\\' . NoteController::class);
     Route::resource('time', '\\' . TimeController::class);
+    Route::resource('user', '\\' . UserController::class);
 
 });

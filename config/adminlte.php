@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 2',
+    'title' => 'GitPab',
 
     'title_prefix' => '',
 
@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Git</b>Pab',
 
-    'logo_mini' => '<b>A</b>LT',
+    'logo_mini' => '<b>G</b>P',
 
     /*
     |--------------------------------------------------------------------------
@@ -194,6 +194,12 @@ return [
             'icon'       => 'clock-o',
             'icon_color' => 'yellow',
             'url'        => 'time',
+        ],
+        [
+            'text'       => 'Users',
+            'icon'       => 'user',
+            'icon_color' => 'gray',
+            'url'        => 'user',
         ],
     ],
 

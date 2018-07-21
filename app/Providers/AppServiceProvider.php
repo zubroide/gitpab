@@ -12,6 +12,7 @@ class AppServiceProvider extends ServiceProvider
     const ISSUE   = 'issue';
     const NOTE    = 'note';
     const PROJECT = 'project';
+    const USER    = 'user';
 
     const ELOQUENT_SERVICE_NAMESPACE = 'service.eloquent';
     const GITLAB_SERVICE_NAMESPACE   = 'service.gitlab';
@@ -22,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
     const ELOQUENT_NAMESPACES_SERVICE  = 'service.eloquent.namespaces';
     const ELOQUENT_PROJECT_SERVICE     = 'service.eloquent.project';
     const ELOQUENT_SPENT_SERVICE       = 'service.eloquent.spent';
+    const ELOQUENT_USER_SERVICE        = 'service.eloquent.user';
 
     const GITLAB_ISSUE_SERVICE   = 'service.gitlab.issue';
     const GITLAB_NOTE_SERVICE    = 'service.gitlab.note';
@@ -35,6 +37,7 @@ class AppServiceProvider extends ServiceProvider
     const NOTE_REPOSITORY        = 'repository.note';
     const PROJECT_REPOSITORY     = 'repository.project';
     const SPENT_REPOSITORY       = 'repository.spent';
+    const USER_REPOSITORY        = 'repository.user';
 
     /**
      * Bootstrap any application services.
@@ -60,6 +63,7 @@ class AppServiceProvider extends ServiceProvider
             self::NOTE_REPOSITORY        => Repository\NoteRepositoryEloquent::class,
             self::PROJECT_REPOSITORY     => Repository\ProjectRepositoryEloquent::class,
             self::SPENT_REPOSITORY       => Repository\SpentRepositoryEloquent::class,
+            self::USER_REPOSITORY        => Repository\UserRepositoryEloquent::class,
         ];
         foreach ($repositories as $key => $class) {
             $this->app->bind($key, $class);
@@ -72,6 +76,7 @@ class AppServiceProvider extends ServiceProvider
             self::ELOQUENT_NOTE_SERVICE        => Service\Eloquent\EloquentNoteService::class,
             self::ELOQUENT_PROJECT_SERVICE     => Service\Eloquent\EloquentProjectService::class,
             self::ELOQUENT_SPENT_SERVICE       => Service\Eloquent\EloquentSpentService::class,
+            self::ELOQUENT_USER_SERVICE        => Service\Eloquent\EloquentUserService::class,
         ];
         foreach ($eloquentServices as $key => $class) {
             $this->app->bind($key, $class);
