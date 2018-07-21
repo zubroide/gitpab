@@ -17,6 +17,7 @@ use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TimeController;
 use App\Http\Controllers\UserController;
+use App\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,13 +28,22 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
 
-    Route::get('/home', '\\' . HomeController::class . '@index')->name('home');
+    Route::get('/home', '\\' . HomeController::class . '@index')
+        ->name('home')
+        ->middleware('permission:' . User::PERMISSION_VIEW_SPENT_TIME)
+    ;
 
-    Route::resource('project', '\\' . ProjectController::class);
-//    Route::get('project/{id}', '\\' . ProjectController::class . '@view')->name('project.view');
-    Route::resource('issue', '\\' . IssueController::class);
-    Route::resource('note', '\\' . NoteController::class);
-    Route::resource('time', '\\' . TimeController::class);
-    Route::resource('user', '\\' . UserController::class);
-
+    Route::resource('project', '\\' . ProjectController::class)
+        ->middleware('permission:' . User::PERMISSION_VIEW_PROJECTS);
+    Route::resource('issue', '\\' . IssueController::class)
+        ->middleware('permission:' . User::PERMISSION_VIEW_ISSUES);
+    Route::resource('note', '\\' . NoteController::class)
+        ->middleware('permission:' . User::PERMISSION_VIEW_COMMENTS);
+    Route::resource('time', '\\' . TimeController::class)
+        ->middleware('permission:' . User::PERMISSION_VIEW_SPENT_TIME);
+    Route::resource('user', '\\' . UserController::class)
+        ->middleware([
+            'permission:' . User::PERMISSION_VIEW_USERS,
+            'permission:' . User::PERMISSION_EDIT_USERS,
+        ]);
 });

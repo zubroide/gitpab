@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * @property int $id
@@ -14,7 +15,18 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable
 {
+    const ROLE_ADMIN = 'Admin';
+    const ROLE_CONTRIBUTOR = 'Contributor';
+
+    const PERMISSION_VIEW_PROJECTS = 'View projects';
+    const PERMISSION_VIEW_ISSUES = 'View issues';
+    const PERMISSION_VIEW_COMMENTS = 'View comments';
+    const PERMISSION_VIEW_SPENT_TIME = 'View spent time';
+    const PERMISSION_VIEW_USERS = 'View users';
+    const PERMISSION_EDIT_USERS = 'Edit users';
+
     use Notifiable;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.

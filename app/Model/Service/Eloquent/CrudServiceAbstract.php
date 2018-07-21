@@ -73,7 +73,7 @@ class CrudServiceAbstract extends EloquentServiceAbstract
     }
 
     /**
-     * Сохранение связей
+     * Store linked data
      *
      * @param $object
      * @param $attributes

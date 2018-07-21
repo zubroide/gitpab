@@ -38,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
     const PROJECT_REPOSITORY     = 'repository.project';
     const SPENT_REPOSITORY       = 'repository.spent';
     const USER_REPOSITORY        = 'repository.user';
+    const ROLE_REPOSITORY        = 'repository.role';
 
     /**
      * Bootstrap any application services.
@@ -64,6 +65,7 @@ class AppServiceProvider extends ServiceProvider
             self::PROJECT_REPOSITORY     => Repository\ProjectRepositoryEloquent::class,
             self::SPENT_REPOSITORY       => Repository\SpentRepositoryEloquent::class,
             self::USER_REPOSITORY        => Repository\UserRepositoryEloquent::class,
+            self::ROLE_REPOSITORY        => Repository\RoleRepositoryEloquent::class,
         ];
         foreach ($repositories as $key => $class) {
             $this->app->bind($key, $class);

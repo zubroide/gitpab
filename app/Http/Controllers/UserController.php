@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FormRequest;
+use App\Model\Repository\RoleRepositoryEloquent;
 use App\Model\Service\Eloquent\EloquentUserService;
+use App\Providers\AppServiceProvider;
 
 class UserController extends CrudController
 {
@@ -14,4 +17,16 @@ class UserController extends CrudController
         return app(EloquentUserService::class);
     }
 
+    protected function prepareDataForEdit(FormRequest $request, array $data)
+    {
+        /** @var RoleRepositoryEloquent $roleRepository */
+        $roleRepository = app(AppServiceProvider::ROLE_REPOSITORY);
+
+        return array_merge(
+            $data,
+            [
+                'rolesList' => $roleRepository->getItemsForSelect(),
+            ]
+        );
+    }
 }
