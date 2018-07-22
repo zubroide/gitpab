@@ -34,6 +34,16 @@ Run migrations:
 php artisan migrate
 ```
 
+Fill dictionaries:
+```bash
+php artisan db:seed
+```
+
+Create user (with Admin role):
+```bash
+php artisan make:user
+```
+
 ## Usage
 
 Run next command for import projects, issues and comments from Gitlab:
