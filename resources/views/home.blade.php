@@ -14,7 +14,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">Projects</span>
-                    <span class="info-box-number">2</span>
+                    <span class="info-box-number">{{ $projects }}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -27,7 +27,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">Issues</span>
-                    <span class="info-box-number">14</span>
+                    <span class="info-box-number">{{ $issues }}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -44,7 +44,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">Comments</span>
-                    <span class="info-box-number">760</span>
+                    <span class="info-box-number">{{ $notes }}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -57,7 +57,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">Spent time</span>
-                    <span class="info-box-number">300</span>
+                    <span class="info-box-number">{{ $spent }}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>

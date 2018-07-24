@@ -116,4 +116,13 @@ class SpentRepositoryEloquent extends RepositoryAbstractEloquent
         return $query->get();
     }
 
+    /**
+     * @return float hours
+     */
+    public function sum(): float
+    {
+        return $this->model
+            ->selectRaw('sum(hours) as hours')->get()->first()->hours;
+    }
+
 }
