@@ -2,6 +2,8 @@
 
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 
+![](/doc/spent-web.png)
+
 ## Who I am?
 
 I am calculator of time spent in Gitlab by every user in period.
