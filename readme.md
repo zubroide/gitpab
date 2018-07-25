@@ -44,6 +44,12 @@ Create user (with Admin role):
 php artisan make:user
 ```
 
+Build static:
+```bash
+npm install
+npm run prod
+```
+
 ## Usage
 
 Run next command for import projects, issues and comments from Gitlab:
@@ -81,5 +87,5 @@ Filter:
  | 2018-05-19 21:56:30 | my-group/project1 | #5 My time   | 0.50  | Reading requirements             |
  | 2018-05-18 12:23:56 | my-group/project2 | #152 My time | 1.00  | Skype call                       |
  | 2018-05-18 12:24:56 | my-group/project2 | #152 My time | 0.50  | Discussion about export into xml |
- +-------------------------+--------------------+--------------+-------+-----------------------------+
+ +---------------------+-------------------+--------------+-------+----------------------------------+
 ```
