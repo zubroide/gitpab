@@ -41,7 +41,7 @@ class EloquentNoteService extends CrudServiceAbstract
         foreach ($list as $item) {
             $hours = 0;
 
-            $pattern = '/added (((\d{1,3}[hm])\s+)+)of time spent at \d{4}-\d{2}-\d{2}/';
+            $pattern = '/added (((\d{1,3}[dhm])\s+)+)of time spent at \d{4}-\d{2}-\d{2}/';
             preg_match($pattern, $item->body, $match);
 
             if (!empty($match) && count($match) >= 2) {
