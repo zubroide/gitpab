@@ -41,15 +41,16 @@ class EloquentNoteService extends CrudServiceAbstract
         foreach ($list as $item) {
             $hours = 0;
 
-            $pattern = '/added ((\d{1,3}[hm])\s+)+of time spent at \d{4}-\d{2}-\d{2}/';
+            $pattern = '/added (((\d{1,3}[hm])\s+)+)of time spent at \d{4}-\d{2}-\d{2}/';
             preg_match($pattern, $item->body, $match);
 
-            if (!empty($match)) {
-                $times = explode(' ', $match[2]);
+            if (!empty($match) && count($match) >= 2) {
+                $times = array_filter(explode(' ', $match[1]));
                 foreach ($times as $time) {
-                    $hours += $this->parseTime($time);
+                    $hours += $this->parseTime(trim($time));
                 }
             }
+
 
             // Get description from previous comment if its corresponds to
             $description = null;
@@ -95,6 +96,9 @@ class EloquentNoteService extends CrudServiceAbstract
         }
         if ($period === 'h') {
             return $value;
+        }
+        if ($period === 'd') {
+            return $value * 8;
         }
         throw new ServiceException(sprintf('Unknown period %s (time %s)', $period, $time));
     }
