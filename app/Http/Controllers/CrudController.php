@@ -10,9 +10,11 @@ use App\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\{
     App, Log, Auth, Redirect
 };
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 abstract class CrudController extends Controller
 {
@@ -51,6 +53,11 @@ abstract class CrudController extends Controller
      */
     public function index(FormRequest $request)
     {
+        if ($request->get('submit') === 'csv') {
+            $data = $this->getService()->getCompleteList($request->all());
+            return $this->downloadCsv($data);
+        }
+
         $view = $this->getView('index');
 
         $data = $this->prepareDataForIndex($request, [
@@ -66,6 +73,34 @@ abstract class CrudController extends Controller
         ]);
 
         return view($view, $data);
+    }
+
+    public function downloadCsv(\Generator $data): BinaryFileResponse
+    {
+        $filename = tempnam(storage_path('temp'), 'gitpab_');
+        $file = fopen($filename, 'r+');
+
+        $isFirstLine = true;
+        foreach ($data as $line) {
+            $row = $line->toArray();
+            if ($isFirstLine) {
+                $isFirstLine = false;
+                fputcsv($file, array_keys($row));
+            }
+            fputcsv($file, $row);
+        }
+
+        $headers = [
+            'Content-Type: text/csv',
+        ];
+
+        fclose($file);
+
+        $result = response()
+            ->download($filename, 'gitpab-export.csv', $headers)
+            ->deleteFileAfterSend(true);
+
+        return $result;
     }
 
     /**
