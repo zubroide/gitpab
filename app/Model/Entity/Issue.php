@@ -36,6 +36,8 @@ class Issue extends EntityAbstract
         'author_id',
         'assignee_id',
         'web_url',
+        'state',
+        'labels',
     ];
 
     public function assignee()
@@ -46,6 +48,11 @@ class Issue extends EntityAbstract
     public function project()
     {
         return $this->belongsTo(Project::class);
+    }
+
+    public function setLabelsAttribute($items)
+    {
+        $this->attributes['labels'] = "{" . implode(', ', $items) . "}";
     }
 
 }

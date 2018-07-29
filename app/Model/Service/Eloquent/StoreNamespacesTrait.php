@@ -23,8 +23,8 @@ trait StoreNamespacesTrait
             }
         }
 
-        /** @var EloquentNamespacesService $contributorService */
-        $contributorService = app(AppServiceProvider::ELOQUENT_NAMESPACES_SERVICE);
-        $contributorService->storeList($contributors);
+        /** @var EloquentNamespacesService $namespaceService */
+        $namespaceService = app(AppServiceProvider::ELOQUENT_NAMESPACES_SERVICE);
+        $namespaceService->storeList($contributors);
     }
 }

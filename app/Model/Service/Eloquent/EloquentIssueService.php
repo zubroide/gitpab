@@ -12,6 +12,7 @@ use Illuminate\Support\Collection;
 class EloquentIssueService extends CrudServiceAbstract
 {
     use StoreContributorsTrait;
+    use StoreLabelsTrait;
 
     /** @var int[]|null */
     protected $filterProjectIds = null;
@@ -37,6 +38,7 @@ class EloquentIssueService extends CrudServiceAbstract
         }
 
         $this->storeContributors($list, ['author', 'assignee']);
+        $this->storeLabels($list, 'labels');
         parent::storeList($list);
     }
 
