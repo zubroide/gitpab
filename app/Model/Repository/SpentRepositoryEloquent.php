@@ -6,6 +6,7 @@ use App\Model\Entity\Spent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class SpentRepositoryEloquent extends RepositoryAbstractEloquent
 {
@@ -23,7 +24,13 @@ class SpentRepositoryEloquent extends RepositoryAbstractEloquent
     public function getListQuery(array $parameters): Builder
     {
         $query = parent::getListQuery($parameters)
-            ->select('spent.note_id', 'spent.hours', 'note.gitlab_created_at', 'spent.description')
+            ->select([
+                'spent.note_id',
+                'spent.hours',
+                'note.gitlab_created_at',
+                'issue.iid as issue',
+                DB::raw("issue.title || CASE WHEN spent.description IS NOT NULL THEN ' |\n' || spent.description ELSE '' END as description")
+            ])
             ->join('note', 'note.id', '=', 'spent.note_id')
             ->join('issue', 'issue.id', '=', 'note.issue_id');
 
