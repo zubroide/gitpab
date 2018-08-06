@@ -23,6 +23,7 @@ class SpentRepositoryEloquent extends RepositoryAbstractEloquent
     public function getListQuery(array $parameters): Builder
     {
         $query = parent::getListQuery($parameters)
+            ->select('spent.note_id', 'spent.hours', 'note.gitlab_created_at', 'spent.description')
             ->join('note', 'note.id', '=', 'spent.note_id')
             ->join('issue', 'issue.id', '=', 'note.issue_id');
 
