@@ -24,7 +24,7 @@ export token="your_gitlab_private_token" && export projects="project_id1,project
 
 Be patient. Loading data from Gitlab may take tens minutes at first time.
 
-## Installation
+## Installation without docked
 
 Create empty database in PostgreSQL.
 
