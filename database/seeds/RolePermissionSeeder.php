@@ -3,6 +3,7 @@
 use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Exceptions\RoleAlreadyExists;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -38,7 +39,9 @@ class RolePermissionSeeder extends Seeder
         }
         catch (\Throwable $e) {
             DB::rollback();
-            throw $e;
+            if (!($e instanceof RoleAlreadyExists)) {
+                throw $e;
+            }
         }
     }
 }
