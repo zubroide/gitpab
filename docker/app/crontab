@@ -1,0 +1,1 @@
+11 * * * * cd /data/www/gitpab && /usr/local/bin/php artisan import:all >> /var/log/cron.log 2>&1

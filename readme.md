@@ -9,6 +9,21 @@
 I am calculator of time spent in Gitlab by every user in period.
 Just mark time spent in Gitlab and build report using me.
 
+## Installation using docker
+
+You may obtain needed project ids from gitlab Api:
+https://gitlab.com/api/v4/projects?private_token=your_private_token&membership=1 
+
+Clone this repo and run containers from `docker` folder:
+
+```bash
+git clone git@github.com:zubroide/gitpab.git
+cd gitpab/docker
+export token="your_gitlab_private_token" && export projects="project_id1,project_id2" && docker-compose up --build app
+```
+
+Be patient. Loading data from Gitlab may take tens minutes at first time.
+
 ## Installation
 
 Create empty database in PostgreSQL.

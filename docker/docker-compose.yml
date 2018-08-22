@@ -1,0 +1,27 @@
+version: '2'
+services:
+
+  app:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+      args:
+        ssh_prv_key: ${ssh_prv_key}
+    ports:
+      - "8010:80"
+#    volumes:
+#      - /data/gitpab/app:/data
+    environment:
+      GITLAB_PRIVATE_TOKEN: ${token}
+      GITLAB_RESTRICTIONS_PROJECT_IDS: ${projects}
+    links:
+      - db
+
+  db:
+    image: postgres
+    volumes:
+      - /data/gitpab/postgres:/var/lib/postgresql
+    environment:
+      POSTGRES_DB: gitpab
+      POSTGRES_USER: gitpab
+      POSTGRES_PASSWORD: gitpab
