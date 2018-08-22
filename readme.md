@@ -24,6 +24,11 @@ export token="your_gitlab_private_token" && export projects="project_id1,project
 
 Be patient. Loading data from Gitlab may take tens minutes at first time.
 
+Open url http://127.0.0.1:8010  
+And enter  
+login `admin@admin`  
+password `admin`
+
 ## Installation without docker
 
 Create empty database in PostgreSQL.
