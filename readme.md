@@ -19,7 +19,10 @@ Clone this repo and run containers from `docker` folder:
 ```bash
 git clone git@github.com:zubroide/gitpab.git
 cd gitpab/docker
-export token="your_gitlab_private_token" && export projects="project_id1,project_id2" && docker-compose up --build app
+export host="https://gitlab.com/" \
+    && export token="your_gitlab_private_token" \
+    && export projects="project_id1,project_id2" \
+    && docker-compose up --build app
 ```
 
 Be patient. Loading data from Gitlab may take tens minutes at first time.
@@ -50,6 +53,7 @@ You are can find project ids using next command: `php artisan look:projects`.
 - `APP_URL`
 - `DB_DATABASE`
 - `DB_USERNAME`
+- `GITLAB_HOST`
 
 Run migrations:
 ```bash
