@@ -58,6 +58,6 @@ RUN chmod 0644 /etc/cron.d/gitpab \
     && touch /var/log/cron.log
 
 # Deploy project
-COPY ./app/.env /data/.env
+COPY ./app/.env.template /data/.env
 
 ENTRYPOINT ["/root/entrypoint.sh"]
