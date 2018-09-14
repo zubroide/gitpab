@@ -40,9 +40,9 @@ Create empty database in PostgreSQL.
 git clone git@github.com:zubroide/gitpab.git
 cd gitpab
 composer install
+cp .env.example .env
 php artisan key:generate
 php artisan vendor:publish --provider="JeroenNoten\LaravelAdminLte\ServiceProvider" --tag=assets
-cp .env.example .env
 ```
 
 Edit environment variables in `.env`:
