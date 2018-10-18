@@ -22,6 +22,7 @@ class CreateMilestoneTable extends Migration
                 $table->integer('iid')->index();
                 $table->string('title')->nullable();
                 $table->text('description')->nullable();
+                $table->string('state');
                 $table->timestamp('start_date')->nullable();
                 $table->timestamp('due_date')->nullable();
                 $table->bigInteger('project_id')->index()->nullable();

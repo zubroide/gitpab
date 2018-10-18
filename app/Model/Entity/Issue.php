@@ -13,6 +13,7 @@ namespace App\Model\Entity;
  * @property int author_id
  * @property int assignee_id
  * @property string web_url
+ * @property int milestone_id
  */
 class Issue extends EntityAbstract
 {
@@ -38,6 +39,7 @@ class Issue extends EntityAbstract
         'web_url',
         'state',
         'labels',
+        'milestone_id',
     ];
 
     public function assignee()

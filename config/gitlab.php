@@ -11,6 +11,8 @@ return [
         'project-issue-list' => $gitlabHost . 'api/v4/projects/:project_id/issues',
         'project-issue-item' => $gitlabHost . 'api/v4/projects/:project_id/issues/:issue_iid',
         'project-issue-note-list' => $gitlabHost . 'api/v4/projects/:project_id/issues/:issue_iid/notes',
+        'project-milestone-list' => $gitlabHost . 'api/v4/projects/:project_id/milestones',
+        'group-milestone-list' => $gitlabHost . 'api/v4/groups/:group_id/milestones',
     ],
 
     'token' => env('GITLAB_PRIVATE_TOKEN'),

@@ -13,13 +13,20 @@ use Illuminate\Support\Collection;
 class UpdateService
 {
     /** @var Import */
-    protected $projectImportService;
+    protected $groupMilestoneImportService;
 
     /** @var Import */
     protected $issueImportService;
 
     /** @var Import */
     protected $noteImportService;
+
+    /** @var Import */
+    protected $projectImportService;
+
+    /** @var Import */
+    protected $projectMilestoneImportService;
+
 
     /** @var EloquentIssueService */
     protected $issueEloquentService;
@@ -32,9 +39,11 @@ class UpdateService
 
     public function __construct()
     {
-        $this->projectImportService = ImportFactory::make(AppServiceProvider::PROJECT);
+        $this->groupMilestoneImportService = ImportFactory::make(AppServiceProvider::GROUP_MILESTONE);
         $this->issueImportService = ImportFactory::make(AppServiceProvider::ISSUE);
         $this->noteImportService = ImportFactory::make(AppServiceProvider::NOTE);
+        $this->projectImportService = ImportFactory::make(AppServiceProvider::PROJECT);
+        $this->projectMilestoneImportService = ImportFactory::make(AppServiceProvider::PROJECT_MILESTONE);
 
         $this->issueEloquentService = app(AppServiceProvider::ELOQUENT_ISSUE_SERVICE);
         $this->noteEloquentService = app(AppServiceProvider::ELOQUENT_NOTE_SERVICE);
@@ -51,13 +60,38 @@ class UpdateService
     {
         $result = [
             'projects' => 0,
+            'project_milestones' => 0,
+            'group_milestones' => 0,
             'issues' => 0,
             'notes' => 0,
         ];
 
+        // Projects
         $projectList = $this->projectImportService->import([]);
         $result['projects'] += $projectList->count();
 
+        // Project milestones
+        foreach ($projectList as $project) {
+            $urlParameters = [
+                ':project_id' => $project['id'],
+            ];
+            $projectMilestoneList = $this->projectMilestoneImportService->import($urlParameters);
+            $result['project_milestones'] += $projectMilestoneList->count();
+        }
+
+        // Group milestones
+        foreach ($projectList as $project) {
+            if (empty($project['namespace_id'])) {
+                continue;
+            }
+            $urlParameters = [
+                ':group_id' => $project['namespace_id'],
+            ];
+            $groupMilestoneList = $this->groupMilestoneImportService->import($urlParameters);
+            $result['group_milestones'] += $groupMilestoneList->count();
+        }
+
+        // Project issues
         foreach ($projectList as $project) {
             $requestParameters = [];
             if (!$full) {

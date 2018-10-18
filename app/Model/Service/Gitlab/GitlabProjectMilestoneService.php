@@ -4,17 +4,18 @@ namespace App\Model\Service\Gitlab;
 
 use Illuminate\Support\Collection;
 
-class GitlabIssueService extends GitlabServiceAbstract
+class GitlabProjectMilestoneService extends GitlabServiceAbstract
 {
 
     protected function getListUrl(): string
     {
-        return config('gitlab.urls.project-issue-list');
+        return config('gitlab.urls.project-milestone-list');
     }
 
     protected function getItemUrl(): string
     {
-        return config('gitlab.urls.project-issue-item');
+        // Not used
+        return config('gitlab.urls.project-milestone-item');
     }
 
     public function getList(array $urlParameters = [], array $requestParameters = []): Collection
@@ -22,20 +23,16 @@ class GitlabIssueService extends GitlabServiceAbstract
         $list = parent::getList($urlParameters, $requestParameters);
 
         foreach ($list as $key => $item) {
-            $item['author_id'] = $item['author']['id'] ?? null;
-            $item['assignee_id'] = $item['assignee']['id'] ?? null;
-
             $item['gitlab_created_at'] = $item['created_at'];
             unset($item['created_at']);
 
             $item['gitlab_updated_at'] = $item['updated_at'];
             unset($item['updated_at']);
 
-            $item['milestone_id'] = $item['milestone']['id'] ?? null;
-
             $list->put($key, $item);
         }
 
         return $list;
     }
+
 }
