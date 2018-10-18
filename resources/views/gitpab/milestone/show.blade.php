@@ -48,10 +48,14 @@
     </div>
 
     <hr/>
+
 <pre>
+## Changelog
+
 @foreach ($object->issues as $issue)
 - {{ $issue->title . '  ' }}
   #{{ $issue->iid }} ({{ $issue->project->name }})
 @endforeach
 </pre>
+
 @endsection
