@@ -13,6 +13,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IssueController;
+use App\Http\Controllers\MilestoneController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TimeController;
@@ -34,6 +35,8 @@ Route::group(['middleware' => ['auth']], function () {
     ;
 
     Route::resource('project', '\\' . ProjectController::class)
+        ->middleware('permission:' . User::PERMISSION_VIEW_PROJECTS);
+    Route::resource('milestone', '\\' . MilestoneController::class)
         ->middleware('permission:' . User::PERMISSION_VIEW_PROJECTS);
     Route::resource('issue', '\\' . IssueController::class)
         ->middleware('permission:' . User::PERMISSION_VIEW_ISSUES);

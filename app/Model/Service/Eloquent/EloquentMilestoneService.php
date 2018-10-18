@@ -4,7 +4,7 @@ namespace App\Model\Service\Eloquent;
 
 use App\Providers\AppServiceProvider;
 
-class EloquentMilestoneService extends EloquentServiceAbstract
+class EloquentMilestoneService extends CrudServiceAbstract
 {
     public function __construct()
     {

@@ -8,62 +8,40 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+        @include('partial/count_widget', [
+            'color' => 'aqua',
+            'icon'  => 'ion ion-ios-gear',
+            'title' => 'Projects',
+            'count' => $projects,
+        ])
 
-                <div class="info-box-content">
-                    <span class="info-box-text">Projects</span>
-                    <span class="info-box-number">{{ $projects }}</span>
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-red"><i class="fa fa-tasks"></i></span>
+        @include('partial/count_widget', [
+            'color' => 'purple',
+            'icon'  => 'fa fa-flag',
+            'title' => 'Milestones',
+            'count' => $milestones,
+        ])
 
-                <div class="info-box-content">
-                    <span class="info-box-text">Issues</span>
-                    <span class="info-box-number">{{ $issues }}</span>
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
+        @include('partial/count_widget', [
+            'color' => 'red',
+            'icon'  => 'fa fa-tasks',
+            'title' => 'Issues',
+            'count' => $issues,
+        ])
 
-        <!-- fix for small devices only -->
-        <div class="clearfix visible-sm-block"></div>
+        @include('partial/count_widget', [
+            'color' => 'green',
+            'icon'  => 'fa fa-comment',
+            'title' => 'Comments',
+            'count' => $notes,
+        ])
 
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-green"><i class="fa fa-comment"></i></span>
-
-                <div class="info-box-content">
-                    <span class="info-box-text">Comments</span>
-                    <span class="info-box-number">{{ $notes }}</span>
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-yellow"><i class="fa fa-clock-o"></i></span>
-
-                <div class="info-box-content">
-                    <span class="info-box-text">Spent time</span>
-                    <span class="info-box-number">{{ $spent }}</span>
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
+        @include('partial/count_widget', [
+            'color' => 'yellow',
+            'icon'  => 'fa fa-clock-o',
+            'title' => 'Spent time',
+            'count' => $spent,
+        ])
     </div>
 @stop
 

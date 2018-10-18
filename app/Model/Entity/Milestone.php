@@ -42,4 +42,20 @@ class Milestone extends EntityAbstract
         'web_url',
     ];
 
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
+
+    public function group()
+    {
+        return $this->belongsTo(Namespaces::class, 'group_id');
+    }
+
+    public function issues()
+    {
+        return $this->hasMany(Issue::class)
+            ->orderBy('issue.iid');
+    }
+
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Repository\MilestoneRepositoryEloquent;
 use App\Model\Repository\RepositoryAbstractEloquent;
 use App\Model\Repository\SpentRepositoryEloquent;
 use App\Providers\AppServiceProvider;
@@ -28,6 +29,9 @@ class HomeController extends Controller
         /** @var RepositoryAbstractEloquent $projectRepo */
         $projectRepo = app(AppServiceProvider::PROJECT_REPOSITORY);
 
+        /** @var MilestoneRepositoryEloquent $milestoneRepo */
+        $milestoneRepo = app(AppServiceProvider::MILESTONE_REPOSITORY);
+
         /** @var RepositoryAbstractEloquent $issueRepo */
         $issueRepo = app(AppServiceProvider::ISSUE_REPOSITORY);
 
@@ -39,6 +43,7 @@ class HomeController extends Controller
 
         return view('home', [
             'projects' => $projectRepo->count(),
+            'milestones' => $milestoneRepo->count(),
             'issues' => $issueRepo->count(),
             'notes' => $noteRepo->count(),
             'spent' => $spentRepo->sum(),

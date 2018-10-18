@@ -178,6 +178,12 @@ return [
             'url'        => 'project',
         ],
         [
+            'text'       => 'Milestones',
+            'icon'       => 'flag',
+            'icon_color' => 'purple',
+            'url'        => 'milestone',
+        ],
+        [
             'text'       => 'Issues',
             'icon'       => 'tasks',
             'icon_color' => 'red',
