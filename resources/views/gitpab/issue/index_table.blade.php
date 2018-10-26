@@ -33,6 +33,16 @@ $createdExist = isset($itemsList->first()['created_at']);
         ])
 
         @include('partial.table.thcell', [
+            'column' => 'estimate',
+            'label' => 'Estimate',
+        ])
+
+        @include('partial.table.thcell', [
+            'column' => 'labels',
+            'label' => 'Labels',
+        ])
+
+        @include('partial.table.thcell', [
             'column' => 'assignee',
             'label' => 'Assignee',
             'order' => $order,
@@ -67,6 +77,14 @@ $createdExist = isset($itemsList->first()['created_at']);
                 <a href="{{ route($showRoute, [$item->id]) }}">
                     {{ (isset($columnTitleName)) ? $item->{$columnTitleName} : $item->title }}
                 </a>
+            </td>
+            <td class="col-md-2">
+                {{ $item->estimate ?? null }}
+            </td>
+            <td class="col-md-2">
+                @foreach ($item->labels as $label)
+                    <span class="badge badge-info">{{ $label }}</span>
+                @endforeach
             </td>
             <td class="col-md-2">
                 {{ $item->assignee->name ?? null }}

@@ -33,6 +33,10 @@ class GitlabIssueService extends GitlabServiceAbstract
 
             $item['milestone_id'] = $item['milestone']['id'] ?? null;
 
+            $item['estimate'] = !empty($item['time_stats']['time_estimate'])
+                ? $item['time_stats']['time_estimate'] / 60 / 60
+                : null;
+
             $list->put($key, $item);
         }
 

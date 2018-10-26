@@ -5,6 +5,7 @@ namespace App\Model\Repository;
 use App\Model\Entity\Issue;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Log;
 
 class IssueRepositoryEloquent extends RepositoryAbstractEloquent
 {
@@ -49,6 +50,13 @@ class IssueRepositoryEloquent extends RepositoryAbstractEloquent
         if ($projectIds = Arr::get($parameters, 'projects'))
         {
             $query->whereIn('issue.project_id', $projectIds);
+        }
+
+        if ($labels = Arr::get($parameters, 'labels'))
+        {
+            $labelsString = implode("'::character varying, '", $labels);
+            $labelsString = "'$labelsString'::character varying";
+            $query->whereRaw("issue.labels @> array[$labelsString]");
         }
 
         if ($dateStart = Arr::get($parameters, 'date_start'))

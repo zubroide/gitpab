@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Model\Entity;
+use App\Helper\PgHelper;
 
 /**
  * @property int id
@@ -40,6 +41,7 @@ class Issue extends EntityAbstract
         'state',
         'labels',
         'milestone_id',
+        'estimate',
     ];
 
     public function assignee()
@@ -54,7 +56,12 @@ class Issue extends EntityAbstract
 
     public function setLabelsAttribute($items)
     {
-        $this->attributes['labels'] = "{" . implode(', ', $items) . "}";
+        $this->attributes['labels'] = PgHelper::toPgArray($items);
+    }
+
+    public function getLabelsAttribute()
+    {
+        return PgHelper::arrayParse($this->attributes['labels']);
     }
 
 }

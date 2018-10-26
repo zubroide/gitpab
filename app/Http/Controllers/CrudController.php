@@ -83,6 +83,11 @@ abstract class CrudController extends Controller
         $isFirstLine = true;
         foreach ($data as $line) {
             $row = $line->toArray();
+            foreach ($row as &$value) {
+                if (is_array($value)) {
+                    $value = implode(', ', $value);
+                }
+            }
             if ($isFirstLine) {
                 $isFirstLine = false;
                 fputcsv($file, array_keys($row));
