@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Model\Entity;
+
 use App\Helper\PgHelper;
 
 /**

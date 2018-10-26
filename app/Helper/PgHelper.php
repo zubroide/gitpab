@@ -114,10 +114,6 @@ class PgHelper
      */
     public static function toPgArray(array $arr)
     {
-        if (empty($arr))
-        {
-            return '';
-        }
-        return '{' . join(',', $arr) . '}';
+        return '{' . implode(',', $arr) . '}';
     }
 }
