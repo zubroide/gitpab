@@ -34,6 +34,7 @@ return [
     'Issue' => 'Задача',
     'Issues' => 'Задачи',
     'Labels' => 'Метки',
+    'Language' => 'Язык',
     'Login' => 'Вход',
     'Milestones' => 'Спринты',
     'Name' => 'Название',

@@ -168,6 +168,7 @@ return [
          * Package Service Providers...
          */
         Spatie\Permission\PermissionServiceProvider::class,
+        ied3vil\LanguageSwitcher\Providers\LanguageSwitcherProvider::class,
 
         /*
          * Application Service Providers...

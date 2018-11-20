@@ -34,6 +34,7 @@ return [
     'Issue' => 'Issue',
     'Issues' => 'Issues',
     'Labels' => 'Labels',
+    'Language' => 'Language',
     'Login' => 'Login',
     'Milestones' => 'Milestones',
     'Name' => 'Name',

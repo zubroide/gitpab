@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c3e4f95df9e23b37aa7f8847232e9b1f",
+    "content-hash": "2b2ed31dcc4d23c1129cd890c08fd74e",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -500,6 +500,51 @@
                 "url"
             ],
             "time": "2017-03-20T17:10:46+00:00"
+        },
+        {
+            "name": "ied3vil/language-switcher",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ied3vil/LanguageSwitcher.git",
+                "reference": "42bcc88dfaec378dc0bc13d3dd0c2830fb43f25c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ied3vil/LanguageSwitcher/zipball/42bcc88dfaec378dc0bc13d3dd0c2830fb43f25c",
+                "reference": "42bcc88dfaec378dc0bc13d3dd0c2830fb43f25c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "ied3vil\\": "src/ied3vil/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache 2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Razvan-Cristian Marian",
+                    "email": "ied3vil@gmail.com",
+                    "homepage": "http://www.ied3vil.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel Language Switcher",
+            "homepage": "https://github.com/ied3vil/language-switcher",
+            "keywords": [
+                "language",
+                "laravel",
+                "php",
+                "switcher"
+            ],
+            "time": "2017-11-01T12:08:53+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",

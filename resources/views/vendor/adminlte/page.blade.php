@@ -58,6 +58,16 @@
 
                     <ul class="nav navbar-nav">
                         <li>
+                            <a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                @lang('messages.Language')
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url('lang/en') }}">{{ trans('locale.en') }}</a></li>
+                                <li><a href="{{ url('lang/ru') }}">{{ trans('locale.ru') }}</a></li>
+                            </ul>
+                        </li>
+                        <li>
                             @if(config('adminlte.logout_method') == 'GET' || !config('adminlte.logout_method') && version_compare(\Illuminate\Foundation\Application::VERSION, '5.3.0', '<'))
                                 <a href="{{ url(config('adminlte.logout_url', 'auth/logout')) }}">
                                     <i class="fa fa-fw fa-power-off"></i> {{ trans('adminlte::adminlte.log_out') }}
