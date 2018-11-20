@@ -1,14 +1,14 @@
 @extends('partial.table.base')
 <?php
 $columnTitleName = isset($columnTitleName) ? $columnTitleName : 'name';
-$columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : 'Title';
+$columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.Title');
 $createdExist = isset($itemsList->first()['created_at']);
 ?>
 @section('tableThead')
     <tr>
         {!! view('partial.table.thcell', [
             'column' => 'id',
-            'label' => 'ID',
+            'label' => __('messages.ID'),
             'order' => $order,
             'orderDirection' => $orderDirection,
             'orderLinkRoute' => $indexRoute
@@ -25,7 +25,7 @@ $createdExist = isset($itemsList->first()['created_at']);
         @if ($createdExist)
             {!! view('partial.table.thcell', [
                 'column' => 'created_at',
-                'label' => 'Created At',
+                'label' => __('messages.Created At'),
             ]) !!}
         @endif
 
@@ -73,7 +73,7 @@ $createdExist = isset($itemsList->first()['created_at']);
         </tr>
     @empty
         <tr>
-            <td colspan="3" class="col-md-12">Data not found</td>
+            <td colspan="3" class="col-md-12">@lang('Data not found')</td>
         </tr>
     @endforelse
 @endsection

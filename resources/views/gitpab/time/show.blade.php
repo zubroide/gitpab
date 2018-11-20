@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col-md-2">
-            ID
+            @lang('messages.ID')
         </div>
         <div class="col-md-10">
             {{ $object->note_id }}
@@ -13,7 +13,7 @@
 
     <div class="row">
         <div class="col-md-2">
-            Issue
+            @lang('messages.Issue')
         </div>
         <div class="col-md-10">
             <a href="{{ $object->note->issue->web_url ?? null }}">{{ $object->note->issue->iid ?? null}}</a>
@@ -22,7 +22,7 @@
 
     <div class="row">
         <div class="col-md-2">
-            Text
+            @lang('messages.Text')
         </div>
         <div class="col-md-10">
             {{ $object->description }}
@@ -31,7 +31,7 @@
 
     <div class="row">
         <div class="col-md-2">
-            Author
+            @lang('messages.Author')
         </div>
         <div class="col-md-10">
             {{ $object->note->author->name ?? null}}

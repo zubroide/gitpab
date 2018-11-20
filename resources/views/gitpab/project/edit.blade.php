@@ -8,7 +8,7 @@
                 {!! view('partial.form.element.text', [
                     'name' => 'name',
                     'value' => $object->name,
-                    'label' => 'Name',
+                    'label' => __('messages.Name'),
                     'isRequired' => true,
                 ])->render() !!}
             </div>

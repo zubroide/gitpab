@@ -1,5 +1,5 @@
 @extends('partial.crud.index', [
-    'pageTitle' => 'Spent Time'
+    'pageTitle' => __('messages.Spent Time')
 ])
 
 @section('contentTableControl')

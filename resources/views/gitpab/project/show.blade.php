@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col-md-2">
-            ID
+            @lang('messages.ID')
         </div>
         <div class="col-md-10">
             {{ $object->id }}
@@ -13,7 +13,7 @@
 
     <div class="row">
         <div class="col-md-2">
-            Title
+            @lang('messages.Title')
         </div>
         <div class="col-md-10">
             {{ $object->name }}
@@ -22,7 +22,7 @@
 
     <div class="row">
         <div class="col-md-2">
-            Description
+            @lang('messages.Description')
         </div>
         <div class="col-md-10">
             {{ $object->description }}
@@ -31,7 +31,7 @@
 
     <div class="row">
         <div class="col-md-2">
-            Path with namespace
+            @lang('messages.Path with namespace')
         </div>
         <div class="col-md-10">
             {{ $object->path_with_namespace }}
@@ -40,7 +40,7 @@
 
     <div class="row">
         <div class="col-md-2">
-            Web url
+            @lang('messages.Web url')
         </div>
         <div class="col-md-10">
             <a href="{{ $object->web_url }}">{{ $object->web_url }}</a>

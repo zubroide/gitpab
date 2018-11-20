@@ -1,10 +1,12 @@
-@extends('partial.crud.show', ['pageTitle' => 'View project'])
+@extends('partial.crud.show', [
+    'pageTitle' => __('messages.View project')
+])
 
 @section('form')
 
     <div class="row">
         <div class="col-md-2">
-            ID
+            @lang('messages.ID')
         </div>
         <div class="col-md-10">
             {{ $object->id }}
@@ -13,7 +15,7 @@
 
     <div class="row">
         <div class="col-md-2">
-            Name
+            @lang('messages.Name')
         </div>
         <div class="col-md-10">
             {{ $object->name }}
@@ -22,7 +24,7 @@
 
     <div class="row">
         <div class="col-md-2">
-            Email
+            @lang('messages.Email')
         </div>
         <div class="col-md-10">
             {{ $object->email }}
@@ -31,7 +33,7 @@
 
     <div class="row">
         <div class="col-md-2">
-            Created at
+            @lang('messages.Created At')
         </div>
         <div class="col-md-10">
             {{ $object->created_at }}

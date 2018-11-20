@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h1>@lang('messages.Dashboard')</h1>
 @stop
 
 @section('content')
@@ -11,35 +11,35 @@
         @include('partial/count_widget', [
             'color' => 'aqua',
             'icon'  => 'ion ion-ios-gear',
-            'title' => 'Projects',
+            'title' => __('messages.Projects'),
             'count' => $projects,
         ])
 
         @include('partial/count_widget', [
             'color' => 'purple',
             'icon'  => 'fa fa-flag',
-            'title' => 'Milestones',
+            'title' => __('messages.Milestones'),
             'count' => $milestones,
         ])
 
         @include('partial/count_widget', [
             'color' => 'red',
             'icon'  => 'fa fa-tasks',
-            'title' => 'Issues',
+            'title' => __('messages.Issues'),
             'count' => $issues,
         ])
 
         @include('partial/count_widget', [
             'color' => 'green',
             'icon'  => 'fa fa-comment',
-            'title' => 'Comments',
+            'title' => __('messages.Comments'),
             'count' => $notes,
         ])
 
         @include('partial/count_widget', [
             'color' => 'yellow',
             'icon'  => 'fa fa-clock-o',
-            'title' => 'Spent time',
+            'title' => __('messages.Spent time'),
             'count' => $spent,
         ])
     </div>

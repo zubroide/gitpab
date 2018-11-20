@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col-md-2">
-            ID
+            @lang('messages.ID')
         </div>
         <div class="col-md-10">
             {{ $object->id }}
@@ -13,7 +13,7 @@
 
     <div class="row">
         <div class="col-md-2">
-            Number
+            @lang('messages.Number')
         </div>
         <div class="col-md-10">
             {{ $object->iid }}
@@ -22,7 +22,7 @@
 
     <div class="row">
         <div class="col-md-2">
-            Title
+            @lang('messages.Title')
         </div>
         <div class="col-md-10">
             {{ $object->title }}
@@ -31,7 +31,7 @@
 
     <div class="row">
         <div class="col-md-2">
-            Description
+            @lang('messages.Description')
         </div>
         <div class="col-md-10">
             {{ $object->description }}
@@ -40,7 +40,7 @@
 
     <div class="row">
         <div class="col-md-2">
-            Web url
+            @lang('messages.Web url')
         </div>
         <div class="col-md-10">
             <a href="{{ $object->web_url }}">{{ $object->web_url }}</a>
@@ -50,7 +50,8 @@
     <hr/>
 
 <pre>
-## Changelog
+## @lang('messages.Changelog')
+
 
 @foreach ($object->issues as $issue)
 - {{ $issue->title . '  ' }}

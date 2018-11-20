@@ -21,7 +21,7 @@
                         @endif
                     @show
                     <div class="box-tools">
-                        {{ sizeof($itemsList) }} of {{ $itemsList->total() }}
+                        {{ sizeof($itemsList) }} @lang('messages.of') {{ $itemsList->total() }}
                     </div>
                 </div>
 

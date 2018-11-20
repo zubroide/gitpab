@@ -1,7 +1,7 @@
 <?php
 $id = 'field_' . $name;
 $label = isset($label) ? $label : $name;
-$addLabel = isset($addLabel) ? $addLabel : 'Добавить';
+$addLabel = isset($addLabel) ? $addLabel : __('messages.Add');
 $values = isset($values) ? $values : [];
 $placeholder = (!empty($options['placeholder'])) ? $options['placeholder'] : '';
 ?>

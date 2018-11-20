@@ -9,8 +9,8 @@
 
 @section('formButtons')
     <button name="submit" value="1" type="submit" class="btn btn-primary submit_form_ajax_b_js">
-        Save
+        @lang('messages.Save')
     </button>
 
-    <button type="button" class="btn btn-default js_link" data-link="{{ $backUrl }}">Cancel</button>
+    <button type="button" class="btn btn-default js_link" data-link="{{ $backUrl }}">@lang('messages.Cancel')</button>
 @endsection

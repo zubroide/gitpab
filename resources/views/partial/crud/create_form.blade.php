@@ -12,5 +12,5 @@
         Create
     </button>
 
-    <button type="button" class="btn btn-default js_link" data-link="{{ $backUrl }}">Отменить</button>
+    <button type="button" class="btn btn-default js_link" data-link="{{ $backUrl }}">@lang('messages.Cancel')</button>
 @endsection

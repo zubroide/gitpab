@@ -2,14 +2,14 @@
 
 @php
 $columnTitleName = isset($columnTitleName) ? $columnTitleName : 'name';
-$columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : 'Title';
+$columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.Title');
 @endphp
 
 @section('tableThead')
     <tr>
         @include('partial.table.thcell', [
             'column' => 'note_id',
-            'label' => 'ID',
+            'label' => __('messages.ID'),
             'order' => $order,
             'orderDirection' => $orderDirection,
             'orderLinkRoute' => $indexRoute,
@@ -17,7 +17,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : 'Title';
 
         @include('partial.table.thcell', [
             'column' => 'created_at',
-            'label' => 'Spent at',
+            'label' => __('messages.Spent at'),
             'order' => $order,
             'orderDirection' => $orderDirection,
             'orderLinkRoute' => $indexRoute,
@@ -25,7 +25,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : 'Title';
 
         @include('partial.table.thcell', [
             'column' => 'hours',
-            'label' => 'Hours',
+            'label' => __('messages.Hours'),
             'order' => $order,
             'orderDirection' => $orderDirection,
             'orderLinkRoute' => $indexRoute
@@ -41,7 +41,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : 'Title';
 
         @include('partial.table.thcell', [
             'column' => 'author',
-            'label' => 'Author',
+            'label' => __('messages.Author'),
             'order' => $order,
             'orderDirection' => $orderDirection,
             'orderLinkRoute' => $indexRoute
@@ -49,7 +49,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : 'Title';
 
         @include('partial.table.thcell', [
             'column' => 'project',
-            'label' => 'Project',
+            'label' => __('messages.Project'),
             'order' => $order,
             'orderDirection' => $orderDirection,
             'orderLinkRoute' => $indexRoute
@@ -84,7 +84,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : 'Title';
         </tr>
     @empty
         <tr>
-            <td colspan="6" class="col-md-12">Data not found</td>
+            <td colspan="6" class="col-md-12">@lang('messages.Data not found')</td>
         </tr>
     @endforelse
 @endsection

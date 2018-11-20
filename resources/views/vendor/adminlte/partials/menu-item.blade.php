@@ -6,7 +6,7 @@
            @if (isset($item['target'])) target="{{ $item['target'] }}" @endif
         >
             <i class="fa fa-fw fa-{{ $item['icon'] or 'circle-o' }} {{ isset($item['icon_color']) ? 'text-' . $item['icon_color'] : '' }}"></i>
-            <span>{{ $item['text'] }}</span>
+            <span>@lang($item['text'])</span>
             @if (isset($item['label']))
                 <span class="pull-right-container">
                     <span class="label label-{{ $item['label_color'] or 'primary' }} pull-right">{{ $item['label'] }}</span>

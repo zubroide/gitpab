@@ -2,7 +2,7 @@
 
 @php
 $columnTitleName = isset($columnTitleName) ? $columnTitleName : 'name';
-$columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : 'Title';
+$columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.Title');
 $createdExist = isset($itemsList->first()['created_at']);
 @endphp
 
@@ -10,7 +10,7 @@ $createdExist = isset($itemsList->first()['created_at']);
     <tr>
         @include('partial.table.thcell', [
             'column' => 'id',
-            'label' => 'ID',
+            'label' => __('messages.ID'),
             'order' => $order,
             'orderDirection' => $orderDirection,
             'orderLinkRoute' => $indexRoute,
@@ -18,7 +18,7 @@ $createdExist = isset($itemsList->first()['created_at']);
 
         @include('partial.table.thcell', [
             'column' => 'iid',
-            'label' => 'Number',
+            'label' => __('messages.Number'),
             'order' => $order,
             'orderDirection' => $orderDirection,
             'orderLinkRoute' => $indexRoute
@@ -34,7 +34,7 @@ $createdExist = isset($itemsList->first()['created_at']);
 
         @include('partial.table.thcell', [
             'column' => 'group',
-            'label' => 'Namespace',
+            'label' => __('messages.Namespace'),
             'order' => $order,
             'orderDirection' => $orderDirection,
             'orderLinkRoute' => $indexRoute
@@ -42,7 +42,7 @@ $createdExist = isset($itemsList->first()['created_at']);
 
         @include('partial.table.thcell', [
             'column' => 'project',
-            'label' => 'Project',
+            'label' => __('messages.Project'),
             'order' => $order,
             'orderDirection' => $orderDirection,
             'orderLinkRoute' => $indexRoute
@@ -51,7 +51,7 @@ $createdExist = isset($itemsList->first()['created_at']);
         @if ($createdExist)
             @include('partial.table.thcell', [
                 'column' => 'gitlab_created_at',
-                'label' => 'Created At',
+                'label' => __('messages.Created At'),
             ])
         @endif
     </tr>
@@ -82,7 +82,7 @@ $createdExist = isset($itemsList->first()['created_at']);
         </tr>
     @empty
         <tr>
-            <td colspan="{{ $createdExist ? 4 : 3 }}" class="col-md-12">Data not found</td>
+            <td colspan="{{ $createdExist ? 4 : 3 }}" class="col-md-12">@lang('messages.Data not found')</td>
         </tr>
     @endforelse
 @endsection

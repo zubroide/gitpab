@@ -15,6 +15,7 @@ services:
       GITLAB_PRIVATE_TOKEN: ${token}
       GITLAB_RESTRICTIONS_PROJECT_IDS: ${projects}
       GITLAB_HOST: ${host}
+      APP_LOCALE: en
     links:
       - db
 

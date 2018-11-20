@@ -1,5 +1,6 @@
 @extends('partial.crud.index', [
-    'pageTitle' => 'Users'])
+    'pageTitle' => __('messages.Users')
+])
 
 @section('contentTableControl')
 @endsection

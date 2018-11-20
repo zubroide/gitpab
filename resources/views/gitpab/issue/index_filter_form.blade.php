@@ -7,7 +7,7 @@
                 @include('partial.form.element.text', [
                     'name' => 'id',
                     'value' => $request->input('id'),
-                    'label' => 'ID',
+                    'label' => __('messages.ID'),
                 ])
             </div>
         </div>
@@ -16,7 +16,7 @@
                 @include('partial.form.element.text', [
                     'name' => 'issue_iid',
                     'value' => $request->input('issue_iid'),
-                    'label' => 'Issue number',
+                    'label' => __('messages.Issue number'),
                 ])
             </div>
         </div>
@@ -27,7 +27,7 @@
                     'list' => $assigneeList,
                     'selected' => $request->input('assignee'),
                     'options' => ['multiple' => 'multiple'],
-                    'label' => 'Assignee',
+                    'label' => __('messages.Assignee'),
                 ])
             </div>
         </div>
@@ -38,7 +38,7 @@
                     'list' => $projectsList,
                     'selected' => $request->input('projects'),
                     'options' => ['multiple' => 'multiple'],
-                    'label' => 'Projects',
+                    'label' => __('messages.Projects'),
                 ])
             </div>
         </div>
@@ -50,7 +50,7 @@
                         'date_start' => $request->get('date_start'),
                         'date_end' => $request->get('date_end'),
                     ],
-                    'label' => 'Created at',
+                    'label' => __('messages.Created At'),
                 ])
             </div>
         </div>
@@ -64,7 +64,7 @@
                     'list' => $labelList,
                     'selected' => $request->input('labels'),
                     'options' => ['multiple' => 'multiple'],
-                    'label' => 'Labels',
+                    'label' => __('messages.Labels'),
                 ])
             </div>
         </div>
@@ -74,13 +74,13 @@
         <div class="col-md-12">
             <div class="form-group">
                 <span class="group-btn">
-                    <button name="submit" value="1" type="submit" class="btn btn-primary">Apply</button>
+                    <button name="submit" value="1" type="submit" class="btn btn-primary">@lang('messages.Apply')</button>
                 </span>
                 <span class="group-btn">
-                    <button name="submit" value="csv" type="submit" class="btn btn-default">Export CSV</button>
+                    <button name="submit" value="csv" type="submit" class="btn btn-default">@lang('messages.Export CSV')</button>
                 </span>
                 <span class="group-btn pull-right">
-                    <a class="btn btn-default" href="{{ route('time.index') }}">Reset</a>
+                    <a class="btn btn-default" href="{{ route('time.index') }}">@lang('messages.Reset')</a>
                 </span>
             </div>
         </div>

@@ -1,4 +1,4 @@
-@extends('partial.crud.edit', ['pageTitle' => 'Edit project'])
+@extends('partial.crud.edit', ['pageTitle' => 'Edit user'])
 
 @section('form')
 
@@ -8,7 +8,7 @@
                 @include('partial.form.element.text', [
                     'name' => 'name',
                     'value' => $object->name,
-                    'label' => 'Name',
+                    'label' => __('messages.Name'),
                     'isRequired' => true,
                 ])
             </div>
@@ -22,7 +22,7 @@
                     'list' => $rolesList,
                     'selected' => $object->roles,
                     'options' => ['multiple' => 'multiple'],
-                    'label' => 'Roles',
+                    'label' => __('messages.Roles'),
                 ])
             </div>
         </div>

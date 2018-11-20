@@ -8,7 +8,7 @@ $endDate = isset($input['date_end']) ? $input['date_end'] : old('date_end');
 
         <div id="reportrange_{{ $name }}" class="pull-right"
              style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
-            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp; Период
+            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp; @lang('calendar.Period')
             <span></span> <b class="caret"></b>
 
             {!! Form::hidden('date_start') !!}
@@ -46,21 +46,21 @@ $endDate = isset($input['date_end']) ? $input['date_end'] : old('date_end');
         element.daterangepicker(
             {
                 ranges: {
-                    'Сегодня': [moment(), moment()],
-                    'Вчера': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                    'Последние 7 дней': [moment().subtract(6, 'days'), moment()],
-                    'Последние 30 дней ': [moment().subtract(29, 'days'), moment()],
-                    'Текущий месяц': [moment().startOf('month'), moment().endOf('month')],
-                    'Прошлый месяц': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                    '@lang('calendar.Today')': [moment(), moment()],
+                    '@lang('calendar.Yesterday')': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    '@lang('calendar.Last 7 days')': [moment().subtract(6, 'days'), moment()],
+                    '@lang('calendar.Last 30 days')': [moment().subtract(29, 'days'), moment()],
+                    '@lang('calendar.Current month')': [moment().startOf('month'), moment().endOf('month')],
+                    '@lang('calendar.Last month')': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
                 },
                 startDate: startDate,
                 endDate: endDate,
                 locale: {
-                    fromLabel: 'С',
-                    toLabel: 'По',
-                    applyLabel: 'Выбрать',
-                    cancelLabel: 'Закрыть',
-                    customRangeLabel: 'Диапазон'
+                    fromLabel: '@lang('calendar.From')',
+                    toLabel: '@lang('calendar.To')',
+                    applyLabel: '@lang('calendar.Select')',
+                    cancelLabel: '@lang('calendar.Close')',
+                    customRangeLabel: '@lang('calendar.Range')'
                 }
             },
             onChangeDaterangepicker

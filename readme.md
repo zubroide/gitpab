@@ -48,12 +48,13 @@ php artisan vendor:publish --provider="JeroenNoten\LaravelAdminLte\ServiceProvid
 Edit environment variables in `.env`:
 
 - `GITLAB_PRIVATE_TOKEN` - is your private token from Gitlab.
-- `GITLAB_RESTRICTIONS_PROJECT_IDS` - not necessary, project ids, that you need to monitor.
-You are can find project ids using next command: `php artisan look:projects`.
+- `GITLAB_RESTRICTIONS_PROJECT_IDS` - not necessary, project ids, that you need to monitor.  
+  You are can find project ids using next command: `php artisan look:projects`.
 - `APP_URL`
 - `DB_DATABASE`
 - `DB_USERNAME`
 - `GITLAB_HOST`
+- `APP_LOCALE` - supported locales: `en`, `ru`.
 
 Run migrations:
 ```bash
