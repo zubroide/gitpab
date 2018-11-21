@@ -4,7 +4,9 @@ namespace App\Model\Service\Gitlab;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\ClientException;
 use Illuminate\Support\Collection;
+use Symfony\Component\HttpFoundation\Response;
 
 abstract class GitlabServiceAbstract
 {
@@ -59,7 +61,16 @@ abstract class GitlabServiceAbstract
             $parts = $this->prepareRequestParameters($requestParameters);
             $url = $baseUrl . '?' . implode('&', $parts);
 
-            $response = $this->client->get($url);
+            try {
+                $response = $this->client->get($url);
+            }
+            catch (ClientException $e) {
+                // #12 Try to get Data from Group of project without group
+                if ($e->getCode() == Response::HTTP_NOT_FOUND) {
+                    return $data;
+                }
+                throw $e;
+            }
             $content = $response->getBody()->getContents();
 
             $items = json_decode($content, true);
