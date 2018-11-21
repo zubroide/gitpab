@@ -2,6 +2,7 @@
 
 namespace App\Model\Service;
 
+use App\Model\Entity\Namespaces;
 use App\Model\Service\Eloquent\EloquentIssueService;
 use App\Model\Service\Eloquent\EloquentNoteService;
 use App\Model\Service\Eloquent\EloquentSpentService;
@@ -87,8 +88,10 @@ class UpdateService
             $urlParameters = [
                 ':group_id' => $project['namespace_id'],
             ];
-            $groupMilestoneList = $this->groupMilestoneImportService->import($urlParameters);
-            $result['group_milestones'] += $groupMilestoneList->count();
+            if (isset($project['namespace']['kind']) && $project['namespace']['kind'] == Namespaces::KIND_GROUP) {
+                $groupMilestoneList = $this->groupMilestoneImportService->import($urlParameters);
+                $result['group_milestones'] += $groupMilestoneList->count();
+            }
         }
 
         // Project issues

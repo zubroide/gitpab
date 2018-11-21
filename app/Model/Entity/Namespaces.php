@@ -13,6 +13,9 @@ namespace App\Model\Entity;
 class Namespaces extends EntityAbstract
 {
 
+    const KIND_GROUP = 'group';
+    const KIND_USER = 'user';
+
     /**
      * {@inheritdoc}
      */
