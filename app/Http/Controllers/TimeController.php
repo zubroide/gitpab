@@ -31,11 +31,16 @@ class TimeController extends CrudController
         /** @var ProjectRepositoryEloquent $projectRepository */
         $projectRepository = app(AppServiceProvider::PROJECT_REPOSITORY);
 
+        $totalTime = $this->getService()->getTotalTime($request->all());
+
         return array_merge(
             $data,
             [
                 'authorsList' => $contributorRepository->getItemsForSelect(),
                 'projectsList' => $projectRepository->getItemsForSelect(),
+                'total' => [
+                    'time' => $totalTime,
+                ],
             ]
         );
     }

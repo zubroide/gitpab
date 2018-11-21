@@ -7,4 +7,8 @@
         @section('tableTbody')
         @show
     </tbody>
+    <tfoot>
+        @section('tableTfooter')
+        @show
+    </tfoot>
 </table>

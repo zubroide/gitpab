@@ -56,6 +56,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
         ])
     </tr>
 @endsection
+
 @section('tableTbody')
     @forelse ($itemsList->items() as $key => $item)
         <tr>
@@ -87,4 +88,12 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
             <td colspan="6" class="col-md-12">@lang('messages.Data not found')</td>
         </tr>
     @endforelse
+@endsection
+
+@section('tableTfooter')
+    <tr>
+        <td colspan="2"></td>
+        <td>{{  $total['time'] }}</td>
+        <td colspan="3"></td>
+    </tr>
 @endsection
