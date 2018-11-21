@@ -1,8 +1,8 @@
 # Gitpab
 
-<img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License">
-<img src="https://img.shields.io/badge/php-%3E%3D7.0.0-blue.svg" alt="PHP version">
-<img src="https://img.shields.io/badge/Laravel-5.5-orange.svg" alt="Laravel version">
+![License](https://poser.pugx.org/laravel/framework/license.svg)
+![PHP version](https://img.shields.io/badge/php-%3E%3D7.0.0-blue.svg)
+![Laravel version](https://img.shields.io/badge/Laravel-5.5-orange.svg)
 
 ![](/doc/spent-web.png)
 
