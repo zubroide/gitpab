@@ -7,3 +7,6 @@
 .table > tfoot > tr > td {
   border-top: 3px solid #ddd;
 }
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  color: $text-color;
+}
