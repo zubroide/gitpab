@@ -203,7 +203,7 @@ return [
         ],
         [
             'text'       => 'messages.Users',
-            'icon'       => 'user',
+            'icon'       => 'ion ion-person',
             'icon_color' => 'gray',
             'url'        => 'user',
         ],

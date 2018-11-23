@@ -13,6 +13,7 @@
             'icon'  => 'ion ion-ios-gear',
             'title' => __('messages.Projects'),
             'count' => $projects,
+            'route' => 'project.index',
         ])
 
         @include('partial/count_widget', [
@@ -20,6 +21,7 @@
             'icon'  => 'fa fa-flag',
             'title' => __('messages.Milestones'),
             'count' => $milestones,
+            'route' => 'milestone.index',
         ])
 
         @include('partial/count_widget', [
@@ -27,6 +29,7 @@
             'icon'  => 'fa fa-tasks',
             'title' => __('messages.Issues'),
             'count' => $issues,
+            'route' => 'issue.index',
         ])
 
         @include('partial/count_widget', [
@@ -34,6 +37,7 @@
             'icon'  => 'fa fa-comment',
             'title' => __('messages.Comments'),
             'count' => $notes,
+            'route' => 'note.index',
         ])
 
         @include('partial/count_widget', [
@@ -41,12 +45,17 @@
             'icon'  => 'fa fa-clock-o',
             'title' => __('messages.Spent time'),
             'count' => $spent,
+            'route' => 'time.index',
+        ])
+
+        @include('partial/count_widget', [
+            'color' => 'silver',
+            'icon'  => 'ion ion-person',
+            'title' => __('messages.Active users'),
+            'count' => $user,
+            'route' => 'user.index',
         ])
     </div>
-@stop
-
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 
 @section('js')

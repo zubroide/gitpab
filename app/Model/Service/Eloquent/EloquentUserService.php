@@ -5,6 +5,7 @@ namespace App\Model\Service\Eloquent;
 use App\Providers\AppServiceProvider;
 use App\User;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class EloquentUserService extends CrudServiceAbstract
@@ -22,7 +23,9 @@ class EloquentUserService extends CrudServiceAbstract
      */
     protected function saveObjectRelationships($object, $attributes)
     {
-        if ($roleIds = Arr::get($attributes, 'roles')) {
+        $user = Auth::user();
+        if ($user->hasPermissionTo(User::PERMISSION_EDIT_USERS)) {
+            $roleIds = Arr::get($attributes, 'roles', []);
             DB::beginTransaction();
             try {
                 $object->syncRoles($roleIds);

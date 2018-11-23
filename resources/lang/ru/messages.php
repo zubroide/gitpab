@@ -12,6 +12,7 @@ return [
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
+    'Active users' => 'Активные пользователи',
     'Add' => 'Добавить',
     'Apply' => 'Применить',
     'Assignee' => 'Исполнитель',
