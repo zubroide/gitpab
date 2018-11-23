@@ -73,12 +73,12 @@ $createdExist = isset($itemsList->first()['created_at']);
             <td class="col-md-1">
                 <a href="{{ $item->web_url }}">{{ $item->iid }}</a>
             </td>
-            <td class="col-md-4">
+            <td class="col-md-3">
                 <a href="{{ route($showRoute, [$item->id]) }}">
                     {{ (isset($columnTitleName)) ? $item->{$columnTitleName} : $item->title }}
                 </a>
             </td>
-            <td class="col-md-2">
+            <td class="col-md-1">
                 {{ $item->estimate ?? null }}
             </td>
             <td class="col-md-2">
@@ -89,18 +89,18 @@ $createdExist = isset($itemsList->first()['created_at']);
             <td class="col-md-2">
                 {{ $item->assignee->name ?? null }}
             </td>
-            <td class="col-md-2">
+            <td class="col-md-1">
                 {{ $item->project->name ?? null }}
             </td>
             @if ($createdExist)
-                <td class="col-md-2">
+                <td class="col-md-1">
                     {{ $item->created_at }}
                 </td>
             @endif
         </tr>
     @empty
         <tr>
-            <td colspan="{{ $createdExist ? 4 : 3 }}" class="col-md-12">@lang('messages.Data not found')</td>
+            <td colspan="{{ $createdExist ? 8 : 7 }}" class="col-md-12">@lang('messages.Data not found')</td>
         </tr>
     @endforelse
 @endsection

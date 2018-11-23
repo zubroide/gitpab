@@ -55,6 +55,21 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                @include('partial.form.element.select', [
+                    'name' => 'labels[]',
+                    'list' => $labelList,
+                    'selected' => $request->input('labels'),
+                    'options' => ['multiple' => 'multiple'],
+                    'label' => __('messages.Labels'),
+                ])
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">

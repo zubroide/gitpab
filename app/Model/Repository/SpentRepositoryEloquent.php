@@ -72,6 +72,13 @@ class SpentRepositoryEloquent extends RepositoryAbstractEloquent
             $query->where('note.gitlab_created_at', '<', $date->format('Y-m-d'));
         }
 
+        if ($labels = Arr::get($parameters, 'labels'))
+        {
+            $labelsString = implode("'::character varying, '", $labels);
+            $labelsString = "'$labelsString'::character varying";
+            $query->whereRaw("issue.labels @> array[$labelsString]");
+        }
+
         return $query;
     }
 

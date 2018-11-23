@@ -40,6 +40,11 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
         ])
 
         @include('partial.table.thcell', [
+            'column' => 'labels',
+            'label' => 'Labels',
+        ])
+
+        @include('partial.table.thcell', [
             'column' => 'author',
             'label' => __('messages.Author'),
             'order' => $order,
@@ -65,7 +70,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
                 {{ \App\Helper\Date::formatDateTime($item->note->gitlab_created_at) }}
             </td>
             <td class="col-md-1">{{ $item->hours }}</td>
-            <td class="col-md-5">
+            <td class="col-md-4">
                 <a href="{{ route('issue.show', [$item->note->issue]) }}">
                     #{{ $item->note->issue->iid }} {{ $item->note->issue->title }}
                 </a>
@@ -76,6 +81,11 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
                     </a>
                 @endif
             </td>
+            <td class="col-md-1">
+                @foreach ($item->note->issue->labels as $label)
+                    <span class="badge badge-info">{{ $label }}</span>
+                @endforeach
+            </td>
             <td class="col-md-2">
                 {{ $item->note->author->name ?? null }}
             </td>
@@ -85,7 +95,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
         </tr>
     @empty
         <tr>
-            <td colspan="6" class="col-md-12">@lang('messages.Data not found')</td>
+            <td colspan="7" class="col-md-12">@lang('messages.Data not found')</td>
         </tr>
     @endforelse
 @endsection
