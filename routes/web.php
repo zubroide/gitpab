@@ -19,10 +19,14 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TimeController;
 use App\Http\Controllers\UserController;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    if (!Auth::user()) {
+        return redirect('login');
+    }
+    return redirect('home');
 });
 
 Auth::routes();
