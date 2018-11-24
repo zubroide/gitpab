@@ -1,4 +1,6 @@
-@extends('partial.crud.edit', ['pageTitle' => 'Edit user'])
+@extends('partial.crud.edit', [
+    'pageTitle' => __('messages.Edit user'),
+])
 
 @section('form')
 

@@ -1,4 +1,6 @@
-@extends('partial.crud.show', ['pageTitle' => 'View project'])
+@extends('partial.crud.show', [
+    'pageTitle' => __('messages.View project'),
+])
 
 @section('form')
 

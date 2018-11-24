@@ -170,7 +170,7 @@ return [
 //                ],
 //            ],
 //        ],
-        'MENU',
+        'messages.Menu',
         [
             'text'       => 'messages.Projects',
             'icon'       => 'gear',
