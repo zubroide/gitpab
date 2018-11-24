@@ -29,6 +29,7 @@ class EloquentNoteService extends CrudServiceAbstract
      * @param \Traversable $list
      * @return Collection
      * @throws ServiceException
+     * @throws \Exception
      */
     public function parseSpentTime(\Traversable $list)
     {
@@ -39,41 +40,9 @@ class EloquentNoteService extends CrudServiceAbstract
 
         /** @var Note $item */
         foreach ($list as $item) {
-            $hours = 0;
+            $row = $this->parseSpentTimeItem($item, $prev);
 
-            $pattern = '/(added|subtracted) (((\d{1,3}[dhm])\s+)+)of time spent at \d{4}-\d{2}-\d{2}/';
-            preg_match($pattern, $item->body, $match);
-
-            if (!empty($match) && count($match) >= 2) {
-                $sign = $match[1] === 'added' ? 1 : -1;
-                $times = array_filter(explode(' ', $match[2]));
-                foreach ($times as $time) {
-                    $hours += $sign * $this->parseTime(trim($time));
-                }
-            }
-
-
-            // Get description from previous comment if its corresponds to
-            $description = null;
-            if ($prev !== null) {
-                $date1 = new \DateTime($prev->gitlab_created_at);
-                $date2 = new \DateTime($item->gitlab_created_at);
-                if ($prev->author_id == $item->author_id
-                    && $prev->issue_id == $item->issue_id
-                    && $date1->add(new \DateInterval('PT10S')) > $date2
-                ) {
-                    $description = $prev->body;
-                }
-            }
-
-            $row = [
-                'note_id' => $item->id,
-                'gitlab_created_at' => $item->gitlab_created_at,
-                'hours' => $hours,
-                'description' => $description,
-            ];
-
-            if ($hours !== 0) {
+            if ($row['hours'] !== 0) {
                 $data->push($row);
             }
 
@@ -84,11 +53,55 @@ class EloquentNoteService extends CrudServiceAbstract
     }
 
     /**
-     * @param $time
+     * @param Note $item
+     * @param Note $prev
+     * @return array
+     * @throws ServiceException
+     * @throws \Exception
+     */
+    protected function parseSpentTimeItem(Note $item, Note $prev = null): array
+    {
+        $hours = 0;
+
+        $pattern = '/(added|subtracted) (((\d{1,3}[dhm])\s+)+)of time spent at \d{4}-\d{2}-\d{2}/';
+        preg_match($pattern, $item->body, $match);
+
+        if (!empty($match) && count($match) >= 2) {
+            $sign = $match[1] === 'added' ? 1 : -1;
+            $times = array_filter(explode(' ', $match[2]));
+            foreach ($times as $time) {
+                $hours += $sign * $this->parseTime(trim($time));
+            }
+        }
+
+        // Get description from previous comment if its corresponds to
+        $description = null;
+        if ($prev !== null) {
+            $date1 = new \DateTime($prev->gitlab_created_at);
+            $date2 = new \DateTime($item->gitlab_created_at);
+            if ($prev->author_id == $item->author_id
+                && $prev->issue_id == $item->issue_id
+                && $date1->add(new \DateInterval('PT10S')) > $date2
+            ) {
+                $description = $prev->body;
+            }
+        }
+
+        $row = [
+            'note_id' => $item->id,
+            'gitlab_created_at' => $item->gitlab_created_at,
+            'hours' => $hours,
+            'description' => $description,
+        ];
+        return $row;
+    }
+
+    /**
+     * @param string $time
      * @return float|int
      * @throws ServiceException
      */
-    protected function parseTime($time)
+    protected function parseTime(string $time)
     {
         $value = mb_substr($time, 0, -1);
         $period = mb_substr($time, -1);
@@ -101,6 +114,10 @@ class EloquentNoteService extends CrudServiceAbstract
         if ($period === 'd') {
             return $value * 8;
         }
+        if ($period === 'w') {
+            return $value * 8 * 5;
+        }
         throw new ServiceException(sprintf('Unknown period %s (time %s)', $period, $time));
     }
+
 }
