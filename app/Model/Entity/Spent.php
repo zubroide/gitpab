@@ -5,6 +5,7 @@ namespace App\Model\Entity;
 /**
  * @property int note_id
  * @property float hours
+ * @property string spent_at
  * @property string description
  */
 class Spent extends EntityAbstract
@@ -26,6 +27,7 @@ class Spent extends EntityAbstract
     protected $fillable = [
         'note_id',
         'hours',
+        'spent_at',
         'description',
     ];
 

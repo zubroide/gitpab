@@ -25,9 +25,9 @@ class AlterIssueTableAddColumnEstimate extends Migration
      */
     public function down()
     {
-            Schema::table('issue', function (Blueprint $table)
-            {
-                $table->dropColumn('estimate');
-            });
+        Schema::table('issue', function (Blueprint $table)
+        {
+            $table->dropColumn('estimate');
+        });
     }
 }

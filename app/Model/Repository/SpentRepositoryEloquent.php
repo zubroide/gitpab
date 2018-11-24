@@ -28,6 +28,7 @@ class SpentRepositoryEloquent extends RepositoryAbstractEloquent
                 'spent.note_id',
                 'spent.hours',
                 'note.gitlab_created_at',
+                'spent.spent_at',
                 'issue.iid as issue',
                 DB::raw("issue.title || CASE WHEN spent.description IS NOT NULL THEN ' |\n' || spent.description ELSE '' END as description")
             ])
