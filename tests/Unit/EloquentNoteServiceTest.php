@@ -7,7 +7,7 @@ use App\Model\Service\Eloquent\EloquentNoteService;
 use App\Providers\AppServiceProvider;
 use Tests\TestCase;
 
-class TestEloquentNoteService extends TestCase
+class EloquentNoteServiceTest extends TestCase
 {
 
     public function setUp()
@@ -34,6 +34,18 @@ class TestEloquentNoteService extends TestCase
     public function parseTimeDataProvider()
     {
         return [
+            [
+                'time' => '0s',
+                'hours' => 0,
+            ],
+            [
+                'time' => '36s',
+                'hours' => 0.01,
+            ],
+            [
+                'time' => '360s',
+                'hours' => 0.1,
+            ],
             [
                 'time' => '0m',
                 'hours' => 0,
@@ -99,7 +111,7 @@ class TestEloquentNoteService extends TestCase
         $prev = $prevItemData ? new Note($prevItemData) : null;
         $row = $method->invokeArgs($service, [$item, $prev]);
         $this->assertEquals($expectedRow['hours'], $row['hours']);
-//        $this->assertEquals($expectedRow['spent_at'], $row['spent_at']);
+        $this->assertEquals($expectedRow['spent_at'], $row['spent_at']);
         $this->assertEquals($expectedRow['gitlab_created_at'], $row['gitlab_created_at']);
         $this->assertEquals($expectedRow['description'], $row['description']);
     }
@@ -125,7 +137,20 @@ class TestEloquentNoteService extends TestCase
                 'prevItemData' => null,
                 'expectedRow' => [
                     'hours' => 1.5,
-                    'spent_at' => null,
+                    'spent_at' => '2018-11-24',
+                    'gitlab_created_at' => '2018-01-01T12:12:13',
+                    'description' => null,
+                ],
+            ],
+            [
+                'itemData' => [
+                    'body' => 'added 1h 30m 36s of time spent at 2018-11-14 just now ',
+                    'gitlab_created_at' => '2018-01-01T12:12:13',
+                ],
+                'prevItemData' => null,
+                'expectedRow' => [
+                    'hours' => 1.51,
+                    'spent_at' => '2018-11-14',
                     'gitlab_created_at' => '2018-01-01T12:12:13',
                     'description' => null,
                 ],
@@ -199,7 +224,7 @@ class TestEloquentNoteService extends TestCase
 
             [
                 'itemData' => [
-                    'body' => 'added 2h of time spent at 2018-11-24 just now',
+                    'body' => 'added 2h of time spent at 2018-11-21 just now',
                     'gitlab_created_at' => '2018-01-01T12:12:12',
                 ],
                 'prevItemData' => [
@@ -208,14 +233,14 @@ class TestEloquentNoteService extends TestCase
                 ],
                 'expectedRow' => [
                     'hours' => 2,
-                    'spent_at' => null,
+                    'spent_at' => '2018-11-21',
                     'gitlab_created_at' => '2018-01-01T12:12:12',
                     'description' => 'added 1h 30m of time spent at 2018-11-24 just now',
                 ],
             ],
             [
                 'itemData' => [
-                    'body' => 'added 2h of time spent at 2018-11-24 just now',
+                    'body' => 'added 2h of time spent at 2018-11-23 just now',
                     'gitlab_created_at' => '2018-01-02T12:12:12',
                 ],
                 'prevItemData' => [
@@ -224,7 +249,7 @@ class TestEloquentNoteService extends TestCase
                 ],
                 'expectedRow' => [
                     'hours' => 2,
-                    'spent_at' => null,
+                    'spent_at' => '2018-11-23',
                     'gitlab_created_at' => '2018-01-02T12:12:12',
                     'description' => null,
                 ],
@@ -241,7 +266,7 @@ class TestEloquentNoteService extends TestCase
                 ],
                 'expectedRow' => [
                     'hours' => 3.5,
-                    'spent_at' => null,
+                    'spent_at' => '2018-11-24',
                     'gitlab_created_at' => '2018-01-01T12:12:12',
                     'description' => 'test primary with hours',
                 ],
@@ -257,7 +282,7 @@ class TestEloquentNoteService extends TestCase
                 ],
                 'expectedRow' => [
                     'hours' => 4.5,
-                    'spent_at' => null,
+                    'spent_at' => '2018-11-24',
                     'gitlab_created_at' => '2018-01-02T12:12:12',
                     'description' => null,
                 ],

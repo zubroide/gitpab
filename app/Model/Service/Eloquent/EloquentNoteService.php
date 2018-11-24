@@ -62,16 +62,18 @@ class EloquentNoteService extends CrudServiceAbstract
     protected function parseSpentTimeItem(Note $item, Note $prev = null): array
     {
         $hours = 0;
+        $spentAt = null;
 
-        $pattern = '/(added|subtracted) (((\d{1,3}[dhm])\s+)+)of time spent at \d{4}-\d{2}-\d{2}/';
+        $pattern = '/(added|subtracted) ((?:(?:\d{1,3}[wdhms])\s+)+)of time spent at (\d{4}-\d{2}-\d{2})/';
         preg_match($pattern, $item->body, $match);
 
-        if (!empty($match) && count($match) >= 2) {
+        if (!empty($match) && count($match) === 4) {
             $sign = $match[1] === 'added' ? 1 : -1;
             $times = array_filter(explode(' ', $match[2]));
             foreach ($times as $time) {
                 $hours += $sign * $this->parseTime(trim($time));
             }
+            $spentAt = $match[3];
         }
 
         // Get description from previous comment if its corresponds to
@@ -89,6 +91,7 @@ class EloquentNoteService extends CrudServiceAbstract
 
         $row = [
             'note_id' => $item->id,
+            'spent_at' => $spentAt,
             'gitlab_created_at' => $item->gitlab_created_at,
             'hours' => $hours,
             'description' => $description,
@@ -105,6 +108,9 @@ class EloquentNoteService extends CrudServiceAbstract
     {
         $value = mb_substr($time, 0, -1);
         $period = mb_substr($time, -1);
+        if ($period === 's') {
+            return $value / 3600;
+        }
         if ($period === 'm') {
             return $value / 60;
         }
