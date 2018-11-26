@@ -3,10 +3,14 @@
 namespace App\Model\Service\Eloquent;
 
 use App\Model\Entity\Note;
+use App\Model\Repository\NoteRepositoryEloquent;
 use App\Model\Service\ServiceException;
 use App\Providers\AppServiceProvider;
 use Illuminate\Support\Collection;
 
+/**
+ * @property NoteRepositoryEloquent $repository
+ */
 class EloquentNoteService extends CrudServiceAbstract
 {
     use StoreContributorsTrait;

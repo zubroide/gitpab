@@ -2,11 +2,11 @@
 
 namespace App\Model\Service\Eloquent;
 
-use App\Model\Repository\IssueRepositoryEloquent;
+use App\Model\Repository\LabelRepositoryEloquent;
 use App\Providers\AppServiceProvider;
 
 /**
- * @property IssueRepositoryEloquent $repository
+ * @property LabelRepositoryEloquent $repository
  */
 class EloquentLabelService extends CrudServiceAbstract
 {

@@ -13,6 +13,7 @@ return [
     |
     */
     'Active users' => 'Active users',
+    'Added by mistake or occurs problem with payment' => 'Added by mistake or occurs problem with payment',
     'Add' => 'Add',
     'Apply' => 'Apply',
     'Assignee' => 'Assignee',
@@ -45,6 +46,8 @@ return [
     'Notes' => 'Notes',
     'Number' => 'Number',
     'Path with namespace' => 'Path with namespace',
+    'Payed' => 'Payed',
+    'Payment completed' => 'Payment completed',
     'Project' => 'Project',
     'Projects' => 'Projects',
     'Register' => 'Register',

@@ -25,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
     const ELOQUENT_LABEL_SERVICE             = 'service.eloquent.label';
     const ELOQUENT_NAMESPACES_SERVICE        = 'service.eloquent.namespaces';
     const ELOQUENT_NOTE_SERVICE              = 'service.eloquent.note';
+    const ELOQUENT_PAYMENT_SERVICE           = 'service.eloquent.payment';
+    const ELOQUENT_PAYMENT_STATUS_SERVICE    = 'service.eloquent.payment_status';
     const ELOQUENT_PROJECT_MILESTONE_SERVICE = 'service.eloquent.project_milestone';
     const ELOQUENT_PROJECT_SERVICE           = 'service.eloquent.project';
     const ELOQUENT_SPENT_SERVICE             = 'service.eloquent.spent';
@@ -38,16 +40,18 @@ class AppServiceProvider extends ServiceProvider
 
     const UPDATE_SERVICE = 'service.update';
 
-    const CONTRIBUTOR_REPOSITORY = 'repository.contributor';
-    const ISSUE_REPOSITORY       = 'repository.issue';
-    const LABEL_REPOSITORY       = 'repository.label';
-    const MILESTONE_REPOSITORY   = 'repository.milestone';
-    const NAMESPACES_REPOSITORY  = 'repository.namespaces';
-    const NOTE_REPOSITORY        = 'repository.note';
-    const PROJECT_REPOSITORY     = 'repository.project';
-    const ROLE_REPOSITORY        = 'repository.role';
-    const SPENT_REPOSITORY       = 'repository.spent';
-    const USER_REPOSITORY        = 'repository.user';
+    const CONTRIBUTOR_REPOSITORY    = 'repository.contributor';
+    const ISSUE_REPOSITORY          = 'repository.issue';
+    const LABEL_REPOSITORY          = 'repository.label';
+    const MILESTONE_REPOSITORY      = 'repository.milestone';
+    const NAMESPACES_REPOSITORY     = 'repository.namespaces';
+    const NOTE_REPOSITORY           = 'repository.note';
+    const PAYMENT_REPOSITORY        = 'repository.payment';
+    const PAYMENT_STATUS_REPOSITORY = 'repository.payment_status';
+    const PROJECT_REPOSITORY        = 'repository.project';
+    const ROLE_REPOSITORY           = 'repository.role';
+    const SPENT_REPOSITORY          = 'repository.spent';
+    const USER_REPOSITORY           = 'repository.user';
 
     /**
      * Bootstrap any application services.
@@ -67,16 +71,18 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $repositories = [
-            self::CONTRIBUTOR_REPOSITORY => Repository\ContributorRepositoryEloquent::class,
-            self::ISSUE_REPOSITORY       => Repository\IssueRepositoryEloquent::class,
-            self::LABEL_REPOSITORY       => Repository\LabelRepositoryEloquent::class,
-            self::MILESTONE_REPOSITORY   => Repository\MilestoneRepositoryEloquent::class,
-            self::NAMESPACES_REPOSITORY  => Repository\NamespacesRepositoryEloquent::class,
-            self::NOTE_REPOSITORY        => Repository\NoteRepositoryEloquent::class,
-            self::PROJECT_REPOSITORY     => Repository\ProjectRepositoryEloquent::class,
-            self::SPENT_REPOSITORY       => Repository\SpentRepositoryEloquent::class,
-            self::USER_REPOSITORY        => Repository\UserRepositoryEloquent::class,
-            self::ROLE_REPOSITORY        => Repository\RoleRepositoryEloquent::class,
+            self::CONTRIBUTOR_REPOSITORY    => Repository\ContributorRepositoryEloquent::class,
+            self::ISSUE_REPOSITORY          => Repository\IssueRepositoryEloquent::class,
+            self::LABEL_REPOSITORY          => Repository\LabelRepositoryEloquent::class,
+            self::MILESTONE_REPOSITORY      => Repository\MilestoneRepositoryEloquent::class,
+            self::NAMESPACES_REPOSITORY     => Repository\NamespacesRepositoryEloquent::class,
+            self::NOTE_REPOSITORY           => Repository\NoteRepositoryEloquent::class,
+            self::PAYMENT_REPOSITORY        => Repository\PaymentRepositoryEloquent::class,
+            self::PAYMENT_STATUS_REPOSITORY => Repository\PaymentStatusRepositoryEloquent::class,
+            self::PROJECT_REPOSITORY        => Repository\ProjectRepositoryEloquent::class,
+            self::SPENT_REPOSITORY          => Repository\SpentRepositoryEloquent::class,
+            self::USER_REPOSITORY           => Repository\UserRepositoryEloquent::class,
+            self::ROLE_REPOSITORY           => Repository\RoleRepositoryEloquent::class,
         ];
         foreach ($repositories as $key => $class) {
             $this->app->bind($key, $class);
@@ -89,6 +95,8 @@ class AppServiceProvider extends ServiceProvider
             self::ELOQUENT_LABEL_SERVICE             => Service\Eloquent\EloquentLabelService::class,
             self::ELOQUENT_NAMESPACES_SERVICE        => Service\Eloquent\EloquentNamespacesService::class,
             self::ELOQUENT_NOTE_SERVICE              => Service\Eloquent\EloquentNoteService::class,
+            self::ELOQUENT_PAYMENT_SERVICE           => Service\Eloquent\EloquentPaymentService::class,
+            self::ELOQUENT_PAYMENT_STATUS_SERVICE    => Service\Eloquent\EloquentPaymentStatusService::class,
             self::ELOQUENT_PROJECT_MILESTONE_SERVICE => Service\Eloquent\EloquentMilestoneService::class,
             self::ELOQUENT_PROJECT_SERVICE           => Service\Eloquent\EloquentProjectService::class,
             self::ELOQUENT_SPENT_SERVICE             => Service\Eloquent\EloquentSpentService::class,

@@ -14,6 +14,7 @@ return [
     */
     'Active users' => 'Активные пользователи',
     'Add' => 'Добавить',
+    'Added by mistake or occurs problem with payment' => 'Добавлено ошибочно или возникла проблема с платежом',
     'Apply' => 'Применить',
     'Assignee' => 'Исполнитель',
     'Author' => 'Автор',
@@ -45,6 +46,8 @@ return [
     'Notes' => 'Комментарии',
     'Number' => 'Номер',
     'Path with namespace' => 'Путь с группой',
+    'Payed' => 'Оплачено',
+    'Payment completed' => 'Платеж совершен',
     'Project' => 'Проект',
     'Projects' => 'Проекты',
     'Register' => 'Регистрация',
