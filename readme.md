@@ -118,3 +118,37 @@ Filter:
  | 2018-05-18 12:24:56 | my-group/project2 | #152 My time | 0.50  | Discussion about export into xml |
  +---------------------+-------------------+--------------+-------+----------------------------------+
 ```
+
+## How to upgrade to new version
+
+### Using Docker
+
+Just rebuild container
+
+```bash
+git pull
+export host="https://gitlab.com/" \
+    && export token="your_gitlab_private_token" \
+    && export projects="project_id1,project_id2" \
+    && docker-compose up --build app
+```
+
+### Without docker
+
+Update code and build static:
+```bash
+git pull
+composer install
+npm install
+npm run prod
+```
+
+Run new migrations:
+```bash
+php artisan migrate
+```
+
+Fill new dictionaries:
+```bash
+php artisan db:seed
+```
