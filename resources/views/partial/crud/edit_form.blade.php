@@ -12,5 +12,5 @@
         @lang('messages.Save')
     </button>
 
-    <button type="button" class="btn btn-default js_link" data-link="{{ $backUrl }}">@lang('messages.Cancel')</button>
+    <a class="btn btn-default" href="{{ $backUrl }}">@lang('messages.Cancel')</a>
 @endsection

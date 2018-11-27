@@ -15,10 +15,28 @@
 
     <div class="row">
         <div class="col-md-2">
-            @lang('messages.Title')
+            @lang('messages.Short comment')
         </div>
         <div class="col-md-10">
             {{ $object->title }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            @lang('messages.Payed hours')
+        </div>
+        <div class="col-md-10">
+            {{ $object->hours }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            @lang('messages.Employer')
+        </div>
+        <div class="col-md-10">
+            {{ $object->contributor->name }}
         </div>
     </div>
 
@@ -28,15 +46,6 @@
         </div>
         <div class="col-md-10">
             {{ $object->description }}
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-2">
-            @lang('messages.Status')
-        </div>
-        <div class="col-md-10">
-            {{ $object->status->title }}
         </div>
     </div>
 
@@ -55,6 +64,33 @@
         </div>
         <div class="col-md-10">
             {{ $object->created_at }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            @lang('messages.Created By')
+        </div>
+        <div class="col-md-10">
+            {{ $object->created_by->name }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            @lang('messages.Updated At')
+        </div>
+        <div class="col-md-10">
+            {{ $object->updated_at }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            @lang('messages.Updated By')
+        </div>
+        <div class="col-md-10">
+            {{ $object->updated_by->name }}
         </div>
     </div>
 

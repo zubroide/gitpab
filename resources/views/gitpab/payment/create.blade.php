@@ -19,9 +19,9 @@
         </div>
         <div class="col-md-6">
             @include('partial.form.element.select', [
-                'name' => 'user_id',
+                'name' => 'contributor_id',
                 'label' => __('messages.Employer'),
-                'list' => $userList ?? [],
+                'list' => $contributorList ?? [],
             ])
         </div>
         <div class="col-md-6">

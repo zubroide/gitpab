@@ -141,12 +141,15 @@ abstract class CrudController extends Controller
             $requestData = $request->all();
             /** @var User $curUser */
             $curUser = Auth::user();
-            if (!empty($curUser) AND empty($requestData['user_id'])) {
-                $requestData['user_id'] = $curUser->id;
+            if (!empty($curUser) AND empty($requestData['created_by_id'])) {
+                $requestData['created_by_id'] = $curUser->id;
+            }
+            if (!empty($curUser) AND empty($requestData['updated_by_id'])) {
+                $requestData['updated_by_id'] = $curUser->id;
             }
 
             if ($created = $this->getService()->create($requestData)) {
-                return Redirect::to($backUrl)->withMessage('Success');
+                return Redirect::to($backUrl)->withMessage(__('messages.Success'));
             }
         }
         catch (ServiceException $e) {
@@ -248,8 +251,14 @@ abstract class CrudController extends Controller
         $errorMessage = null;
 
         try {
-            if ($updated = $this->getService()->update($request->all(), $id)) {
-                return Redirect::to($backUrl)->withMessage('Data updated successfully');
+            $requestData = $request->all();
+            /** @var User $curUser */
+            $curUser = Auth::user();
+            if (!empty($curUser) AND empty($requestData['updated_by_id'])) {
+                $requestData['updated_by_id'] = $curUser->id;
+            }
+            if ($updated = $this->getService()->update($requestData, $id)) {
+                return Redirect::to($backUrl)->withMessage(__('messages.Data updated successfully'));
             }
         }
         catch (ServiceException $e) {

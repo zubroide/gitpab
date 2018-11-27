@@ -3,7 +3,6 @@
 @php
 $columnTitleName = isset($columnTitleName) ? $columnTitleName : 'name';
 $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.Title');
-$createdExist = isset($itemsList->first()['created_at']);
 @endphp
 
 @section('tableThead')
@@ -56,12 +55,15 @@ $createdExist = isset($itemsList->first()['created_at']);
             'orderLinkRoute' => $indexRoute
         ])
 
-        @if ($createdExist)
-            @include('partial.table.thcell', [
-                'column' => 'created_at',
-                'label' => __('messages.Created At'),
-            ])
-        @endif
+        @include('partial.table.thcell', [
+            'column' => 'created_at',
+            'label' => __('messages.Created At'),
+        ])
+
+        @include('partial.table.thcell', [
+            'column' => 'updated_at',
+            'label' => __('messages.Updated At'),
+        ])
 
         <th></th>
     </tr>
@@ -69,17 +71,20 @@ $createdExist = isset($itemsList->first()['created_at']);
 @section('tableTbody')
     @forelse ($itemsList->items() as $key => $item)
         <tr>
-            <td class="col-md-1">{{ $item->id }}</td>
+            <td class="col-md-1"><a href="{{ route('payment.show', $item->id) }}">{{ $item->id }}</a></td>
             <td class="col-md-1">{{ $item->hours }}</td>
-            <td class="col-md-2">{{ $item->user->name }}</td>
-            <td class="col-md-2">{{ $item->name }}</td>
+            <td class="col-md-2">{{ $item->contributor->name }}</td>
+            <td class="col-md-2">{{ $item->title }}</td>
             <td class="col-md-1">@lang($item->status->title)</td>
-            <td class="col-md-2">{{ $item->payment_date }}</td>
-            @if ($createdExist)
-                <td class="col-md-2">
-                    {{ $item->created_at }}
-                </td>
-            @endif
+            <td class="col-md-1">{{ $item->payment_date }}</td>
+            <td class="col-md-1">
+                {{ $item->created_at }} /
+                {{ $item->created_by->name }}
+            </td>
+            <td class="col-md-1">
+                {{ $item->updated_at }} /
+                {{ $item->updated_by->name }}
+            </td>
             <td class="col-md-1">
                 <a href="{{ route($editRoute, [$item->id]) }}"
                    class="btn btn-xs text-success"

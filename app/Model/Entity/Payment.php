@@ -29,17 +29,29 @@ class Payment extends EntityAbstract
         'hours',
         'status_id',
         'payment_date',
-        'user_id',
+        'contributor_id',
+        'created_by_id',
+        'updated_by_id',
     ];
 
-    public function user()
+    public function contributor()
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(Contributor::class, 'contributor_id', 'id');
     }
 
     public function status()
     {
         return $this->belongsTo(PaymentStatus::class, 'status_id', 'id');
+    }
+
+    public function created_by()
+    {
+        return $this->belongsTo(User::class, 'created_by_id', 'id');
+    }
+
+    public function updated_by()
+    {
+        return $this->belongsTo(User::class, 'updated_by_id', 'id');
     }
 
 }

@@ -19,7 +19,7 @@
         </div>
         <div class="col-md-6">
             <label>@lang('messages.Employer')</label>
-            <p>{{ $object->user->name }}</p>
+            <p>{{ $object->contributor->name }}</p>
         </div>
         <div class="col-md-6">
             @include('partial.form.element.select', [

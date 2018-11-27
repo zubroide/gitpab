@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FormRequest;
 use App\Http\Requests\ListRequest;
 use App\Http\Requests\StorePaymentRequest;
+use App\Model\Repository\ContributorRepositoryEloquent;
 use App\Model\Repository\PaymentStatusRepositoryEloquent;
-use App\Model\Repository\UserRepositoryEloquent;
 use App\Model\Service\Eloquent\EloquentPaymentService;
 use App\Providers\AppServiceProvider;
 
@@ -30,14 +30,14 @@ class PaymentController extends CrudController
         /** @var PaymentStatusRepositoryEloquent $paymentStatusRepository */
         $paymentStatusRepository = app(AppServiceProvider::PAYMENT_STATUS_REPOSITORY);
 
-        /** @var UserRepositoryEloquent $userRepository */
-        $userRepository = app(AppServiceProvider::USER_REPOSITORY);
+        /** @var ContributorRepositoryEloquent $contributorRepository */
+        $contributorRepository = app(AppServiceProvider::CONTRIBUTOR_REPOSITORY);
 
         return array_merge(
             $data,
             [
                 'statusList' => $paymentStatusRepository->getItemsForSelect(null, null, 'id', 'title'),
-                'userList' => $userRepository->getItemsForSelect(['' => '-']),
+                'contributorList' => $contributorRepository->getItemsForSelect(['' => '-']),
             ]
         );
     }

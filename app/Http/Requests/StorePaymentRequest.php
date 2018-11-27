@@ -8,8 +8,8 @@ class StorePaymentRequest extends FormRequest
     {
         return [
             'hours' => 'required|numeric',
-            'user_id' => 'required|int',
-            'status_id' => 'required|int',
+            'contributor_id' => 'required|int|exists:contributor,id',
+            'status_id' => 'required|int|exists:payment_status,id',
             'payment_date' => 'required|date',
         ];
     }
