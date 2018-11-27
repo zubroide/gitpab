@@ -17,7 +17,10 @@ $options = isset($options) ? array_merge($_options, $options) : $_options;
     $(function () {
         $('input[name="{{$name}}"]').daterangepicker({
             singleDatePicker: true,
-            showDropdowns: true
+            showDropdowns: true,
+            locale: {
+                format: '{{ config('app.datepicker_date_format') }}'
+            }
         });
     });
 </script>

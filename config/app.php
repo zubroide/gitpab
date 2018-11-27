@@ -80,6 +80,8 @@ return [
 
     'locale' => env('APP_LOCALE', 'en'),
 
+    'datepicker_date_format' => env('APP_DATEPICKER_DATE_FORMAT', 'DD.MM.YYYY'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale

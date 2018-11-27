@@ -32,8 +32,8 @@ class RolePermissionSeeder extends Seeder
                 User::PERMISSION_VIEW_COMMENTS,
                 User::PERMISSION_VIEW_SPENT_TIME,
                 User::PERMISSION_VIEW_USERS,
-                User::PERMISSION_VIEW_FINANCES,
-                User::PERMISSION_EDIT_FINANCES,
+                User::PERMISSION_VIEW_PAYMENTS,
+                User::PERMISSION_EDIT_PAYMENTS,
             ],
             User::ROLE_ADMIN => [
                 User::PERMISSION_VIEW_PROJECTS,

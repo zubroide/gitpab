@@ -57,6 +57,7 @@ Edit environment variables in `.env`:
 - `DB_USERNAME`
 - `GITLAB_HOST`
 - `APP_LOCALE` - supported locales: `en`, `ru`.
+- `APP_DATEPICKER_DATE_FORMAT` - default is `DD.MM.YYYY`.
 
 Run migrations:
 ```bash

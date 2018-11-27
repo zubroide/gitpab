@@ -154,7 +154,7 @@ abstract class CrudController extends Controller
         }
         catch (\Throwable $e) {
             Log::error($e->getMessage());
-            $errorMessage = 'Error on create record';
+            $errorMessage = __('messages.Error on create record');
         }
 
         $view = $this->getView('create');

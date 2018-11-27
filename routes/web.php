@@ -15,6 +15,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IssueController;
 use App\Http\Controllers\MilestoneController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TimeController;
 use App\Http\Controllers\UserController;
@@ -52,5 +53,10 @@ Route::group(['middleware' => ['auth']], function () {
         ->middleware([
             'permission:' . User::PERMISSION_VIEW_USERS,
             'permission:' . User::PERMISSION_EDIT_USERS,
+        ]);
+    Route::resource('payment', '\\' . PaymentController::class)
+        ->middleware([
+            'permission:' . User::PERMISSION_VIEW_PAYMENTS,
+            'permission:' . User::PERMISSION_EDIT_PAYMENTS,
         ]);
 });

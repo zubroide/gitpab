@@ -36,14 +36,12 @@
     <![endif]-->
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/moment-with-locales.js') }}" rel="stylesheet"></script>
+    <script src="{{ asset('js/app.js') }}" rel="stylesheet"></script>
 </head>
 <body class="hold-transition @yield('body_class')">
 
 @yield('body')
-
-{{--<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>--}}
-<script src="{{ asset('js/moment-with-locales.js') }}" rel="stylesheet"></script>
-<script src="{{ asset('js/app.js') }}" rel="stylesheet"></script>
 
 @if(config('adminlte.plugins.select2'))
     <!-- Select2 -->

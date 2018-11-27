@@ -1,5 +1,9 @@
 <?php
 $list = isset($list) ? $list : [];
+foreach ($list as $id => $value) {
+    $list[$id] = __($value);
+}
+
 $selected = isset($selected) ? $selected : null;
 $label = isset($label) ? $label : $name;
 

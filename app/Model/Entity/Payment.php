@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Model\Entity;
+use App\User;
 
 /**
  * @property int id
@@ -25,9 +26,20 @@ class Payment extends EntityAbstract
         'id',
         'title',
         'description',
+        'hours',
         'status_id',
         'payment_date',
         'user_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(PaymentStatus::class, 'status_id', 'id');
+    }
 
 }

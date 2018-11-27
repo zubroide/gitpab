@@ -73,7 +73,7 @@ $createdExist = isset($itemsList->first()['created_at']);
         </tr>
     @empty
         <tr>
-            <td colspan="3" class="col-md-12">@lang('Data not found')</td>
+            <td colspan="3" class="col-md-12">@lang('messages.Data not found')</td>
         </tr>
     @endforelse
 @endsection

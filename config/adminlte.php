@@ -202,6 +202,12 @@ return [
             'url'        => 'time',
         ],
         [
+            'text'       => 'messages.Payments',
+            'icon'       => 'dollar',
+            'icon_color' => 'green',
+            'url'        => 'payment',
+        ],
+        [
             'text'       => 'messages.Users',
             'icon'       => 'ion ion-person',
             'icon_color' => 'gray',

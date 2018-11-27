@@ -29,6 +29,7 @@ class CreatePaymentTable extends Migration
                 $table->increments('id');
                 $table->string('title')->nullable();
                 $table->text('description')->nullable();
+                $table->decimal('hours');
                 $table->integer('status_id');
                 $table->foreign('status_id')
                     ->references('id')

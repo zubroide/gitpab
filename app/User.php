@@ -25,8 +25,8 @@ class User extends Authenticatable
     const PERMISSION_VIEW_SPENT_TIME = 'View spent time';
     const PERMISSION_VIEW_USERS = 'View users';
     const PERMISSION_EDIT_USERS = 'Edit users';
-    const PERMISSION_VIEW_FINANCES = 'View finances';
-    const PERMISSION_EDIT_FINANCES = 'Edit finances';
+    const PERMISSION_VIEW_PAYMENTS = 'View payments';
+    const PERMISSION_EDIT_PAYMENTS = 'Edit payments';
 
     use Notifiable;
     use HasRoles;
