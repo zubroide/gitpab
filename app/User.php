@@ -16,6 +16,7 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable
 {
     const ROLE_ADMIN = 'Admin';
+    const ROLE_FINANCE = 'Finance';
     const ROLE_CONTRIBUTOR = 'Contributor';
 
     const PERMISSION_VIEW_PROJECTS = 'View projects';
@@ -24,6 +25,8 @@ class User extends Authenticatable
     const PERMISSION_VIEW_SPENT_TIME = 'View spent time';
     const PERMISSION_VIEW_USERS = 'View users';
     const PERMISSION_EDIT_USERS = 'Edit users';
+    const PERMISSION_VIEW_FINANCES = 'View finances';
+    const PERMISSION_EDIT_FINANCES = 'Edit finances';
 
     use Notifiable;
     use HasRoles;
