@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Auth;
             'icon'  => 'ion ion-ios-gear',
             'title' => __('messages.Projects'),
             'count' => $projects,
-            'route' => 'project.index',
+            'url' => route('project.index'),
         ])
 
         @include('partial/count_widget', [
@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Auth;
             'icon'  => 'fa fa-flag',
             'title' => __('messages.Milestones'),
             'count' => $milestones,
-            'route' => 'milestone.index',
+            'url' => route('milestone.index'),
         ])
 
         @include('partial/count_widget', [
@@ -33,7 +33,7 @@ use Illuminate\Support\Facades\Auth;
             'icon'  => 'fa fa-tasks',
             'title' => __('messages.Issues'),
             'count' => $issues,
-            'route' => 'issue.index',
+            'url' => route('issue.index'),
         ])
 
         @include('partial/count_widget', [
@@ -41,7 +41,7 @@ use Illuminate\Support\Facades\Auth;
             'icon'  => 'fa fa-comment',
             'title' => __('messages.Comments'),
             'count' => $notes,
-            'route' => 'note.index',
+            'url' => route('note.index'),
         ])
 
         @include('partial/count_widget', [
@@ -49,7 +49,7 @@ use Illuminate\Support\Facades\Auth;
             'icon'  => 'fa fa-clock-o',
             'title' => __('messages.Spent time'),
             'count' => $spent,
-            'route' => 'time.index',
+            'url' => route('time.index'),
         ])
 
         @include('partial/count_widget', [
@@ -57,7 +57,7 @@ use Illuminate\Support\Facades\Auth;
             'icon'  => 'ion ion-person',
             'title' => __('messages.Active users'),
             'count' => $user,
-            'route' => 'user.index',
+            'url' => route('user.index'),
         ])
 
         @include('partial/count_widget', [
@@ -65,7 +65,7 @@ use Illuminate\Support\Facades\Auth;
             'icon'  => 'ion ion-person',
             'title' => __('messages.My balance'),
             'count' => $myBalance,
-            'route' => 'time.index',
+            'url' => route('time.index', ['authors' => [Auth::user()->contributor_id]]),
             'bgColor' => $myBalance >= 0 ? 'green' : 'red',
         ])
 
@@ -75,7 +75,7 @@ use Illuminate\Support\Facades\Auth;
             'icon'  => 'ion ion-person',
             'title' => __('messages.Company balance'),
             'count' => $companyBalance,
-            'route' => 'time.index',
+            'url' => route('contributor.index'),
             'bgColor' => $companyBalance >= 0 ? 'green' : 'red',
         ])
         @endif
