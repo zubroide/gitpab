@@ -109,7 +109,9 @@ class AppServiceProvider extends ServiceProvider
         ];
         foreach ($gitlabServices as $key => $class) {
             $this->app->bind($key, function () use ($class) {
-                $guzzle = new Client();
+                $guzzle = new Client([
+                    'verify' => false,
+                ]);
                 return new $class($guzzle, config('gitlab.token'), config('gitlab.default_per_page'));
             });
         }
