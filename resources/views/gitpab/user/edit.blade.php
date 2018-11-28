@@ -29,5 +29,15 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-6">
+            @include('partial.form.element.select', [
+                'name' => 'contributor_id',
+                'label' => __('messages.Employer'),
+                'selected' => $object->contributor_id,
+                'list' => $contributorList ?? [],
+            ])
+        </div>
+    </div>
 
 @endsection

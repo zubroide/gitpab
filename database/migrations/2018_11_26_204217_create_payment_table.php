@@ -38,11 +38,6 @@ class CreatePaymentTable extends Migration
                     ->onDelete('CASCADE');
                 $table->timestamp('payment_date');
                 $table->bigInteger('contributor_id')->index();
-                $table->foreign('contributor_id')
-                    ->references('id')
-                    ->on('contributor')
-                    ->onUpdate('CASCADE')
-                    ->onDelete('CASCADE');
                 $table->integer('created_by_id')->index();
                 $table->foreign('created_by_id')
                     ->references('id')

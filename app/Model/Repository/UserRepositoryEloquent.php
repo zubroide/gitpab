@@ -30,4 +30,5 @@ class UserRepositoryEloquent extends RepositoryAbstractEloquent
             })
             ->count();
     }
+
 }

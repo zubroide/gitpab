@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Model\Entity\Contributor;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
@@ -12,6 +13,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string $email
  * @property string $password
  * @property string $remember_token
+ * @property int $contributor_id
  */
 class User extends Authenticatable
 {
@@ -30,7 +32,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
+        'contributor_id',
     ];
 
     /**
@@ -41,4 +46,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function contributor()
+    {
+        return $this->belongsTo(Contributor::class, 'contributor_id', 'id');
+    }
+
 }

@@ -4,6 +4,7 @@ namespace App\Model\Repository;
 
 use App\Model\Entity\Contributor;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
 class ContributorRepositoryEloquent extends RepositoryAbstractEloquent
@@ -21,7 +22,7 @@ class ContributorRepositoryEloquent extends RepositoryAbstractEloquent
 
     public function getListQuery(array $parameters): Builder
     {
-        return $this->model
+        $query = $this->model
             ->select($this->model->getTable() . '.*')
             ->addSelect(DB::raw('(
                     COALESCE((
@@ -39,6 +40,13 @@ class ContributorRepositoryEloquent extends RepositoryAbstractEloquent
                 ) as balance
             '))
         ;
+
+        if ($id = Arr::get($parameters, 'id'))
+        {
+            $query->where('contributor.id', '=', $id);
+        }
+
+        return $query;
     }
 
 }

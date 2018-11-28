@@ -52,6 +52,7 @@ return [
     'Language' => 'Language',
     'Login' => 'Login',
     'Menu' => 'Menu',
+    'My balance' => 'My balance',
     'Milestones' => 'Milestones',
     'Name' => 'Name',
     'Namespace' => 'Namespace',

@@ -24,6 +24,15 @@
 
     <div class="row">
         <div class="col-md-2">
+            @lang('messages.Employer')
+        </div>
+        <div class="col-md-10">
+            {{ $item->contributor ? $item->contributor->name : '' }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
             @lang('messages.Email')
         </div>
         <div class="col-md-10">

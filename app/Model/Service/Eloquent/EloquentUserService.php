@@ -37,4 +37,18 @@ class EloquentUserService extends CrudServiceAbstract
             }
         }
     }
+
+    public function getBalance(User $user)
+    {
+        /** @var EloquentContributorService $contributorService */
+        $contributorService = app(AppServiceProvider::ELOQUENT_CONTRIBUTOR_SERVICE);
+        if (!$user->contributor_id) {
+            return 0;
+        }
+        $list = $contributorService->getList(['id' => $user->contributor_id]);
+        if ($list->count() === 1) {
+            return $list[0]->balance;
+        }
+        return 0;
+    }
 }

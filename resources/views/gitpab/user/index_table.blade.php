@@ -24,6 +24,11 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
         ])
 
         @include('partial.table.thcell', [
+            'column' => 'contributor_id',
+            'label' => __('messages.Employer'),
+        ])
+
+        @include('partial.table.thcell', [
             'column' => 'email',
             'label' => __('messages.Email'),
             'order' => $order,
@@ -48,9 +53,10 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
     @forelse ($itemsList->items() as $key => $item)
         <tr>
             <td class="col-md-1"><a href="{{ route('user.show', $item->id) }}">{{ $item->id }}</a></td>
-            <td class="col-md-3">{{ $item->name }}</td>
+            <td class="col-md-2">{{ $item->name }}</td>
+            <td class="col-md-2">{{ $item->contributor ? $item->contributor->name : '' }}</td>
             <td class="col-md-2">{{ $item->email }}</td>
-            <td class="col-md-3">
+            <td class="col-md-2">
                 @foreach ($item->roles as $role)
                     <span class="label label-primary">{{ $role->name }}</span>
                 @endforeach

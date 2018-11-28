@@ -55,6 +55,15 @@
             'count' => $user,
             'route' => 'user.index',
         ])
+
+        @include('partial/count_widget', [
+            'color' => $myBalance >= 0 ? 'green' : 'red',
+            'icon'  => 'ion ion-person',
+            'title' => __('messages.My balance'),
+            'count' => $myBalance,
+            'route' => 'time.index',
+            'bgColor' => $myBalance >= 0 ? 'green' : 'red',
+        ])
     </div>
 @stop
 

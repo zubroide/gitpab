@@ -53,6 +53,7 @@ return [
     'Login' => 'Вход',
     'Menu' => 'Меню',
     'Milestones' => 'Спринты',
+    'My balance' => 'Мой баланс',
     'Name' => 'Название',
     'Namespace' => 'Группа',
     'Notes' => 'Комментарии',
