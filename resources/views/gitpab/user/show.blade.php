@@ -27,7 +27,7 @@
             @lang('messages.Employer')
         </div>
         <div class="col-md-10">
-            {{ $item->contributor ? $item->contributor->name : '' }}
+            {{ $object->contributor ? $object->contributor->name : '' }}
         </div>
     </div>
 
