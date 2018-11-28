@@ -83,7 +83,7 @@ $createdExist = isset($itemsList->first()['created_at']);
             </td>
             <td class="col-md-2">
                 @foreach ($item->labels as $label)
-                    <span class="badge badge-info">{{ $label }}</span>
+                    <span class="label label-primary">{{ $label }}</span>
                 @endforeach
             </td>
             <td class="col-md-2">
