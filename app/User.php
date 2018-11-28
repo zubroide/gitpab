@@ -19,14 +19,7 @@ class User extends Authenticatable
     const ROLE_FINANCE = 'Finance';
     const ROLE_CONTRIBUTOR = 'Contributor';
 
-    const PERMISSION_VIEW_PROJECTS = 'View projects';
-    const PERMISSION_VIEW_ISSUES = 'View issues';
-    const PERMISSION_VIEW_COMMENTS = 'View comments';
-    const PERMISSION_VIEW_SPENT_TIME = 'View spent time';
-    const PERMISSION_VIEW_USERS = 'View users';
-    const PERMISSION_EDIT_USERS = 'Edit users';
-    const PERMISSION_VIEW_PAYMENTS = 'View payments';
-    const PERMISSION_EDIT_PAYMENTS = 'Edit payments';
+    const PERMISSION_EDIT_USERS = 'user.edit';
 
     use Notifiable;
     use HasRoles;

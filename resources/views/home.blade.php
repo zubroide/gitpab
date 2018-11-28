@@ -33,7 +33,7 @@
         ])
 
         @include('partial/count_widget', [
-            'color' => 'green',
+            'color' => 'teal',
             'icon'  => 'fa fa-comment',
             'title' => __('messages.Comments'),
             'count' => $notes,

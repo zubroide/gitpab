@@ -30,6 +30,7 @@ clone_project() {
 
 setup_db() {
   log "Configuring the database"
+  php artisan cache:clear
   php artisan migrate --force
   php artisan db:seed --class=DatabaseSeeder
   php artisan db:seed --class=UserSeeder

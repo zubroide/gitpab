@@ -3,6 +3,8 @@
 use App\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Exceptions\PermissionAlreadyExists;
 use Spatie\Permission\Exceptions\RoleAlreadyExists;
 use Spatie\Permission\Models\Permission;
@@ -10,6 +12,31 @@ use Spatie\Permission\Models\Role;
 
 class RolePermissionSeeder extends Seeder
 {
+    const TYPE_VIEW = 'view';
+    const TYPE_WRITE = 'write';
+
+    protected $defaultResources = [
+        self::TYPE_VIEW => [
+            'index',
+            'create',
+            'show',
+            'edit',
+        ],
+        self::TYPE_WRITE => [
+            'store',
+            'update',
+        ]
+    ];
+
+    protected function generatePermissions(string $group, string $type)
+    {
+        $permissions = [];
+        foreach ($this->defaultResources[$type] as $defaultResource) {
+            $permissions[$group . '.' . $defaultResource] = $group . '.' . $defaultResource;
+        }
+        return $permissions;
+    }
+
     /**
      * Run the database seeds.
      *
@@ -18,31 +45,36 @@ class RolePermissionSeeder extends Seeder
      */
     public function run()
     {
+        // Hack for supporting upgrade from version 1.0.*
+        DB::statement("UPDATE permissions SET name = 'project.index' WHERE name = 'View projects'");
+        DB::statement("UPDATE permissions SET name = 'issue.index' WHERE name = 'View issues'");
+        DB::statement("UPDATE permissions SET name = 'comment.index' WHERE name = 'View comments'");
+        DB::statement("UPDATE permissions SET name = 'time.index' WHERE name = 'View spent time'");
+        DB::statement("UPDATE permissions SET name = 'user.index' WHERE name = 'View users'");
+        DB::statement("UPDATE permissions SET name = 'user.edit' WHERE name = 'Edit users'");
+        Artisan::call('cache:clear');
+
+        $defaultPermissions =
+            ['home' => 'home'] +
+            $this->generatePermissions('project', self::TYPE_VIEW) +
+            $this->generatePermissions('milestone', self::TYPE_VIEW) +
+            $this->generatePermissions('issue', self::TYPE_VIEW) +
+            $this->generatePermissions('note', self::TYPE_VIEW) +
+            $this->generatePermissions('comment', self::TYPE_VIEW) +
+            $this->generatePermissions('time', self::TYPE_VIEW) +
+            $this->generatePermissions('user', self::TYPE_VIEW);
+
         $roles = [
-            User::ROLE_CONTRIBUTOR => [
-                User::PERMISSION_VIEW_PROJECTS,
-                User::PERMISSION_VIEW_ISSUES,
-                User::PERMISSION_VIEW_COMMENTS,
-                User::PERMISSION_VIEW_SPENT_TIME,
-                User::PERMISSION_VIEW_USERS,
-            ],
-            User::ROLE_FINANCE => [
-                User::PERMISSION_VIEW_PROJECTS,
-                User::PERMISSION_VIEW_ISSUES,
-                User::PERMISSION_VIEW_COMMENTS,
-                User::PERMISSION_VIEW_SPENT_TIME,
-                User::PERMISSION_VIEW_USERS,
-                User::PERMISSION_VIEW_PAYMENTS,
-                User::PERMISSION_EDIT_PAYMENTS,
-            ],
-            User::ROLE_ADMIN => [
-                User::PERMISSION_VIEW_PROJECTS,
-                User::PERMISSION_VIEW_ISSUES,
-                User::PERMISSION_VIEW_COMMENTS,
-                User::PERMISSION_VIEW_SPENT_TIME,
-                User::PERMISSION_VIEW_USERS,
-                User::PERMISSION_EDIT_USERS,
-            ],
+            User::ROLE_CONTRIBUTOR =>
+                $defaultPermissions,
+            User::ROLE_FINANCE =>
+                $defaultPermissions +
+                $this->generatePermissions('contributor', self::TYPE_VIEW) +
+                $this->generatePermissions('payment', self::TYPE_VIEW) +
+                $this->generatePermissions('payment', self::TYPE_WRITE),
+            User::ROLE_ADMIN =>
+                $defaultPermissions +
+                $this->generatePermissions('user', self::TYPE_WRITE),
         ];
 
         $permissions = [];

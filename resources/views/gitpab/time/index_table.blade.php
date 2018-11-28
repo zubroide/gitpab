@@ -83,7 +83,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
             </td>
             <td class="col-md-1">
                 @foreach ($item->note->issue->labels as $label)
-                    <span class="badge badge-info">{{ $label }}</span>
+                    <span class="label label-primary">{{ $label }}</span>
                 @endforeach
             </td>
             <td class="col-md-2">

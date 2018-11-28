@@ -170,11 +170,11 @@ return [
 //                ],
 //            ],
 //        ],
-        'messages.Menu',
+        'messages.Projects',
         [
             'text'       => 'messages.Projects',
             'icon'       => 'gear',
-            'icon_color' => 'blue',
+            'icon_color' => 'aqua',
             'url'        => 'project',
         ],
         [
@@ -192,7 +192,7 @@ return [
         [
             'text'       => 'messages.Comments',
             'icon'       => 'comment',
-            'icon_color' => 'green',
+            'icon_color' => 'teal',
             'url'        => 'note',
         ],
         [
@@ -201,12 +201,20 @@ return [
             'icon_color' => 'yellow',
             'url'        => 'time',
         ],
+        'messages.Finances',
+        [
+            'text'       => 'messages.Contributors',
+            'icon'       => 'icon ion-ios-people',
+            'icon_color' => 'maroon',
+            'url'        => 'contributor',
+        ],
         [
             'text'       => 'messages.Payments',
             'icon'       => 'dollar',
             'icon_color' => 'green',
             'url'        => 'payment',
         ],
+        'messages.Admin',
         [
             'text'       => 'messages.Users',
             'icon'       => 'ion ion-person',
