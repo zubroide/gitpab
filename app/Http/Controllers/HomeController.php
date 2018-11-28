@@ -6,9 +6,9 @@ use App\Model\Repository\MilestoneRepositoryEloquent;
 use App\Model\Repository\RepositoryAbstractEloquent;
 use App\Model\Repository\SpentRepositoryEloquent;
 use App\Model\Repository\UserRepositoryEloquent;
+use App\Model\Service\Eloquent\EloquentPaymentService;
 use App\Model\Service\Eloquent\EloquentUserService;
 use App\Providers\AppServiceProvider;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -50,6 +50,9 @@ class HomeController extends Controller
         /** @var EloquentUserService $userService */
         $userService = app(AppServiceProvider::ELOQUENT_USER_SERVICE);
 
+        /** @var EloquentPaymentService $paymentService */
+        $paymentService = app(AppServiceProvider::ELOQUENT_PAYMENT_SERVICE);
+
         return view('home', [
             'projects' => $projectRepo->count(),
             'milestones' => $milestoneRepo->count(),
@@ -58,6 +61,7 @@ class HomeController extends Controller
             'spent' => $spentRepo->sum(),
             'user' => $userRepo->activeCount(),
             'myBalance' => $userService->getBalance(Auth::user()),
+            'companyBalance' => $paymentService->getBalance(),
         ]);
     }
 }

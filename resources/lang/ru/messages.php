@@ -24,6 +24,7 @@ return [
     'Cancel' => 'Отмена',
     'Changelog' => 'Список изменений',
     'Comments' => 'Комментарии',
+    'Company balance' => 'Баланс компании',
     'Contributors' => 'Сотрудники',
     'Create' => 'Создать',
     'Create payment' => 'Создать плаеж',

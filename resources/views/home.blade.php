@@ -1,3 +1,7 @@
+<?php
+use App\User;
+use Illuminate\Support\Facades\Auth;
+?>
 @extends('adminlte::page')
 
 @section('title', 'Dashboard')
@@ -64,6 +68,17 @@
             'route' => 'time.index',
             'bgColor' => $myBalance >= 0 ? 'green' : 'red',
         ])
+
+        @if (Auth::user()->hasPermissionTo(User::PERMISSION_SHOW_PAYMENTS))
+        @include('partial/count_widget', [
+            'color' => $companyBalance >= 0 ? 'green' : 'red',
+            'icon'  => 'ion ion-person',
+            'title' => __('messages.Company balance'),
+            'count' => $companyBalance,
+            'route' => 'time.index',
+            'bgColor' => $companyBalance >= 0 ? 'green' : 'red',
+        ])
+        @endif
     </div>
 @stop
 

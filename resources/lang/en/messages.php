@@ -24,6 +24,7 @@ return [
     'Cancel' => 'Cancel',
     'Changelog' => 'Changelog',
     'Comments' => 'Comments',
+    'Company balance' => 'Company balance',
     'Contributors' => 'Contributors',
     'Create' => 'Create',
     'Create payment' => 'Create payment',

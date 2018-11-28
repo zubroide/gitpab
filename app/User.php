@@ -22,6 +22,7 @@ class User extends Authenticatable
     const ROLE_CONTRIBUTOR = 'Contributor';
 
     const PERMISSION_EDIT_USERS = 'user.edit';
+    const PERMISSION_SHOW_PAYMENTS = 'payment.show';
 
     use Notifiable;
     use HasRoles;

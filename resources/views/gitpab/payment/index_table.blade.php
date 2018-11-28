@@ -74,7 +74,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
             <td class="col-md-1"><a href="{{ route('payment.show', $item->id) }}">{{ $item->id }}</a></td>
             <td class="col-md-1">{{ $item->hours }}</td>
             <td class="col-md-2">{{ $item->contributor->name }}</td>
-            <td class="col-md-2">{{ $item->title }}</td>
+            <td class="col-md-3">{{ $item->title }}</td>
             <td class="col-md-1">@lang($item->status->title)</td>
             <td class="col-md-1">{{ $item->payment_date }}</td>
             <td class="col-md-1">
@@ -96,7 +96,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
         </tr>
     @empty
         <tr>
-            <td colspan="{{ $createdExist ? 4 : 3 }}" class="col-md-12">@lang('messages.Data not found')</td>
+            <td colspan="9" class="col-md-12">@lang('messages.Data not found')</td>
         </tr>
     @endforelse
 @endsection
