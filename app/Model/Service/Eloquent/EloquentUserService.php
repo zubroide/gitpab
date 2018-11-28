@@ -24,7 +24,7 @@ class EloquentUserService extends CrudServiceAbstract
     protected function saveObjectRelationships($object, $attributes)
     {
         $user = Auth::user();
-        if ($user->hasPermissionTo(User::PERMISSION_EDIT_USERS)) {
+        if (!$user || $user->hasPermissionTo(User::PERMISSION_EDIT_USERS)) {
             $roleIds = Arr::get($attributes, 'roles', []);
             DB::beginTransaction();
             try {
