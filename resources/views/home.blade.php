@@ -62,7 +62,7 @@ use Illuminate\Support\Facades\Auth;
 
         @include('partial/count_widget', [
             'color' => $myBalance >= 0 ? 'green' : 'red',
-            'icon'  => 'ion ion-person',
+            'icon'  => 'fa fa-hourglass' . ($myBalance == 0 ? '-half' : ($myBalance < 0 ? '-end' : '')),
             'title' => __('messages.My balance'),
             'hint' => __('messages.Payed hours minus spent hours'),
             'count' => $myBalance,
@@ -73,7 +73,7 @@ use Illuminate\Support\Facades\Auth;
         @if (Auth::user()->hasPermissionTo(User::PERMISSION_SHOW_PAYMENTS))
         @include('partial/count_widget', [
             'color' => $companyBalance >= 0 ? 'green' : 'red',
-            'icon'  => 'ion ion-person',
+            'icon'  => 'fa fa-hourglass' . ($companyBalance == 0 ? '-half' : ($companyBalance < 0 ? '-end' : '')),
             'title' => __('messages.Company balance'),
             'hint' => __('messages.Payed hours minus spent hours'),
             'count' => $companyBalance,
