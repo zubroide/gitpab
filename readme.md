@@ -151,5 +151,7 @@ php artisan migrate
 
 Fill new dictionaries:
 ```bash
+sudo php artisan cache:clear
 php artisan db:seed
+sudo php artisan cache:clear
 ```

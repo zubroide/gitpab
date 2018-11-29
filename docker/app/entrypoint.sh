@@ -34,6 +34,7 @@ setup_db() {
   php artisan migrate --force
   php artisan db:seed --class=DatabaseSeeder
   php artisan db:seed --class=UserSeeder
+  php artisan cache:clear
 }
 
 load_data() {
