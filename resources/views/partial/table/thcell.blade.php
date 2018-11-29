@@ -14,7 +14,7 @@ if (isset($orderLinkRoute) AND isset($order))
 }
 ?>
 
-<th class="{{ $orderClass }} {{ $class }}">
+<th class="{{ $orderClass }} {{ $class }}" title="{{ $title ?? '' }}">
     @if (isset($orderLink))
     <a href="{{ $orderLink }}">{{ $label }}</a>
     @else

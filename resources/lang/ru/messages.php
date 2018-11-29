@@ -62,6 +62,7 @@ return [
     'Path with namespace' => 'Путь с группой',
     'Payed' => 'Оплачено',
     'Payed hours' => 'Оплачено часов',
+    'Payed hours minus spent hours' => 'Оплаченные часы минус отработанные часы',
     'Payment completed' => 'Платеж совершен',
     'Payment date' => 'Дата платежа',
     'Payments' => 'Платежи',

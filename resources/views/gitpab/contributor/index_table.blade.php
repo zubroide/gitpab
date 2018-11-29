@@ -35,6 +35,7 @@ $createdExist = isset($itemsList->first()['created_at']);
         @include('partial.table.thcell', [
             'column' => 'balance',
             'label' => __('messages.Balance'),
+            'title' => __('messages.Payed hours minus spent hours'),
         ])
 
         @include('partial.table.thcell', [
@@ -52,7 +53,11 @@ $createdExist = isset($itemsList->first()['created_at']);
                 <a href="{{ $item->web_url }}">{{ $item->username }}</a>
             </td>
             <td class="col-md-2">
-                <span class="label label-{{ $item->balance >= 0 ? 'success' : 'danger' }}">{{ $item->balance }}</span>
+                <span
+                        title="@lang('messages.Payed hours minus spent hours')"
+                        class="label label-{{ $item->balance >= 0 ? 'success' : 'danger' }}">
+                    {{ $item->balance }}
+                </span>
             </td>
             @if ($createdExist)
                 <td class="col-md-2">

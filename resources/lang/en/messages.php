@@ -62,6 +62,7 @@ return [
     'Path with namespace' => 'Path with namespace',
     'Payed' => 'Payed',
     'Payed hours' => 'Payed hours',
+    'Payed hours minus spent hours' => 'Payed hours minus spent hours',
     'Payment completed' => 'Payment completed',
     'Payment date' => 'Payment date',
     'Payments' => 'Payments',
