@@ -42,7 +42,7 @@ class PgHelper
         {
             // echo "\n [ $i ] ..... $arraystring[$i] .... $curr";
 
-            switch ($arraystring[$i])
+            switch (mb_substr($arraystring, $i, 1))
             {
                 case '{':
                     $sub = self::arrayParse($arraystring, false);
@@ -58,7 +58,7 @@ class PgHelper
                     break;
                 case '\\':
                     $i++;
-                    $curr .= $arraystring[$i];
+                    $curr .= mb_substr($arraystring, $i, 1);
                     $i++;
                     break;
                 case '"':
@@ -100,12 +100,12 @@ class PgHelper
                     $i++;
                     break;
                 default:
-                    $curr .= $arraystring[$i];
+                    $curr .= mb_substr($arraystring, $i, 1);
                     $i++;
             }
         }
 
-        throw new Exception('Unexpected line end');
+        throw new Exception('Unexpected line end: ' . $curr);
     }
 
     /**
