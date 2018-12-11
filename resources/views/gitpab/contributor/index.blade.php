@@ -7,7 +7,8 @@
 
 @section('contentTable')
     @include('gitpab.contributor.index_table', [
-        'columnTitleName' => 'body'
+        'columnTitleName' => 'body',
+        'columnTitleLabel' => __('messages.Employer'),
     ])
 @endsection
 

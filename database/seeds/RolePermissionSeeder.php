@@ -70,6 +70,7 @@ class RolePermissionSeeder extends Seeder
             User::ROLE_FINANCE =>
                 $defaultPermissions +
                 $this->generatePermissions('contributor', self::TYPE_VIEW) +
+                $this->generatePermissions('contributor', self::TYPE_WRITE) +
                 $this->generatePermissions('payment', self::TYPE_VIEW) +
                 $this->generatePermissions('payment', self::TYPE_WRITE),
             User::ROLE_ADMIN =>

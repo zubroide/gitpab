@@ -2,10 +2,12 @@
 
 namespace App\Model\Repository;
 
+use App\Helper\Text;
 use App\Model\Entity\Contributor;
 use App\Model\Entity\PaymentStatus;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ContributorRepositoryEloquent extends RepositoryAbstractEloquent
@@ -50,6 +52,45 @@ class ContributorRepositoryEloquent extends RepositoryAbstractEloquent
         }
 
         return $query;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function update(array $attributes, $id)
+    {
+        $entity = parent::update($attributes, $id);
+
+        $extra = [];
+        foreach ($attributes as $name => $value) {
+            if (substr($name, 0, 6) === 'extra_') {
+                $extra[substr($name, 6)] = $value;
+            }
+        }
+
+        if (!empty($extra)) {
+            if ($entity->extra) {
+                $entity->extra = $entity->extra->fill($extra);
+                $entity->extra->save();
+            }
+            else {
+                $parts = explode('\\', $this->model());
+                $className = $parts[count($parts)-1];
+                $pkFieldName = Text::camelCaseToUnderscore($className) . '_id';
+
+                $modelExtraName = $this->model() . 'Extra';
+                $entityExtra = new $modelExtraName();
+                $entityExtra->fill($extra);
+                $entityExtra->$pkFieldName = $entity->id;
+                $entityExtra->created_by_id = Auth::id();
+                $entityExtra->updated_by_id = Auth::id();
+
+                $entity->extra = $entityExtra;
+                $entity->extra->save();
+            }
+        }
+
+        return $entity;
     }
 
 }

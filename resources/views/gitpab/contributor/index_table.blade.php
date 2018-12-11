@@ -3,7 +3,6 @@
 @php
 $columnTitleName = isset($columnTitleName) ? $columnTitleName : 'name';
 $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.Title');
-$createdExist = isset($itemsList->first()['created_at']);
 @endphp
 
 @section('tableThead')
@@ -33,6 +32,12 @@ $createdExist = isset($itemsList->first()['created_at']);
         ])
 
         @include('partial.table.thcell', [
+            'column' => 'extra_hour_rate',
+            'label' => __('messages.Hour rate'),
+            'title' => __('messages.Money per hour'),
+        ])
+
+        @include('partial.table.thcell', [
             'column' => 'balance',
             'label' => __('messages.Balance'),
             'title' => __('messages.Payed hours minus spent hours'),
@@ -42,32 +47,47 @@ $createdExist = isset($itemsList->first()['created_at']);
             'column' => 'created_at',
             'label' => __('messages.Created At'),
         ])
+
+        <th></th>
     </tr>
 @endsection
 @section('tableTbody')
     @forelse ($itemsList->items() as $key => $item)
         <tr>
-            <td class="col-md-1">{{ $item->id }}</td>
-            <td class="col-md-4">{{ $item->name }}</td>
-            <td class="col-md-3">
-                <a href="{{ $item->web_url }}">{{ $item->username }}</a>
+            <td class="col-md-1"><a href="{{ route('contributor.show', $item->id) }}">{{ $item->id }}</a></td>
+            <td class="col-md-4">
+                @if ($item->avatar_url)
+                    <img src="{{ $item->avatar_url }}" class="cell-avatar"/>
+                @endif
+                {{ $item->name }}
             </td>
             <td class="col-md-2">
+                <a href="{{ $item->web_url }}">{{ $item->username }}</a>
+            </td>
+            <td class="col-md-1">
+                {{ $item->extra ? $item->extra->hour_rate : '-' }}
+            </td>
+            <td class="col-md-1">
                 <span
                         title="@lang('messages.Payed hours minus spent hours')"
                         class="label label-{{ $item->balance >= 0 ? 'success' : 'danger' }}">
                     {{ $item->balance }}
                 </span>
             </td>
-            @if ($createdExist)
-                <td class="col-md-2">
-                    {{ $item->created_at }}
-                </td>
-            @endif
+            <td class="col-md-2">
+                {{ $item->created_at }}
+            </td>
+            <td class="col-md-1">
+                <a href="{{ route($editRoute, [$item->id]) }}"
+                   class="btn btn-xs text-success"
+                   data-token="{{ csrf_token() }}">
+                    <i class="fa fa-edit"></i>
+                </a>
+            </td>
         </tr>
     @empty
         <tr>
-            <td colspan="{{ $createdExist ? 4 : 3 }}" class="col-md-12">@lang('messages.Data not found')</td>
+            <td colspan="7" class="col-md-12">@lang('messages.Data not found')</td>
         </tr>
     @endforelse
 @endsection

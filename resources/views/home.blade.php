@@ -71,19 +71,15 @@ use Illuminate\Support\Facades\Auth;
         ])
 
         @if (Auth::user()->hasPermissionTo(User::PERMISSION_SHOW_PAYMENTS))
-        @include('partial/count_widget', [
-            'color' => $companyBalance >= 0 ? 'green' : 'red',
-            'icon'  => 'fa fa-hourglass' . ($companyBalance == 0 ? '-half' : ($companyBalance < 0 ? '-end' : '')),
-            'title' => __('messages.Company balance'),
-            'hint' => __('messages.Payed hours minus spent hours'),
-            'count' => $companyBalance,
-            'url' => route('contributor.index'),
-            'bgColor' => $companyBalance >= 0 ? 'green' : 'red',
-        ])
+            @include('partial/count_widget', [
+                'color' => $companyBalance >= 0 ? 'green' : 'red',
+                'icon'  => 'fa fa-hourglass' . ($companyBalance == 0 ? '-half' : ($companyBalance < 0 ? '-end' : '')),
+                'title' => __('messages.Company balance'),
+                'hint' => __('messages.Payed hours minus spent hours'),
+                'count' => $companyBalance,
+                'url' => route('contributor.index'),
+                'bgColor' => $companyBalance >= 0 ? 'green' : 'red',
+            ])
         @endif
     </div>
-@stop
-
-@section('js')
-    <script> console.log('Hi!'); </script>
 @stop

@@ -30,4 +30,9 @@ class Contributor extends EntityAbstract
         'web_url',
     ];
 
+    public function extra()
+    {
+        return $this->hasOne(ContributorExtra::class);
+    }
+
 }

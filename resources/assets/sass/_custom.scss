@@ -10,3 +10,15 @@
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
   color: $text-color;
 }
+.card-avatar {
+  max-width: 80px;
+  max-height: 80px;
+  border-radius: 5px;
+}
+.cell-avatar {
+  width: 20px;
+  max-width: 20px;
+  max-height: 20px;
+  margin-right: 10px;
+  border-radius: 5px;
+}
