@@ -9,6 +9,7 @@ namespace App\Model\Entity;
  * @property string state
  * @property string avatar_url
  * @property string web_url
+ * @property ContributorExtra extra
  */
 class Contributor extends EntityAbstract
 {

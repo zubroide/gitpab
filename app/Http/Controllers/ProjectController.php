@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Service\Eloquent\EloquentProjectService;
+use App\Providers\AppServiceProvider;
 
 class ProjectController extends CrudController
 {
@@ -11,7 +12,7 @@ class ProjectController extends CrudController
      */
     protected function getService()
     {
-        return app(EloquentProjectService::class);
+        return app(AppServiceProvider::ELOQUENT_PROJECT_SERVICE);
     }
 
 }

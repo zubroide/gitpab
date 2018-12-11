@@ -22,7 +22,7 @@ class PaymentController extends CrudController
      */
     protected function getService()
     {
-        return app(EloquentPaymentService::class);
+        return app(AppServiceProvider::ELOQUENT_PAYMENT_SERVICE);
     }
 
     protected function prepareDataForCreate(FormRequest $request, array $data)

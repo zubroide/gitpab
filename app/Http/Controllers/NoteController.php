@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Service\Eloquent\EloquentNoteService;
+use App\Providers\AppServiceProvider;
 
 class NoteController extends CrudController
 {
@@ -11,7 +12,7 @@ class NoteController extends CrudController
      */
     protected function getService()
     {
-        return app(EloquentNoteService::class);
+        return app(AppServiceProvider::ELOQUENT_NOTE_SERVICE);
     }
 
 }

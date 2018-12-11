@@ -45,4 +45,7 @@ Route::group(['middleware' => ['auth', 'route_permission']], function () {
     Route::resource('payment', '\\' . PaymentController::class);
     Route::resource('user', '\\' . UserController::class);
 
+    Route::get('/contributor/{id}/rate', '\\' . ContributorController::class . '@rate')
+        ->name('contributor.rate');
+
 });

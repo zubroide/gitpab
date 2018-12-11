@@ -16,6 +16,7 @@ return [
     'Add' => 'Добавить',
     'Added by mistake or occurs problem with payment' => 'Добавлено ошибочно или возникла проблема с платежом',
     'Admin' => 'Администрирование',
+    'Amount' => 'Сумма',
     'Apply' => 'Применить',
     'Assignee' => 'Исполнитель',
     'Author' => 'Автор',

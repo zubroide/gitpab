@@ -21,7 +21,7 @@ class TimeController extends CrudController
      */
     protected function getService()
     {
-        return app(EloquentSpentService::class);
+        return app(AppServiceProvider::ELOQUENT_SPENT_SERVICE);
     }
 
     protected function prepareDataForIndex(FormRequest $request, array $data)

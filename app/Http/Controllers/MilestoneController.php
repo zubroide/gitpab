@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Service\Eloquent\EloquentMilestoneService;
+use App\Providers\AppServiceProvider;
 
 class MilestoneController extends CrudController
 {
@@ -11,7 +12,7 @@ class MilestoneController extends CrudController
      */
     protected function getService()
     {
-        return app(EloquentMilestoneService::class);
+        return app(AppServiceProvider::ELOQUENT_GROUP_MILESTONE_SERVICE);
     }
 
 }

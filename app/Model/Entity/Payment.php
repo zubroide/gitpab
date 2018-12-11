@@ -7,9 +7,14 @@ use App\User;
  * @property int id
  * @property string title
  * @property string description
+ * @property float amount
+ * @property float hour_rate
+ * @property float hours
  * @property int status_id
  * @property string payment_date
- * @property int user_id
+ * @property int contributor_id
+ * @property int created_by_id
+ * @property int updated_by_id
  */
 class Payment extends EntityAbstract
 {
@@ -26,6 +31,8 @@ class Payment extends EntityAbstract
         'id',
         'title',
         'description',
+        'amount',
+        'hour_rate',
         'hours',
         'status_id',
         'payment_date',

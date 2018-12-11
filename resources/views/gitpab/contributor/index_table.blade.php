@@ -56,10 +56,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
         <tr>
             <td class="col-md-1"><a href="{{ route('contributor.show', $item->id) }}">{{ $item->id }}</a></td>
             <td class="col-md-4">
-                @if ($item->avatar_url)
-                    <img src="{{ $item->avatar_url }}" class="cell-avatar"/>
-                @endif
-                {{ $item->name }}
+                @include('partial.table.td-contributor', ['item' => $item])
             </td>
             <td class="col-md-2">
                 <a href="{{ $item->web_url }}">{{ $item->username }}</a>

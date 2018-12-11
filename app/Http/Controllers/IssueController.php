@@ -16,7 +16,7 @@ class IssueController extends CrudController
      */
     protected function getService()
     {
-        return app(EloquentIssueService::class);
+        return app(AppServiceProvider::ELOQUENT_ISSUE_SERVICE);
     }
 
     protected function prepareDataForIndex(FormRequest $request, array $data)

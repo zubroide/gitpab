@@ -15,7 +15,7 @@ class UserController extends CrudController
      */
     protected function getService()
     {
-        return app(EloquentUserService::class);
+        return app(AppServiceProvider::ELOQUENT_USER_SERVICE);
     }
 
     protected function prepareDataForEdit(FormRequest $request, array $data)

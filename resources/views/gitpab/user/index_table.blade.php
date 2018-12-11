@@ -54,7 +54,9 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
         <tr>
             <td class="col-md-1"><a href="{{ route('user.show', $item->id) }}">{{ $item->id }}</a></td>
             <td class="col-md-2">{{ $item->name }}</td>
-            <td class="col-md-2">{{ $item->contributor ? $item->contributor->name : '' }}</td>
+            <td class="col-md-2">
+                @include('partial.table.td-contributor', ['item' => $item->contributor])
+            </td>
             <td class="col-md-2">{{ $item->email }}</td>
             <td class="col-md-2">
                 @foreach ($item->roles as $role)

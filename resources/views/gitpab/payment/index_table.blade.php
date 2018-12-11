@@ -16,6 +16,14 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
         ])
 
         @include('partial.table.thcell', [
+            'column' => 'amount',
+            'label' => __('messages.Amount'),
+            'order' => $order,
+            'orderDirection' => $orderDirection,
+            'orderLinkRoute' => $indexRoute
+        ])
+
+        @include('partial.table.thcell', [
             'column' => 'hours',
             'label' => __('messages.Payed hours'),
             'order' => $order,
@@ -72,9 +80,12 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
     @forelse ($itemsList->items() as $key => $item)
         <tr>
             <td class="col-md-1"><a href="{{ route('payment.show', $item->id) }}">{{ $item->id }}</a></td>
+            <td class="col-md-1">{{ $item->amount }}</td>
             <td class="col-md-1">{{ $item->hours }}</td>
-            <td class="col-md-2">{{ $item->contributor->name }}</td>
-            <td class="col-md-3">{{ $item->title }}</td>
+            <td class="col-md-2">
+                @include('partial.table.td-contributor', ['item' => $item->contributor])
+            </td>
+            <td class="col-md-2">{{ $item->title }}</td>
             <td class="col-md-1">@lang($item->status->title)</td>
             <td class="col-md-1">{{ $item->payment_date }}</td>
             <td class="col-md-1">

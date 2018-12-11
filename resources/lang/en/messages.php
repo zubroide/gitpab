@@ -16,6 +16,7 @@ return [
     'Add' => 'Add',
     'Added by mistake or occurs problem with payment' => 'Added by mistake or occurs problem with payment',
     'Admin' => 'Admin',
+    'Amount' => 'Amount',
     'Apply' => 'Apply',
     'Assignee' => 'Assignee',
     'Author' => 'Author',
