@@ -39,7 +39,7 @@
                     @lang('messages.Hour rate')
                 </div>
                 <div class="col-md-10">
-                    {{ $object->hour_rate ?: '-' }}
+                    {{ $object->extra ? $object->extra->hour_rate : '-' }}
                 </div>
             </div>
 
@@ -48,7 +48,7 @@
                     @lang('messages.Costs, %')
                 </div>
                 <div class="col-md-10">
-                    {{ $object->costs_percent ?: '-' }}
+                    {{ $object->extra ? $object->extra->costs_percent : '-' }}
                 </div>
             </div>
 
