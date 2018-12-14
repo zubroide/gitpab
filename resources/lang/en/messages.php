@@ -27,6 +27,7 @@ return [
     'Comments' => 'Comments',
     'Company balance' => 'Company balance',
     'Contributors' => 'Contributors',
+    'Costs, %' => 'Costs, %',
     'Create' => 'Create',
     'Create payment' => 'Create payment',
     'Created At' => 'Created At',

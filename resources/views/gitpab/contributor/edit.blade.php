@@ -22,6 +22,14 @@
             ])
         </div>
 
+        <div class="col-md-6">
+            @include('partial.form.element.text', [
+                'name' => 'extra_costs_percent',
+                'label' => __('messages.Costs, %'),
+                'value' => $object->extra ? $object->extra->costs_percent : '',
+            ])
+        </div>
+
     </div>
 
 @endsection

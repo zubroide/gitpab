@@ -12,10 +12,16 @@
                 'list' => $contributorList ?? [],
             ])
         </div>
-        <div class="col-md-6">
+        <div class="col-md-3">
             @include('partial.form.element.text', [
                 'name' => 'hour_rate',
                 'label' => __('messages.Hour rate'),
+            ])
+        </div>
+        <div class="col-md-3">
+            @include('partial.form.element.text', [
+                'name' => 'costs_percent',
+                'label' => __('messages.Costs, %'),
             ])
         </div>
         <div class="col-md-6">
@@ -67,10 +73,14 @@
 @push('js')
     <script>
         function calculateHours() {
-            console.log('-');
             var payedHours = null;
             if ($('[name="hour_rate"]').val()) {
-                payedHours = $('[name="amount"]').val() / $('[name="hour_rate"]').val();
+                var amount = $('[name="amount"]').val();
+                var costsPercent = $('[name="costs_percent"]').val();
+                if (costsPercent !== 100) {
+                    amount = amount * (100 - costsPercent) / 100;
+                }
+                payedHours = amount / $('[name="hour_rate"]').val();
                 payedHours = payedHours.toFixed(2);
             }
             $('[name="hours"]').val(payedHours);
@@ -81,6 +91,7 @@
                 .done(function(response) {
                     if (response.status && response.status.result === 'success') {
                         $('[name="hour_rate"]').val(response.data.hour_rate);
+                        $('[name="costs_percent"]').val(response.data.costs_percent);
                         calculateHours();
                     }
                 });

@@ -36,6 +36,24 @@
 
             <div class="row">
                 <div class="col-md-2">
+                    @lang('messages.Hour rate')
+                </div>
+                <div class="col-md-10">
+                    {{ $object->hour_rate ?: '-' }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2">
+                    @lang('messages.Costs, %')
+                </div>
+                <div class="col-md-10">
+                    {{ $object->costs_percent ?: '-' }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2">
                     @lang('messages.Balance')
                 </div>
                 <div class="col-md-10">

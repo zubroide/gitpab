@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Model\Entity;
+
 use App\User;
 
 /**
@@ -9,6 +10,7 @@ use App\User;
  * @property string description
  * @property float amount
  * @property float hour_rate
+ * @property float costs_percent
  * @property float hours
  * @property int status_id
  * @property string payment_date
@@ -33,6 +35,7 @@ class Payment extends EntityAbstract
         'description',
         'amount',
         'hour_rate',
+        'costs_percent',
         'hours',
         'status_id',
         'payment_date',

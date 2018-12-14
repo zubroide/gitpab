@@ -24,10 +24,37 @@
 
     <div class="row">
         <div class="col-md-2">
+            @lang('messages.Amount')
+        </div>
+        <div class="col-md-10">
+            {{ $object->amount }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            @lang('messages.Hour rate')
+        </div>
+        <div class="col-md-10">
+            {{ $object->hour_rate }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            @lang('messages.Costs, %')
+        </div>
+        <div class="col-md-10">
+            {{ $object->costs_percent }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
             @lang('messages.Payed hours')
         </div>
         <div class="col-md-10">
-            {{ $object->hours }}
+            <b>{{ $object->hours }}</b>
         </div>
     </div>
 

@@ -22,6 +22,7 @@ class ContributorController extends CrudController
         $contributor = $this->getService()->getObjectForEdit($id);
         return $this->jsonSuccess([
             'hour_rate' => $contributor->extra ? $contributor->extra->hour_rate : null,
+            'costs_percent' => $contributor->extra ? $contributor->extra->costs_percent : null,
         ]);
     }
 

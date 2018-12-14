@@ -6,7 +6,24 @@
 
     <div class="row">
         <div class="col-md-6">
-            <label>@lang('messages.Hours')</label>
+            <label>@lang('messages.Amount')</label>
+            <p>{{ $object->amount ?: '-' }}</p>
+        </div>
+        <div class="col-md-6">
+            <label>@lang('messages.Hour rate')</label>
+            <p>{{ $object->hour_rate ?: '-' }}</p>
+        </div>
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
+            <label>@lang('messages.Costs, %')</label>
+            <p>{{ $object->costs_percent ?: '-' }}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>@lang('messages.Payed hours')</label>
             <p>{{ $object->hours }}</p>
         </div>
         <div class="col-md-6">

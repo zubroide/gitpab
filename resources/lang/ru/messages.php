@@ -27,6 +27,7 @@ return [
     'Comments' => 'Комментарии',
     'Company balance' => 'Баланс компании',
     'Contributors' => 'Сотрудники',
+    'Costs, %' => 'Издержки, %',
     'Create' => 'Создать',
     'Create payment' => 'Создать плаеж',
     'Created At' => 'Добавлено',
