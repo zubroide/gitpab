@@ -40,7 +40,7 @@ return [
     'Edit payment' => 'Edit payment',
     'Edit user' => 'Edit user',
     'Email' => 'E-mail',
-    'Employer' => 'Employer',
+    'Employee' => 'Employee',
     'Error' => 'Error',
     'Error on create record' => 'Error on create record',
     'Estimate' => 'Estimate',

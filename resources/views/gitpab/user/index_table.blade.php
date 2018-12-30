@@ -25,7 +25,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
 
         @include('partial.table.thcell', [
             'column' => 'contributor_id',
-            'label' => __('messages.Employer'),
+            'label' => __('messages.Employee'),
         ])
 
         @include('partial.table.thcell', [

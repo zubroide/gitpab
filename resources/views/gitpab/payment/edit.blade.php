@@ -35,7 +35,7 @@
             <p>{{ $object->payment_date }}</p>
         </div>
         <div class="col-md-6">
-            <label>@lang('messages.Employer')</label>
+            <label>@lang('messages.Employee')</label>
             <p>{{ $object->contributor->name }}</p>
         </div>
         <div class="col-md-6">

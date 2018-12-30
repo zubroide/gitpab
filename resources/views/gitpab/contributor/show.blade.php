@@ -18,7 +18,7 @@
 
             <div class="row">
                 <div class="col-md-2">
-                    @lang('messages.Employer')
+                    @lang('messages.Employee')
                 </div>
                 <div class="col-md-10">
                     {{ $object->name }}

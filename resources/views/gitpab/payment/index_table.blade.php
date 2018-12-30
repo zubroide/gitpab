@@ -33,7 +33,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
 
         @include('partial.table.thcell', [
             'column' => 'user',
-            'label' => __('messages.Employer'),
+            'label' => __('messages.Employee'),
             'order' => $order,
             'orderDirection' => $orderDirection,
             'orderLinkRoute' => $indexRoute

@@ -8,7 +8,7 @@
         <div class="col-md-6">
             @include('partial.form.element.select', [
                 'name' => 'contributor_id',
-                'label' => __('messages.Employer'),
+                'label' => __('messages.Employee'),
                 'list' => $contributorList ?? [],
             ])
         </div>
