@@ -155,3 +155,7 @@ sudo php artisan cache:clear
 php artisan db:seed
 sudo php artisan cache:clear
 ```
+
+## I wish you successful projects!
+
+![](/doc/zubr-gitpab-small.jpeg)
