@@ -128,6 +128,7 @@ Just rebuild container
 
 ```bash
 git pull
+cd docker
 export host="https://gitlab.com/" \
     && export token="your_gitlab_private_token" \
     && export projects="project_id1,project_id2" \
