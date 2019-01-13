@@ -3,7 +3,6 @@
 @php
 $columnTitleName = isset($columnTitleName) ? $columnTitleName : 'name';
 $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.Title');
-$createdExist = isset($itemsList->first()['created_at']);
 @endphp
 
 @section('tableThead')
@@ -48,12 +47,20 @@ $createdExist = isset($itemsList->first()['created_at']);
             'orderLinkRoute' => $indexRoute
         ])
 
-        @if ($createdExist)
-            @include('partial.table.thcell', [
-                'column' => 'gitlab_created_at',
-                'label' => __('messages.Created At'),
-            ])
-        @endif
+        @include('partial.table.thcell', [
+            'column' => 'estimate',
+            'label' => __('messages.Estimate'),
+        ])
+
+        @include('partial.table.thcell', [
+            'column' => 'spent',
+            'label' => __('messages.Spent time'),
+        ])
+
+        @include('partial.table.thcell', [
+            'column' => 'gitlab_created_at',
+            'label' => __('messages.Created At'),
+        ])
     </tr>
 @endsection
 @section('tableTbody')
@@ -63,26 +70,30 @@ $createdExist = isset($itemsList->first()['created_at']);
             <td class="col-md-1">
                 <a href="{{ $item->web_url }}">{{ $item->iid }}</a>
             </td>
-            <td class="col-md-4">
+            <td class="col-md-3">
                 <a href="{{ route($showRoute, [$item->id]) }}">
                     {{ (isset($columnTitleName)) ? $item->{$columnTitleName} : $item->title }}
                 </a>
             </td>
-            <td class="col-md-2">
+            <td class="col-md-1">
                 {{ $item->group->name ?? null }}
             </td>
             <td class="col-md-2">
                 {{ $item->project->name ?? null }}
             </td>
-            @if ($createdExist)
-                <td class="col-md-2">
-                    {{ \App\Helper\Date::formatDateTime($item->gitlab_created_at) }}
-                </td>
-            @endif
+            <td class="col-md-1">
+                {{ $item->estimate }}
+            </td>
+            <td class="col-md-1">
+                {{ $item->spent }}
+            </td>
+            <td class="col-md-2">
+                {{ \App\Helper\Date::formatDateTime($item->gitlab_created_at) }}
+            </td>
         </tr>
     @empty
         <tr>
-            <td colspan="{{ $createdExist ? 4 : 3 }}" class="col-md-12">@lang('messages.Data not found')</td>
+            <td colspan="8" class="col-md-12">@lang('messages.Data not found')</td>
         </tr>
     @endforelse
 @endsection
