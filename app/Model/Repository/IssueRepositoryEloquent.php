@@ -59,6 +59,11 @@ class IssueRepositoryEloquent extends RepositoryAbstractEloquent
             $query->whereRaw("issue.labels @> array[$labelsString]");
         }
 
+        if ($milestoneIds = Arr::get($parameters, 'milestones'))
+        {
+            $query->whereIn('issue.milestone_id', $milestoneIds);
+        }
+
         if ($dateStart = Arr::get($parameters, 'date_start'))
         {
             $date = new \DateTime($dateStart);

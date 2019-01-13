@@ -68,6 +68,17 @@
                 ])
             </div>
         </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @include('partial.form.element.select', [
+                    'name' => 'milestones[]',
+                    'list' => $milestonelList,
+                    'selected' => $request->input('milestones'),
+                    'options' => ['multiple' => 'multiple'],
+                    'label' => __('messages.Milestones'),
+                ])
+            </div>
+        </div>
     </div>
 
     <div class="row">
