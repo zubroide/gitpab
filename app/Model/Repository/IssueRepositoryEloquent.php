@@ -5,7 +5,7 @@ namespace App\Model\Repository;
 use App\Model\Entity\Issue;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 class IssueRepositoryEloquent extends RepositoryAbstractEloquent
 {
@@ -77,6 +77,28 @@ class IssueRepositoryEloquent extends RepositoryAbstractEloquent
             $query->where('issue.gitlab_created_at', '<', $date->format('Y-m-d'));
         }
 
+        $query->selectSub(function($q) {
+            $q
+                ->from('spent')
+                ->join('note', 'note.id', '=', 'spent.note_id')
+                ->selectRaw('sum(spent.hours)')
+                ->whereRaw('note.issue_id = issue.id');
+        }, 'spent');
+
         return $query;
+    }
+
+    function getTotalSpentTime(array $parameters)
+    {
+        $query = $this->getListQuery($parameters);
+
+        $query
+            ->join('note', 'note.issue_id', '=', 'issue.id')
+            ->join('spent', 'spent.note_id', '=', 'note.id')
+        ;
+
+        $query->select(DB::raw('sum(spent.hours) as total'));
+
+        return $query->first()->total;
     }
 }

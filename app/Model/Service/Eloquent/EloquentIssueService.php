@@ -5,6 +5,7 @@ namespace App\Model\Service\Eloquent;
 use App\Model\Repository\IssueRepositoryEloquent;
 use App\Providers\AppServiceProvider;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 /**
  * @property IssueRepositoryEloquent $repository
@@ -49,5 +50,17 @@ class EloquentIssueService extends CrudServiceAbstract
             return null;
         }
         return $issue->gitlab_updated_at;
+    }
+
+    public function getTotalEstimate(array $parameters)
+    {
+        $query = $this->repository->getListQuery($parameters);
+        $query->select(DB::raw('sum(estimate) as total'));
+        return $query->first()->total;
+    }
+
+    public function getTotalTime(array $parameters)
+    {
+        return $this->repository->getTotalSpentTime($parameters);
     }
 }

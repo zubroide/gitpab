@@ -38,6 +38,11 @@ $createdExist = isset($itemsList->first()['created_at']);
         ])
 
         @include('partial.table.thcell', [
+            'column' => 'spent',
+            'label' => __('messages.Spent time'),
+        ])
+
+        @include('partial.table.thcell', [
             'column' => 'labels',
             'label' => 'Labels',
         ])
@@ -81,7 +86,10 @@ $createdExist = isset($itemsList->first()['created_at']);
             <td class="col-md-1">
                 {{ $item->estimate ?? null }}
             </td>
-            <td class="col-md-2">
+            <td class="col-md-1">
+                {{ $item->spent ?? null }}
+            </td>
+            <td class="col-md-1">
                 @foreach ($item->labels as $label)
                     <span class="label label-primary">{{ $label }}</span>
                 @endforeach
@@ -103,4 +111,13 @@ $createdExist = isset($itemsList->first()['created_at']);
             <td colspan="{{ $createdExist ? 8 : 7 }}" class="col-md-12">@lang('messages.Data not found')</td>
         </tr>
     @endforelse
+@endsection
+
+@section('tableTfooter')
+    <tr>
+        <td colspan="3"></td>
+        <td>{{  $total['estimate'] }}</td>
+        <td>{{  $total['time'] }}</td>
+        <td colspan="4"></td>
+    </tr>
 @endsection

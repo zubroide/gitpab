@@ -34,6 +34,9 @@ class IssueController extends CrudController
         /** @var MilestoneRepositoryEloquent $milestoneRepository */
         $milestoneRepository = app(AppServiceProvider::MILESTONE_REPOSITORY);
 
+        $totalEstimate = $this->getService()->getTotalEstimate($request->all());
+        $totalTime = $this->getService()->getTotalTime($request->all());
+
         return array_merge(
             $data,
             [
@@ -41,6 +44,10 @@ class IssueController extends CrudController
                 'projectsList' => $projectRepository->getItemsForSelect(),
                 'labelList' => $labelRepository->getItemsForSelect(null, null, 'name'),
                 'milestonelList' => $milestoneRepository->getItemsForSelect(null, null, 'id', 'title'),
+                'total' => [
+                    'estimate' => $totalEstimate,
+                    'time' => $totalTime,
+                ],
             ]
         );
     }
