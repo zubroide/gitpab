@@ -67,8 +67,13 @@
                                 <li><a href="{{ url('lang/ru') }}">{{ trans('locale.ru') }}</a></li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="{{ route('user.show', Auth::user()->id) }}">{{ Auth::user()->name }}</a>
+                        <li class="user-menu">
+                            <a href="{{ route('user.show', Auth::user()->id) }}">
+                                @if (Auth::user()->contributor)
+                                    <img src="{{ Auth::user()->contributor->avatar_url }}" class="user-image">
+                                @endif
+                                {{ Auth::user()->name }}
+                            </a>
                         </li>
                         <li>
                             @if(config('adminlte.logout_method') == 'GET' || !config('adminlte.logout_method') && version_compare(\Illuminate\Foundation\Application::VERSION, '5.3.0', '<'))
