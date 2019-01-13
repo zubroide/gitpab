@@ -80,6 +80,11 @@ class SpentRepositoryEloquent extends RepositoryAbstractEloquent
             $query->whereRaw("issue.labels @> array[$labelsString]");
         }
 
+        if ($milestoneIds = Arr::get($parameters, 'milestones'))
+        {
+            $query->whereIn('issue.milestone_id', $milestoneIds);
+        }
+
         return $query;
     }
 

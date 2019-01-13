@@ -104,6 +104,6 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
     <tr>
         <td colspan="2"></td>
         <td>{{  $total['time'] }}</td>
-        <td colspan="3"></td>
+        <td colspan="4"></td>
     </tr>
 @endsection
