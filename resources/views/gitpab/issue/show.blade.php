@@ -15,6 +15,15 @@
 
     <div class="row">
         <div class="col-md-2">
+            @lang('messages.Number')
+        </div>
+        <div class="col-md-10">
+            {{ $object->iid }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
             @lang('messages.Title')
         </div>
         <div class="col-md-10">
