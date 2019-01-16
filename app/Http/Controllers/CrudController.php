@@ -274,12 +274,13 @@ abstract class CrudController extends Controller
 
         $view = $this->getView('edit');
 
+        $entity = $this->getService()->getObjectForEdit($id);
         $data = $this->prepareDataForEdit($request, [
             'errorMessage' => $errorMessage,
             'updateRoute' => $updateRoute,
             'indexRoute' => $indexRoute,
             'backUrl' => $backUrl,
-            'object' => (object)($request->all() + ['id' => $id]),
+            'object' => $entity,
         ]);
 
         return view($view, $data);

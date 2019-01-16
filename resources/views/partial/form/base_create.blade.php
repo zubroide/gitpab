@@ -7,7 +7,9 @@
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                     <h4><i class="icon fa fa-check"></i> @lang('messages.Error')</h4>
                     {{ $errorMessage }}
-                    <?php var_dump($errors) ?>
+                    @foreach ($errors as $error)
+                        <p>{{  $error->message }}</p>
+                    @endforeach
                 </div>
             @endif
         @show

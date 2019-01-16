@@ -81,6 +81,7 @@ class ContributorRepositoryEloquent extends RepositoryAbstractEloquent
                 $modelExtraName = $this->model() . 'Extra';
                 $entityExtra = new $modelExtraName();
                 $entityExtra->fill($extra);
+                $entityExtra->costs_percent = $entityExtra->costs_percent ?: 0;
                 $entityExtra->$pkFieldName = $entity->id;
                 $entityExtra->created_by_id = Auth::id();
                 $entityExtra->updated_by_id = Auth::id();
