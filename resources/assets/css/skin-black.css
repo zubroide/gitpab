@@ -1,0 +1,115 @@
+/* Top Menu */
+.skin-black .main-header .logo,
+.skin-black .main-header .logo:hover {
+  background-color: #303030;
+  color: #d5833c;
+  border-right-color: #303030;
+}
+.skin-black .main-header .navbar {
+  background-color: #333333;
+}
+.skin-black .main-header .navbar>.sidebar-toggle {
+  color: #c0c0c0;
+  border-right: #333333;
+}
+.skin-black .main-header .navbar>.sidebar-toggle:hover {
+  background-color: #333333;
+  color: #d4d4d4;
+}
+
+.skin-black .main-header .navbar .navbar-custom-menu .navbar-nav>li>a,
+.skin-black .main-header .navbar .navbar-right>li>a {
+  color: #c0c0c0;
+  border-left: #333333;
+}
+.skin-black .main-header .navbar .navbar-custom-menu .navbar-nav>li>a:hover,
+.skin-black .main-header .navbar .navbar-custom-menu .navbar-nav>li>a:focus,
+.skin-black .main-header .navbar .navbar-right>li>a:hover,
+.skin-black .main-header .navbar .navbar-right>li>a:focus {
+  background-color: #333333;
+  color: #d4d4d4;
+}
+
+/* Content */
+.skin-black a,
+.skin-black a:hover {
+  color: #e8bf6a;
+}
+.skin-black .btn-primary {
+  background-color: #d5833c;
+  border-color: #d5833c;
+  color: #ffffff;
+}
+.skin-black .btn-primary:hover {
+  background-color: #f49b43;
+  color: #ffffff;
+}
+.skin-black a.btn-default,
+.skin-black a.btn-default:hover,
+.skin-black a.btn-default:selection {
+  color: #d4d4d4;
+}
+.skin-black .btn-default,
+.skin-black .btn-default:hover {
+  background-color: #666666;
+  border-color: #777777;
+  color: #d4d4d4;
+}
+.skin-black .label-primary {
+  background-color: #814e23 !important;
+  color: #ffffff !important;
+}
+.skin-black .content-wrapper {
+  background-color: #222222;
+  color: #c0c0c0;
+}
+.skin-black .box,
+.skin-black .box-footer {
+  background-color: #444444;
+  border-top-color: #666666;
+  color: #d4d4d4;
+}
+.skin-black .info-box {
+  background-color: #444444;
+}
+
+/* Tables */
+.skin-black .table thead tr th,
+.skin-black .table tbody tr td {
+  border-bottom-color: #666666;
+  border-top-color: #666666;
+}
+.skin-black .table tbody tr:hover {
+  background-color: #666666;
+}
+
+/* Inputs */
+.skin-black input,
+.skin-black textarea {
+  background-color: #636b6f;
+  border-color: #80898e;
+  color: #e0e0e0;
+  border-radius: 0;
+}
+.skin-black input:focus,
+.skin-black textarea:focus {
+  border-color: #9ea7ac;
+}
+.skin-black .select2-container--default .select2-selection--multiple,
+.skin-black .select2-container--default .select2-selection--single{
+  background-color: #636b6f;
+  border-color: #80898e;
+}
+.skin-black .select2-container--default.select2-container--focus .select2-selection--multiple {
+  border-color: #9ea7ac !important;
+}
+.skin-black .select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: #e0e0e0;
+}
+.skin-black .datepicker {
+  background: #636b6f;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #80898e;
+  width: 100%
+}

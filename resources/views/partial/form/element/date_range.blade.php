@@ -6,8 +6,7 @@ $endDate = isset($input['date_end']) ? $input['date_end'] : old('date_end');
     <div class="form-group">
         <label>{{ $label }}</label>
 
-        <div id="reportrange_{{ $name }}" class="pull-right"
-             style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+        <div id="reportrange_{{ $name }}" class="pull-right datepicker">
             <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp; @lang('calendar.Period')
             <span></span> <b class="caret"></b>
 

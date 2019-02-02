@@ -1,0 +1,11 @@
+.skin-purple a, .skin-purple a:hover {
+  color: #555299;
+}
+.skin-purple .btn-primary {
+  background-color: #605ca8;
+  color: #ffffff;
+}
+.skin-purple .label-primary {
+  background-color: #605ca8 !important;
+  color: #ffffff;
+}
