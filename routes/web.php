@@ -18,6 +18,7 @@ use App\Http\Controllers\MilestoneController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\Theme\SwitchThemeController;
 use App\Http\Controllers\TimeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -47,5 +48,8 @@ Route::group(['middleware' => ['auth', 'route_permission']], function () {
 
     Route::get('/contributor/{id}/rate', '\\' . ContributorController::class . '@rate')
         ->name('contributor.rate');
+
+    Route::get('/theme/{theme}', '\\' . SwitchThemeController::class . '@switchTheme')
+        ->name('theme.switch');
 
 });

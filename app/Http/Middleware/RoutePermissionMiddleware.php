@@ -6,6 +6,10 @@ use Closure;
 
 class RoutePermissionMiddleware
 {
+
+    protected $exclude = [
+        'theme.switch'
+    ];
     /**
      * Handle an incoming request.
      *
@@ -17,7 +21,7 @@ class RoutePermissionMiddleware
     {
         $permission = $request->route()->getName();
 
-        if (!$request->user()->can($permission)) {
+        if (!in_array($permission, $this->exclude) && !$request->user()->can($permission)) {
             abort(403);
         }
 

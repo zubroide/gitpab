@@ -83,6 +83,7 @@ return [
     'Status' => 'Status',
     'Success' => 'Success',
     'Text' => 'Text',
+    'Theme' => 'Theme',
     'Title' => 'Title',
     'Updated At' => 'Updated At',
     'Updated By' => 'Updated By',

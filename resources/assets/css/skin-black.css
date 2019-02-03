@@ -1,4 +1,8 @@
 /* Top Menu */
+.skin-black .main-header,
+.skin-black .main-header {
+  background-color: #303030;
+}
 .skin-black .main-header .logo,
 .skin-black .main-header .logo:hover {
   background-color: #303030;
@@ -57,7 +61,7 @@
 }
 .skin-black .label-primary {
   background-color: #814e23 !important;
-  color: #ffffff !important;
+  color: #e0e0e0 !important;
 }
 .skin-black .content-wrapper {
   background-color: #222222;
@@ -96,7 +100,7 @@
   border-color: #9ea7ac;
 }
 .skin-black .select2-container--default .select2-selection--multiple,
-.skin-black .select2-container--default .select2-selection--single{
+.skin-black .select2-container--default .select2-selection--single {
   background-color: #636b6f;
   border-color: #80898e;
 }
@@ -112,4 +116,22 @@
   padding: 5px 10px;
   border: 1px solid #80898e;
   width: 100%
+}
+.skin-black .pagination>li>a,
+.skin-black .pagination>li>span {
+  background-color: #636b6f;
+  border-color: #80898e;
+  color: #e0e0e0;
+}
+.skin-black .pagination>.active>a,
+.skin-black .pagination>.active>span {
+  background-color: #d5833c;
+  border-color: #d5833c;
+  color: #ffffff;
+}
+.skin-black .pagination>li>a:hover,
+.skin-black .pagination>li>span:hover {
+  background-color: #814e23;
+  border-color: #80898e;
+  color: #e0e0e0;
 }

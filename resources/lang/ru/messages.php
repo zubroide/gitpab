@@ -83,6 +83,7 @@ return [
     'Status' => 'Статус',
     'Success' => 'Успешно',
     'Text' => 'Текст',
+    'Theme' => 'Тема',
     'Title' => 'Название',
     'Updated At' => 'Обновлено',
     'Updated By' => 'Обновил',

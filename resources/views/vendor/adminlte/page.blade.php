@@ -2,12 +2,12 @@
 
 @section('adminlte_css')
     <link rel="stylesheet"
-          href="{{ asset('vendor/adminlte/dist/css/skins/skin-' . config('adminlte.skin', 'blue') . '.min.css')}} ">
+          href="{{ asset('vendor/adminlte/dist/css/skins/skin-' . request()->cookie(config('app.theme.key', config('adminlte.skin', 'blue'))) . '.min.css')}} ">
     @stack('css')
     @yield('css')
 @stop
 
-@section('body_class', 'skin-' . config('adminlte.skin', 'blue') . ' sidebar-mini ' . (config('adminlte.layout') ? [
+@section('body_class', 'skin-' . request()->cookie(config('app.theme.key', config('adminlte.skin', 'blue'))) . ' sidebar-mini ' . (config('adminlte.layout') ? [
     'boxed' => 'layout-boxed',
     'fixed' => 'fixed',
     'top-nav' => 'layout-top-nav'
@@ -65,6 +65,17 @@
                             <ul class="dropdown-menu">
                                 <li><a href="{{ url('lang/en') }}">{{ trans('locale.en') }}</a></li>
                                 <li><a href="{{ url('lang/ru') }}">{{ trans('locale.ru') }}</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                @lang('messages.Theme')
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                @foreach (App\Http\Controllers\Theme\SwitchThemeController::AVAILABLE_THEMES as $theme => $name)
+                                    <li><a href="{{ url('theme/' . $theme) }}">{{ $name }}</a></li>
+                                @endforeach
                             </ul>
                         </li>
                         <li class="user-menu">
