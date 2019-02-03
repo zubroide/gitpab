@@ -2,12 +2,12 @@
 
 @section('adminlte_css')
     <link rel="stylesheet"
-          href="{{ asset('vendor/adminlte/dist/css/skins/skin-' . request()->cookie(config('app.theme.key', config('adminlte.skin', 'blue'))) . '.min.css')}} ">
+          href="{{ asset('vendor/adminlte/dist/css/skins/skin-' . (request()->cookie(config('app.theme.key', 'theme')) ?: config('adminlte.skin', 'blue')) . '.min.css')}} ">
     @stack('css')
     @yield('css')
 @stop
 
-@section('body_class', 'skin-' . request()->cookie(config('app.theme.key', config('adminlte.skin', 'blue'))) . ' sidebar-mini ' . (config('adminlte.layout') ? [
+@section('body_class', 'skin-' . (request()->cookie(config('app.theme.key', 'theme')) ?: config('adminlte.skin', 'blue')) . ' sidebar-mini ' . (config('adminlte.layout') ? [
     'boxed' => 'layout-boxed',
     'fixed' => 'fixed',
     'top-nav' => 'layout-top-nav'
