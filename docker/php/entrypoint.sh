@@ -37,5 +37,8 @@ init_project
 setup_db
 load_data
 
+log "Start cron"
+service cron start
+
 log "Start php-fpm"
 php-fpm

@@ -1,8 +1,8 @@
 version: "3.3"
 
 volumes:
-
   code: {}
+  db: {}
 
 services:
 
@@ -20,24 +20,6 @@ services:
       - php
     restart: unless-stopped
 
-  cron:
-    container_name: gitpab-cron
-    build:
-      context: .
-      dockerfile: docker/php/Dockerfile
-    volumes:
-      - code:/var/www/html
-      - ./docker/cron/crontab:/etc/cron.d/app
-    environment:
-      GITLAB_PRIVATE_TOKEN: ${token}
-      GITLAB_RESTRICTIONS_PROJECT_IDS: ${projects}
-      GITLAB_HOST: ${host}
-      APP_LOCALE: en
-    links:
-      - php
-    restart: unless-stopped
-    entrypoint: cron -f
-
   php:
     container_name: gitpab-php
     build:
@@ -45,6 +27,7 @@ services:
       dockerfile: docker/php/Dockerfile
     volumes:
       - code:/var/www/html
+      - ./docker/cron/crontab:/etc/cron.d/app
     environment:
       GITLAB_PRIVATE_TOKEN: ${token}
       GITLAB_RESTRICTIONS_PROJECT_IDS: ${projects}
@@ -58,7 +41,7 @@ services:
     container_name: gitpab-db
     image: postgres
     volumes:
-      - /data/gitpab/postgres:/var/lib/postgresql
+      - db:/var/lib/postgresql
     environment:
       POSTGRES_DB: gitpab
       POSTGRES_USER: gitpab

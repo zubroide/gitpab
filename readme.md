@@ -130,6 +130,7 @@ Just rebuild container
 
 ```bash
 git pull
+docker volume rm -f gitpab_code  # https://github.com/docker/compose/issues/5772
 export host="https://gitlab.com/" \
     && export token="your_gitlab_private_token" \
     && export projects="project_id1,project_id2" \
