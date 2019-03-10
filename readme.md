@@ -13,6 +13,8 @@ Just mark time spent in Gitlab and build report using me.
 
 ## Installation using docker
 
+Requirements: Docker 17.05+.
+
 You may obtain needed project ids from gitlab Api:
 https://gitlab.com/api/v4/projects?private_token=your_private_token&membership=1 
 
@@ -20,11 +22,11 @@ Clone this repo and run containers from `docker` folder:
 
 ```bash
 git clone git@github.com:zubroide/gitpab.git
-cd gitpab/docker
+cd gitpab
 export host="https://gitlab.com/" \
     && export token="your_gitlab_private_token" \
     && export projects="project_id1,project_id2" \
-    && docker-compose up --build app
+    && docker-compose up --build
 ```
 
 Be patient. Loading data from Gitlab may take tens minutes at first time.
@@ -128,11 +130,10 @@ Just rebuild container
 
 ```bash
 git pull
-cd docker
 export host="https://gitlab.com/" \
     && export token="your_gitlab_private_token" \
     && export projects="project_id1,project_id2" \
-    && docker-compose up --build app
+    && docker-compose up --build
 ```
 
 ### Without docker

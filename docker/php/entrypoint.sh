@@ -4,28 +4,16 @@ log() {
   echo -e "${NAMI_DEBUG:+${CYAN}${MODULE} ${MAGENTA}$(date "+%T.%2N ")}${RESET}${@}" >&2
 }
 
-clone_project() {
-  log "Cloning project"
-  mkdir -p /data/www
-  cd /data/www
-  if [ ! -d gitpab ]
+init_project() {
+  log "Init project"
+  cd /var/www/html
+  if [ ! `cat .env | grep APP_KEY=.` ]
   then
-    git clone https://github.com/zubroide/gitpab.git
-    cd gitpab
-    cp /data/.env .env
-    composer install
     php artisan key:generate
     php artisan vendor:publish --provider="JeroenNoten\LaravelAdminLte\ServiceProvider" --tag=assets
-  else
-    cd gitpab
-    git pull
   fi
-  chown -R www-data:www-data /data/www
-  chmod -R g+w /data
-  cd /data/www/gitpab
-  composer install
-  npm install
-  npm run prod
+  chown -R www-data:www-data /var/www/html
+  chmod -R g+w /var/www/html
 }
 
 setup_db() {
@@ -42,10 +30,12 @@ load_data() {
   php artisan import:all
 }
 
-/root/wait-for-it.sh db:5432 -- echo "PostgreSQL started"
+log "Waiting for Postgres..."
+/root/wait-for-it.sh db:5432 --timeout=180 -- echo "PostgreSQL started"
 
-clone_project
+init_project
 setup_db
 load_data
 
-supervisord -n
+log "Start php-fpm"
+php-fpm
