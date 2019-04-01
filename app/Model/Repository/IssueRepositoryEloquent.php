@@ -30,7 +30,9 @@ class IssueRepositoryEloquent extends RepositoryAbstractEloquent
 
     public function getListQuery(array $parameters): Builder
     {
-        $query = parent::getListQuery($parameters);
+        $query = parent::getListQuery($parameters)
+            ->leftJoin('contributor', 'contributor.id', '=', 'issue.assignee_id')
+            ->join('project', 'project.id', '=', 'issue.project_id');
 
         if ($id = Arr::get($parameters, 'id'))
         {

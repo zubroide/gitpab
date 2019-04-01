@@ -20,7 +20,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
             'label' => $columnTitleLabel,
             'order' => $order,
             'orderDirection' => $orderDirection,
-            'orderLinkRoute' => $indexRoute
+            'orderLinkRoute' => $indexRoute,
         ])
 
         @include('partial.table.thcell', [

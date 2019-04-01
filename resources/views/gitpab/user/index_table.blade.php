@@ -24,8 +24,11 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
         ])
 
         @include('partial.table.thcell', [
-            'column' => 'contributor_id',
+            'column' => 'contributor.name',
             'label' => __('messages.Employee'),
+            'order' => $order,
+            'orderDirection' => $orderDirection,
+            'orderLinkRoute' => $indexRoute
         ])
 
         @include('partial.table.thcell', [
@@ -44,6 +47,9 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
         @include('partial.table.thcell', [
             'column' => 'created_at',
             'label' => __('messages.Created At'),
+            'order' => $order,
+            'orderDirection' => $orderDirection,
+            'orderLinkRoute' => $indexRoute
         ])
 
         <th></th>

@@ -20,7 +20,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
             'label' => __('messages.Number'),
             'order' => $order,
             'orderDirection' => $orderDirection,
-            'orderLinkRoute' => $indexRoute
+            'orderLinkRoute' => $indexRoute,
         ])
 
         @include('partial.table.thcell', [
@@ -28,23 +28,23 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
             'label' => $columnTitleLabel,
             'order' => $order,
             'orderDirection' => $orderDirection,
-            'orderLinkRoute' => $indexRoute
+            'orderLinkRoute' => $indexRoute,
         ])
 
         @include('partial.table.thcell', [
-            'column' => 'group',
+            'column' => 'namespace.name',
             'label' => __('messages.Namespace'),
             'order' => $order,
             'orderDirection' => $orderDirection,
-            'orderLinkRoute' => $indexRoute
+            'orderLinkRoute' => $indexRoute,
         ])
 
         @include('partial.table.thcell', [
-            'column' => 'project',
+            'column' => 'project.name',
             'label' => __('messages.Project'),
             'order' => $order,
             'orderDirection' => $orderDirection,
-            'orderLinkRoute' => $indexRoute
+            'orderLinkRoute' => $indexRoute,
         ])
 
         @include('partial.table.thcell', [
@@ -60,6 +60,9 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
         @include('partial.table.thcell', [
             'column' => 'gitlab_created_at',
             'label' => __('messages.Created At'),
+            'order' => $order,
+            'orderDirection' => $orderDirection,
+            'orderLinkRoute' => $indexRoute,
         ])
     </tr>
 @endsection

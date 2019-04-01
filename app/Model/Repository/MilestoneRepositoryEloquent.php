@@ -20,7 +20,9 @@ class MilestoneRepositoryEloquent extends RepositoryAbstractEloquent
 
     public function getListQuery(array $parameters): Builder
     {
-        $query = parent::getListQuery($parameters);
+        $query = parent::getListQuery($parameters)
+            ->leftJoin('project', 'project.id', '=', 'milestone.project_id')
+            ->leftJoin('namespace', 'namespace.id', '=', 'milestone.group_id');
 
         // Estimate
         $query->selectSub(function($q) {

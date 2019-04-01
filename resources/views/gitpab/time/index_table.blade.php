@@ -8,7 +8,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
 @section('tableThead')
     <tr>
         @include('partial.table.thcell', [
-            'column' => 'note_id',
+            'column' => 'spent.note_id',
             'label' => __('messages.ID'),
             'order' => $order,
             'orderDirection' => $orderDirection,
@@ -16,7 +16,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
         ])
 
         @include('partial.table.thcell', [
-            'column' => 'created_at',
+            'column' => 'note.created_at',
             'label' => __('messages.Spent at'),
             'order' => $order,
             'orderDirection' => $orderDirection,
@@ -24,19 +24,16 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
         ])
 
         @include('partial.table.thcell', [
-            'column' => 'hours',
+            'column' => 'spent.hours',
             'label' => __('messages.Hours'),
             'order' => $order,
             'orderDirection' => $orderDirection,
-            'orderLinkRoute' => $indexRoute
+            'orderLinkRoute' => $indexRoute,
         ])
 
         @include('partial.table.thcell', [
             'column' => $columnTitleName,
             'label' => $columnTitleLabel,
-            'order' => $order,
-            'orderDirection' => $orderDirection,
-            'orderLinkRoute' => $indexRoute
         ])
 
         @include('partial.table.thcell', [
@@ -45,19 +42,19 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
         ])
 
         @include('partial.table.thcell', [
-            'column' => 'author',
+            'column' => 'contributor.name',
             'label' => __('messages.Author'),
             'order' => $order,
             'orderDirection' => $orderDirection,
-            'orderLinkRoute' => $indexRoute
+            'orderLinkRoute' => $indexRoute,
         ])
 
         @include('partial.table.thcell', [
-            'column' => 'project',
+            'column' => 'project.name',
             'label' => __('messages.Project'),
             'order' => $order,
             'orderDirection' => $orderDirection,
-            'orderLinkRoute' => $indexRoute
+            'orderLinkRoute' => $indexRoute,
         ])
     </tr>
 @endsection

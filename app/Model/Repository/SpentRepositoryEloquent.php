@@ -33,7 +33,9 @@ class SpentRepositoryEloquent extends RepositoryAbstractEloquent
                 DB::raw("issue.title || CASE WHEN spent.description IS NOT NULL THEN ' |\n' || spent.description ELSE '' END as description")
             ])
             ->join('note', 'note.id', '=', 'spent.note_id')
-            ->join('issue', 'issue.id', '=', 'note.issue_id');
+            ->join('contributor', 'contributor.id', '=', 'note.author_id')
+            ->join('issue', 'issue.id', '=', 'note.issue_id')
+            ->join('project', 'project.id', '=', 'issue.project_id');
 
         if ($issueId = Arr::get($parameters, 'issue_id'))
         {

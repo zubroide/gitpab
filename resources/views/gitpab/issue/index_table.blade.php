@@ -3,7 +3,6 @@
 @php
 $columnTitleName = isset($columnTitleName) ? $columnTitleName : 'name';
 $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.Title');
-$createdExist = isset($itemsList->first()['created_at']);
 @endphp
 
 @section('tableThead')
@@ -21,7 +20,7 @@ $createdExist = isset($itemsList->first()['created_at']);
             'label' => __('messages.Number'),
             'order' => $order,
             'orderDirection' => $orderDirection,
-            'orderLinkRoute' => $indexRoute
+            'orderLinkRoute' => $indexRoute,
         ])
 
         @include('partial.table.thcell', [
@@ -29,12 +28,15 @@ $createdExist = isset($itemsList->first()['created_at']);
             'label' => $columnTitleLabel,
             'order' => $order,
             'orderDirection' => $orderDirection,
-            'orderLinkRoute' => $indexRoute
+            'orderLinkRoute' => $indexRoute,
         ])
 
         @include('partial.table.thcell', [
             'column' => 'estimate',
             'label' => __('messages.Estimate'),
+            'order' => $order,
+            'orderDirection' => $orderDirection,
+            'orderLinkRoute' => $indexRoute,
         ])
 
         @include('partial.table.thcell', [
@@ -48,27 +50,28 @@ $createdExist = isset($itemsList->first()['created_at']);
         ])
 
         @include('partial.table.thcell', [
-            'column' => 'assignee',
+            'column' => 'contributor.name',
             'label' => __('messages.Assignee'),
             'order' => $order,
             'orderDirection' => $orderDirection,
-            'orderLinkRoute' => $indexRoute
+            'orderLinkRoute' => $indexRoute,
         ])
 
         @include('partial.table.thcell', [
-            'column' => 'project',
+            'column' => 'project.name',
             'label' => __('messages.Project'),
             'order' => $order,
             'orderDirection' => $orderDirection,
-            'orderLinkRoute' => $indexRoute
+            'orderLinkRoute' => $indexRoute,
         ])
 
-        @if ($createdExist)
-            @include('partial.table.thcell', [
-                'column' => 'created_at',
-                'label' => __('messages.Created At'),
-            ])
-        @endif
+        @include('partial.table.thcell', [
+            'column' => 'created_at',
+            'label' => __('messages.Created At'),
+            'order' => $order,
+            'orderDirection' => $orderDirection,
+            'orderLinkRoute' => $indexRoute,
+        ])
     </tr>
 @endsection
 @section('tableTbody')
@@ -100,15 +103,13 @@ $createdExist = isset($itemsList->first()['created_at']);
             <td class="col-md-1">
                 {{ $item->project->name ?? null }}
             </td>
-            @if ($createdExist)
-                <td class="col-md-1">
-                    {{ $item->created_at }}
-                </td>
-            @endif
+            <td class="col-md-1">
+                {{ $item->created_at }}
+            </td>
         </tr>
     @empty
         <tr>
-            <td colspan="{{ $createdExist ? 8 : 7 }}" class="col-md-12">@lang('messages.Data not found')</td>
+            <td colspan="9" class="col-md-12">@lang('messages.Data not found')</td>
         </tr>
     @endforelse
 @endsection

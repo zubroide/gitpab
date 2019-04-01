@@ -21,7 +21,12 @@ class NoteRepositoryEloquent extends RepositoryAbstractEloquent
 
     public function getListQuery(array $parameters): Builder
     {
-        $query = parent::getListQuery($parameters);
+        $query = parent::getListQuery($parameters)
+            ->addSelect('iid')
+            ->join('issue', 'issue.id', '=', 'note.issue_id')
+            ->leftJoin('contributor', 'contributor.id', '=', 'note.author_id')
+            ->join('project', 'project.id', '=', 'issue.project_id');
+
 
         if ($issueId = Arr::get($parameters, 'issue_id'))
         {
@@ -30,9 +35,7 @@ class NoteRepositoryEloquent extends RepositoryAbstractEloquent
 
         if ($projectId = Arr::get($parameters, 'project_id'))
         {
-            $query
-                ->join('issue', 'issue.id', '=', 'note.issue_id')
-                ->where('issue.project_id', '=', $projectId);
+            $query->where('issue.project_id', '=', $projectId);
         }
 
         return $query;

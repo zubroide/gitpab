@@ -4,6 +4,9 @@
 .info-box-text {
   font-size: 1.1em;
 }
+.table td {
+  word-break: break-all;
+}
 .table > tfoot > tr > td {
   border-top: 3px solid #ddd;
 }

@@ -3,6 +3,7 @@
 namespace App\Model\Repository;
 
 use App\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 
 class UserRepositoryEloquent extends RepositoryAbstractEloquent
@@ -16,6 +17,15 @@ class UserRepositoryEloquent extends RepositoryAbstractEloquent
     public function model()
     {
         return User::class;
+    }
+
+    public function getListQuery(array $parameters): Builder
+    {
+        $query = parent::getListQuery($parameters)
+            ->leftJoin('contributor', 'contributor.id', '=', 'users.contributor_id')
+        ;
+
+        return $query;
     }
 
     public function activeCount()

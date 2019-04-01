@@ -20,15 +20,15 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
             'label' => $columnTitleLabel,
             'order' => $order,
             'orderDirection' => $orderDirection,
-            'orderLinkRoute' => $indexRoute
+            'orderLinkRoute' => $indexRoute,
         ])
 
         @include('partial.table.thcell', [
-            'column' => 'username',
+            'column' => 'contributor.username',
             'label' => __('messages.Username'),
             'order' => $order,
             'orderDirection' => $orderDirection,
-            'orderLinkRoute' => $indexRoute
+            'orderLinkRoute' => $indexRoute,
         ])
 
         @include('partial.table.thcell', [

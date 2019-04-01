@@ -4,7 +4,25 @@ namespace App\Http\Requests;
 
 class ListRequest extends FormRequest
 {
-    protected $orderFields = ['id', 'name'];
+    protected $orderFields = [
+        'id',
+        'iid',
+        'name',
+        'title',
+        'hours',
+        'estimate',
+        'created_at',
+        'updated_at',
+        'gitlab_created_at',
+        'amount',
+        'payment_date',
+        'email',
+        'contributor.name',
+        'contributor.username',
+        'project.name',
+        'namespace.name',
+        'payment_status.title',
+    ];
     protected $defaultOrder = 'id';
     protected $defaultOrderDirection = 'desc';
     protected $defaultLimit = 100;
@@ -19,7 +37,8 @@ class ListRequest extends FormRequest
         return [
             'limit' => 'integer|max:100',
             'order' => 'in:' . join(',', $this->orderFields),
-            'orderDirection' => 'in:asc,desc'];
+            'orderDirection' => 'in:asc,desc',
+        ];
     }
 
     /**
