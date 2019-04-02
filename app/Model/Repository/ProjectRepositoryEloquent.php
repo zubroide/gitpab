@@ -40,6 +40,21 @@ class ProjectRepositoryEloquent extends RepositoryAbstractEloquent
                 ->whereRaw('issue.project_id = project.id');
         }, 'spent');
 
+        // Amount
+        $query->selectSub(function($q) {
+            $q
+                ->from('spent')
+                ->join('note', 'note.id', '=', 'spent.note_id')
+                ->join('issue', 'issue.id', '=', 'note.issue_id')
+                ->join('contributor_extra', 'contributor_extra.contributor_id', '=', 'note.author_id')
+                ->selectRaw('round(sum(
+                    spent.hours * contributor_extra.hour_rate * 
+                    (100 + contributor_extra.taxes_percent) / 
+                    (100 - contributor_extra.costs_percent)
+                ), 2)')
+                ->whereRaw('issue.project_id = project.id');
+        }, 'amount');
+
         return $query;
     }
 

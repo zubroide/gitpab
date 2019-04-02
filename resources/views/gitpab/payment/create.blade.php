@@ -21,7 +21,7 @@
         <div class="col-md-3">
             @include('partial.form.element.text', [
                 'name' => 'costs_percent',
-                'label' => __('messages.Costs, %'),
+                'label' => __('messages.Employee costs, %'),
             ])
         </div>
         <div class="col-md-6">

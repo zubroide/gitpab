@@ -25,8 +25,19 @@
         <div class="col-md-6">
             @include('partial.form.element.text', [
                 'name' => 'extra_costs_percent',
-                'label' => __('messages.Costs, %'),
+                'label' => __('messages.Employee costs, %'),
                 'value' => $object->extra ? $object->extra->costs_percent : '',
+            ])
+        </div>
+
+        <div class="col-md-6">
+        </div>
+
+        <div class="col-md-6">
+            @include('partial.form.element.text', [
+                'name' => 'extra_taxes_percent',
+                'label' => __('messages.Employer costs, %'),
+                'value' => $object->extra ? $object->extra->taxes_percent : '',
             ])
         </div>
 

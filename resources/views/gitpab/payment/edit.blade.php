@@ -16,7 +16,7 @@
         <div class="col-md-6">
         </div>
         <div class="col-md-6">
-            <label>@lang('messages.Costs, %')</label>
+            <label>@lang('messages.Employee costs, %')</label>
             <p>{{ $object->costs_percent ?: '-' }}</p>
         </div>
     </div>

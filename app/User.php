@@ -23,6 +23,7 @@ class User extends Authenticatable
 
     const PERMISSION_EDIT_USERS = 'user.edit';
     const PERMISSION_SHOW_PAYMENTS = 'payment.show';
+    const PERMISSION_PROJECT_FINANCES = 'project.finance';
 
     use Notifiable;
     use HasRoles;

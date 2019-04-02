@@ -25,7 +25,7 @@ class RolePermissionSeeder extends Seeder
         self::TYPE_WRITE => [
             'store',
             'update',
-        ]
+        ],
     ];
 
     protected function generatePermissions(string $group, string $type)
@@ -71,6 +71,7 @@ class RolePermissionSeeder extends Seeder
                 $defaultPermissions +
                 [
                     'contributor.rate' => 'contributor.rate',
+                    'project.finance' => 'project.finance',
                 ] +
                 $this->generatePermissions('contributor', self::TYPE_VIEW) +
                 $this->generatePermissions('contributor', self::TYPE_WRITE) +

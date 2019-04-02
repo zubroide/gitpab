@@ -42,7 +42,7 @@
 
     <div class="row">
         <div class="col-md-2">
-            @lang('messages.Costs, %')
+            @lang('messages.Employee costs, %')
         </div>
         <div class="col-md-10">
             {{ $object->costs_percent }}

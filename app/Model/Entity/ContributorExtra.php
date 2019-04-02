@@ -6,6 +6,7 @@ namespace App\Model\Entity;
  * @property int contributor_id
  * @property float hour_rate
  * @property float costs_percent
+ * @property float taxes_percent
  * @property int created_by_id
  * @property int updated_by_id
  */
@@ -26,6 +27,7 @@ class ContributorExtra extends EntityAbstract
         'contributor_id',
         'hour_rate',
         'costs_percent',
+        'taxes_percent',
         'created_by_id',
         'updated_by_id',
     ];
