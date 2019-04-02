@@ -3,6 +3,8 @@
 @php
 $columnTitleName = isset($columnTitleName) ? $columnTitleName : 'name';
 $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.Title');
+$orderLinkParams = $request->all();
+unset($orderLinkParams['submit']);
 @endphp
 
 @section('tableThead')
@@ -13,6 +15,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
             'order' => $order,
             'orderDirection' => $orderDirection,
             'orderLinkRoute' => $indexRoute,
+            'orderLinkParams' => $orderLinkParams,
         ])
 
         @include('partial.table.thcell', [
@@ -20,7 +23,8 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
             'label' => __('messages.Amount'),
             'order' => $order,
             'orderDirection' => $orderDirection,
-            'orderLinkRoute' => $indexRoute
+            'orderLinkRoute' => $indexRoute,
+            'orderLinkParams' => $orderLinkParams,
         ])
 
         @include('partial.table.thcell', [
@@ -28,7 +32,8 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
             'label' => __('messages.Payed hours'),
             'order' => $order,
             'orderDirection' => $orderDirection,
-            'orderLinkRoute' => $indexRoute
+            'orderLinkRoute' => $indexRoute,
+            'orderLinkParams' => $orderLinkParams,
         ])
 
         @include('partial.table.thcell', [
@@ -36,7 +41,8 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
             'label' => __('messages.Employee'),
             'order' => $order,
             'orderDirection' => $orderDirection,
-            'orderLinkRoute' => $indexRoute
+            'orderLinkRoute' => $indexRoute,
+            'orderLinkParams' => $orderLinkParams,
         ])
 
         @include('partial.table.thcell', [
@@ -49,7 +55,8 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
             'label' => __('messages.Status'),
             'order' => $order,
             'orderDirection' => $orderDirection,
-            'orderLinkRoute' => $indexRoute
+            'orderLinkRoute' => $indexRoute,
+            'orderLinkParams' => $orderLinkParams,
         ])
 
         @include('partial.table.thcell', [
@@ -57,7 +64,8 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
             'label' => __('messages.Payment date'),
             'order' => $order,
             'orderDirection' => $orderDirection,
-            'orderLinkRoute' => $indexRoute
+            'orderLinkRoute' => $indexRoute,
+            'orderLinkParams' => $orderLinkParams,
         ])
 
         @include('partial.table.thcell', [
@@ -65,7 +73,8 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
             'label' => __('messages.Created At'),
             'order' => $order,
             'orderDirection' => $orderDirection,
-            'orderLinkRoute' => $indexRoute
+            'orderLinkRoute' => $indexRoute,
+            'orderLinkParams' => $orderLinkParams,
         ])
 
         @include('partial.table.thcell', [
@@ -73,7 +82,8 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
             'label' => __('messages.Updated At'),
             'order' => $order,
             'orderDirection' => $orderDirection,
-            'orderLinkRoute' => $indexRoute
+            'orderLinkRoute' => $indexRoute,
+            'orderLinkParams' => $orderLinkParams,
         ])
 
         <th></th>

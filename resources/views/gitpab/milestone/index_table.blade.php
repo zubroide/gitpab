@@ -3,6 +3,8 @@
 @php
 $columnTitleName = isset($columnTitleName) ? $columnTitleName : 'name';
 $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.Title');
+$orderLinkParams = $request->all();
+unset($orderLinkParams['submit']);
 @endphp
 
 @section('tableThead')
@@ -13,6 +15,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
             'order' => $order,
             'orderDirection' => $orderDirection,
             'orderLinkRoute' => $indexRoute,
+            'orderLinkParams' => $orderLinkParams,
         ])
 
         @include('partial.table.thcell', [
@@ -21,6 +24,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
             'order' => $order,
             'orderDirection' => $orderDirection,
             'orderLinkRoute' => $indexRoute,
+            'orderLinkParams' => $orderLinkParams,
         ])
 
         @include('partial.table.thcell', [
@@ -29,6 +33,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
             'order' => $order,
             'orderDirection' => $orderDirection,
             'orderLinkRoute' => $indexRoute,
+            'orderLinkParams' => $orderLinkParams,
         ])
 
         @include('partial.table.thcell', [
@@ -37,6 +42,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
             'order' => $order,
             'orderDirection' => $orderDirection,
             'orderLinkRoute' => $indexRoute,
+            'orderLinkParams' => $orderLinkParams,
         ])
 
         @include('partial.table.thcell', [
@@ -45,6 +51,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
             'order' => $order,
             'orderDirection' => $orderDirection,
             'orderLinkRoute' => $indexRoute,
+            'orderLinkParams' => $orderLinkParams,
         ])
 
         @include('partial.table.thcell', [
@@ -63,6 +70,7 @@ $columnTitleLabel = isset($columnTitleLabel) ? $columnTitleLabel : __('messages.
             'order' => $order,
             'orderDirection' => $orderDirection,
             'orderLinkRoute' => $indexRoute,
+            'orderLinkParams' => $orderLinkParams,
         ])
     </tr>
 @endsection
