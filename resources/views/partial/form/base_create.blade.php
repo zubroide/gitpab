@@ -31,6 +31,11 @@
             </div>
 
             {!! Form::close() !!}
+
+            <div class="box-body">
+                @section('details')
+                @show
+            </div>
         </div>
     </div>
 </div>

@@ -50,3 +50,26 @@
     </div>
 
 @endsection
+
+@section('details')
+    @if (\Illuminate\Support\Facades\Auth::user()->hasPermissionTo(\App\User::PERMISSION_PROJECT_FINANCES))
+        <table class="table dataTable">
+            <thead>
+            <tr>
+                <th class="col-md-6">@lang('messages.Assignee')</th>
+                <th class="col-md-3">@lang('messages.Hours')</th>
+                <th class="col-md-3">@lang('messages.Amount')</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($contributorAmountList as $item)
+                <tr>
+                    <td>{{ $item->name }}</td>
+                    <td>{{ $item->hours }}</td>
+                    <td>{{ $item->amount }}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    @endif
+@endsection

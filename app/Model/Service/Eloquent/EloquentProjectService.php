@@ -2,9 +2,13 @@
 
 namespace App\Model\Service\Eloquent;
 
+use App\Model\Repository\ProjectRepositoryEloquent;
 use App\Providers\AppServiceProvider;
 use Illuminate\Support\Collection;
 
+/**
+ * @property ProjectRepositoryEloquent $repository
+ */
 class EloquentProjectService extends CrudServiceAbstract
 {
     use StoreNamespacesTrait;
@@ -34,5 +38,10 @@ class EloquentProjectService extends CrudServiceAbstract
 
         $this->storeNamespaces($list, ['namespace']);
         parent::storeList($list);
+    }
+
+    public function getContributorsAmounts(int $projectId): Collection
+    {
+        return $this->repository->getContributorsAmounts($projectId);
     }
 }
