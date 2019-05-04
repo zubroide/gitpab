@@ -30,7 +30,7 @@ class SpentRepositoryEloquent extends RepositoryAbstractEloquent
                 'note.gitlab_created_at',
                 'spent.spent_at',
                 'issue.iid as issue',
-                DB::raw("spent.description as description")
+                DB::raw("issue.title || CASE WHEN spent.description IS NOT NULL THEN ' |\n' || spent.description ELSE '' END as description")
             ])
             ->join('note', 'note.id', '=', 'spent.note_id')
             ->join('contributor', 'contributor.id', '=', 'note.author_id')

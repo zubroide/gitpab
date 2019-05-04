@@ -76,10 +76,9 @@ unset($orderLinkParams['submit']);
             <td class="col-md-1">{{ $item->hours }}</td>
             <td class="col-md-4">
                 <a href="{{ route('issue.show', [$item->note->issue]) }}">
-                    #{{ $item->note->issue->iid }} {{ $item->note->issue->title }}
+                    #{{ $item->note->issue->iid }}
                 </a>
                 @if ($description = isset($columnTitleName) ? $item->{$columnTitleName} : $item->title)
-                    | <br/>
                     <a href="{{ route($showRoute, [$item->note_id]) }}">
                         {{ $description }}
                     </a>
