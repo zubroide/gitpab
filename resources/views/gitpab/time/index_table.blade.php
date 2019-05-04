@@ -78,10 +78,10 @@ unset($orderLinkParams['submit']);
                 <a href="{{ route('issue.show', [$item->note->issue]) }}">
                     #{{ $item->note->issue->iid }} {{ $item->note->issue->title }}
                 </a>
-                @if ((isset($columnTitleName)) ? $item->{$columnTitleName} : $item->title)
+                @if ($description = isset($columnTitleName) ? $item->{$columnTitleName} : $item->title)
                     | <br/>
                     <a href="{{ route($showRoute, [$item->note_id]) }}">
-                        {{ (isset($columnTitleName)) ? $item->{$columnTitleName} : $item->title }}
+                        {{ $description }}
                     </a>
                 @endif
             </td>
