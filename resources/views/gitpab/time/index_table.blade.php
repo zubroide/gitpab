@@ -71,7 +71,7 @@ unset($orderLinkParams['submit']);
         <tr>
             <td class="col-md-1">{{ $item->note_id }}</td>
             <td class="col-md-1">
-                {{ \App\Helper\Date::formatDateTime($item->note->gitlab_created_at) }}
+                {{ \App\Helper\Date::formatDateTime($item->note->gitlab_created_at, 'd.m.Y H:i') }}
             </td>
             <td class="col-md-1">{{ $item->hours }}</td>
             <td class="col-md-4">
