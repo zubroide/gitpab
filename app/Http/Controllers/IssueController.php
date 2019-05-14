@@ -43,7 +43,7 @@ class IssueController extends CrudController
                 'assigneeList' => $contributorRepository->getItemsForSelect(),
                 'projectsList' => $projectRepository->getItemsForSelect(),
                 'labelList' => $labelRepository->getItemsForSelect(null, null, 'name'),
-                'milestonelList' => $milestoneRepository->getItemsForSelect(null, null, 'id', 'title'),
+                'milestoneList' => $milestoneRepository->getItemsForSelect(null, null, 'id', 'title'),
                 'total' => [
                     'estimate' => $totalEstimate,
                     'time' => $totalTime,

@@ -90,6 +90,23 @@ class SpentRepositoryEloquent extends RepositoryAbstractEloquent
         return $query;
     }
 
+    public function getTNMListQuery(array $parameters): Builder
+    {
+        $query = $this->getListQuery($parameters);
+        $query = $query->select([
+                DB::raw("date_trunc('second', max(note.gitlab_created_at)) as gitlab_created_at"),
+                'issue.iid as issue',
+                'issue.title as title',
+                DB::raw('sum(spent.hours) as hours'),
+            ])
+            ->groupBy([
+                'issue.iid',
+                'issue.title',
+            ])
+            ->orderBy('issue.iid');
+        return $query;
+    }
+
     public function stat($parameters): Collection
     {
         /** @var Builder $query */

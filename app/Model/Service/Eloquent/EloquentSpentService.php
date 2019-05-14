@@ -31,4 +31,10 @@ class EloquentSpentService extends CrudServiceAbstract
         return $query->first()->total;
     }
 
+    public function getTNMList($parameters)
+    {
+        $query = $this->repository->getTNMListQuery($parameters);
+        return $query->cursor();
+    }
+
 }

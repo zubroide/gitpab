@@ -72,7 +72,7 @@
             <div class="form-group">
                 @include('partial.form.element.select', [
                     'name' => 'milestones[]',
-                    'list' => $milestonelList,
+                    'list' => $milestoneList,
                     'selected' => $request->input('milestones'),
                     'options' => ['multiple' => 'multiple'],
                     'label' => __('messages.Milestones'),

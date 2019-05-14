@@ -72,7 +72,7 @@
             <div class="form-group">
                 @include('partial.form.element.select', [
                     'name' => 'milestones[]',
-                    'list' => $milestonelList,
+                    'list' => $milestoneList,
                     'selected' => $request->input('milestones'),
                     'options' => ['multiple' => 'multiple'],
                     'label' => __('messages.Milestones'),
@@ -89,6 +89,9 @@
                 </span>
                 <span class="group-btn">
                     <button name="submit" value="csv" type="submit" class="btn btn-default">@lang('messages.Export CSV')</button>
+                </span>
+                <span class="group-btn">
+                    <button name="submit" value="act_tnm.csv" type="submit" class="btn btn-default">@lang('messages.Act t&m CSV')</button>
                 </span>
                 <span class="group-btn pull-right">
                     <a class="btn btn-default" href="{{ route('time.index') }}">@lang('messages.Reset')</a>

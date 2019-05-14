@@ -12,6 +12,7 @@ return [
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
+    'Act t&m CSV' => 'Акт t&m CSV',
     'Active users' => 'Активные пользователи',
     'Add' => 'Добавить',
     'Added by mistake or occurs problem with payment' => 'Добавлено ошибочно или возникла проблема с платежом',

@@ -25,6 +25,15 @@ class TimeController extends CrudController
         return app(AppServiceProvider::ELOQUENT_SPENT_SERVICE);
     }
 
+    public function index(FormRequest $request)
+    {
+        if ($request->get('submit') === 'act_tnm.csv') {
+            $data = $this->getService()->getTNMList($request->all());
+            return $this->downloadCsv($data);
+        }
+        return parent::index($request);
+    }
+
     protected function prepareDataForIndex(FormRequest $request, array $data)
     {
         /** @var ContributorRepositoryEloquent $contributorRepository */
@@ -47,7 +56,7 @@ class TimeController extends CrudController
                 'authorsList' => $contributorRepository->getItemsForSelect(),
                 'projectsList' => $projectRepository->getItemsForSelect(),
                 'labelList' => $labelRepository->getItemsForSelect(null, null, 'name'),
-                'milestonelList' => $milestoneRepository->getItemsForSelect(null, null, 'id', 'title'),
+                'milestoneList' => $milestoneRepository->getItemsForSelect(null, null, 'id', 'title'),
                 'total' => [
                     'time' => $totalTime,
                 ],
