@@ -25,6 +25,7 @@ return [
     'Balance' => 'Баланс',
     'Cancel' => 'Отмена',
     'Changelog' => 'Список изменений',
+    'Closed At' => 'Закрыто',
     'Comments' => 'Комментарии',
     'Company balance' => 'Баланс компании',
     'Contributors' => 'Сотрудники',

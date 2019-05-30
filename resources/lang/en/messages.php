@@ -25,6 +25,7 @@ return [
     'Balance' => 'Balance',
     'Cancel' => 'Cancel',
     'Changelog' => 'Changelog',
+    'Closed At' => 'Closed At',
     'Comments' => 'Comments',
     'Company balance' => 'Company balance',
     'Contributors' => 'Contributors',

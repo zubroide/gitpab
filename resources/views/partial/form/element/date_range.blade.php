@@ -1,8 +1,10 @@
 <?php
-$startDate = isset($input['date_start']) ? $input['date_start'] : old('date_start');
-$endDate = isset($input['date_end']) ? $input['date_end'] : old('date_end');
+$startDate = $input['date_start'] ?? old('date_start');
+$endDate = $input['date_end'] ?? old('date_end');
+$dateStartFieldName = $date_start_field_name ?? 'date_start';
+$dateEndFieldName = $date_end_field_name ?? 'date_end';
 ?>
-<div class="form-group {{ $errors->has('date_start') || $errors->has('date_end') ? 'has-error' : '' }}">
+<div class="form-group {{ $errors->has($dateStartFieldName) || $errors->has($dateEndFieldName) ? 'has-error' : '' }}">
     <div class="form-group">
         <label>{{ $label }}</label>
 
@@ -10,12 +12,12 @@ $endDate = isset($input['date_end']) ? $input['date_end'] : old('date_end');
             <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp; @lang('calendar.Period')
             <span></span> <b class="caret"></b>
 
-            {!! Form::hidden('date_start') !!}
-            {!! Form::hidden('date_end') !!}
+            {!! Form::hidden($dateStartFieldName) !!}
+            {!! Form::hidden($dateEndFieldName) !!}
         </div>
 
-        <span class="help-block">{{ $errors->first('date_start') }}</span>
-        <span class="help-block">{{ $errors->first('date_end') }}</span>
+        <span class="help-block">{{ $errors->first($dateStartFieldName) }}</span>
+        <span class="help-block">{{ $errors->first($dateEndFieldName) }}</span>
     </div>
 </div>
 
@@ -37,8 +39,8 @@ $endDate = isset($input['date_end']) ? $input['date_end'] : old('date_end');
         // Daterangepicker callback function
         var onChangeDaterangepicker = function (start, end) {
             element.find('span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-            element.find('input[name=date_start]').val(start.format('YYYY-MM-DD'));
-            element.find('input[name=date_end]').val(end.format('YYYY-MM-DD'));
+            element.find('input[name=<?php echo $dateStartFieldName; ?>]').val(start.format('YYYY-MM-DD'));
+            element.find('input[name=<?php echo $dateEndFieldName; ?>]').val(end.format('YYYY-MM-DD'));
         };
 
         //Date range as a button

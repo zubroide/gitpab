@@ -43,6 +43,7 @@ class Issue extends EntityAbstract
         'labels',
         'milestone_id',
         'estimate',
+        'closed_at',
     ];
 
     public function assignee()

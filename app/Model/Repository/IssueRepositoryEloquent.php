@@ -79,6 +79,19 @@ class IssueRepositoryEloquent extends RepositoryAbstractEloquent
             $query->where('issue.gitlab_created_at', '<', $date->format('Y-m-d'));
         }
 
+        if ($closedStart = Arr::get($parameters, 'closed_start'))
+        {
+            $date = new \DateTime($closedStart);
+            $query->where('issue.closed_at', '>=', $date->format('Y-m-d'));
+        }
+
+        if ($closedEnd = Arr::get($parameters, 'closed_end'))
+        {
+            $date = new \DateTime($closedEnd);
+            $date->add(new \DateInterval('P1D'));
+            $query->where('issue.closed_at', '<', $date->format('Y-m-d'));
+        }
+
         $query->selectSub(function($q) {
             $q
                 ->from('spent')

@@ -31,7 +31,7 @@
                 ])
             </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-4">
             <div class="form-group">
                 @include('partial.form.element.select', [
                     'name' => 'projects[]',
@@ -39,18 +39,6 @@
                     'selected' => $request->input('projects'),
                     'options' => ['multiple' => 'multiple'],
                     'label' => __('messages.Projects'),
-                ])
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="form-group">
-                @include('partial.form.element.date_range', [
-                    'name' => 'date_range',
-                    'input' => [
-                        'date_start' => $request->get('date_start'),
-                        'date_end' => $request->get('date_end'),
-                    ],
-                    'label' => __('messages.Created At'),
                 ])
             </div>
         </div>
@@ -76,6 +64,32 @@
                     'selected' => $request->input('milestones'),
                     'options' => ['multiple' => 'multiple'],
                     'label' => __('messages.Milestones'),
+                ])
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                @include('partial.form.element.date_range', [
+                    'name' => 'date_range',
+                    'input' => [
+                        'date_start' => $request->get('date_start'),
+                        'date_end' => $request->get('date_end'),
+                    ],
+                    'label' => __('messages.Created At'),
+                ])
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                @include('partial.form.element.date_range', [
+                    'name' => 'closed_range',
+                    'date_start_field_name' => 'closed_start',
+                    'date_end_field_name' => 'closed_end',
+                    'input' => [
+                        'date_start' => $request->get('closed_start'),
+                        'date_end' => $request->get('closed_end'),
+                    ],
+                    'label' => __('messages.Closed At'),
                 ])
             </div>
         </div>
