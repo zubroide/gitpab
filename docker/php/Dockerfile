@@ -56,6 +56,9 @@ ADD ./docker/wait-for-it.sh /root/wait-for-it.sh
 RUN chmod 755 /root/entrypoint.sh \
     && chmod 755 /root/wait-for-it.sh
 
+COPY ./docker/cron/crontab /etc/cron.d/app
+RUN crontab /etc/cron.d/app
+
 COPY ./composer.json .
 COPY ./composer.lock .
 RUN composer install --no-dev --no-autoloader

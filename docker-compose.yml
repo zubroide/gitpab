@@ -27,7 +27,6 @@ services:
       dockerfile: docker/php/Dockerfile
     volumes:
       - code:/var/www/html
-      - ./docker/cron/crontab:/etc/cron.d/app
     environment:
       GITLAB_PRIVATE_TOKEN: ${token}
       GITLAB_RESTRICTIONS_PROJECT_IDS: ${projects}
