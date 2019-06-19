@@ -1,1 +1,1 @@
-11 * * * * cd /var/www/html && /usr/local/bin/php artisan import:all >> /var/log/cron.log 2>&1
+11 * * * * . /root/project_env.sh; /usr/local/bin/php /var/www/html/artisan import:all > /proc/1/fd/1 2>/proc/1/fd/2

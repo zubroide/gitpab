@@ -38,6 +38,7 @@ setup_db
 load_data
 
 log "Start cron"
+printenv | sed 's/^\(.*\)$/export \1/g' | grep -E "^export GITLAB" > /root/project_env.sh
 service cron start
 
 log "Start php-fpm"
