@@ -40,7 +40,7 @@ services:
     container_name: gitpab-db
     image: postgres
     volumes:
-      - db:/var/lib/postgresql
+      - db:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: gitpab
       POSTGRES_USER: gitpab
