@@ -1,17 +1,6 @@
-<?php
+<?php 
 
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Validation Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines contain the default error messages used by
-    | the validator class. Some of these rules have multiple versions such
-    | as the size rules. Feel free to tweak each of these messages here.
-    |
-    */
     'Act t&m CSV' => 'Act t&m CSV',
     'Active users' => 'Active users',
     'Add' => 'Add',
@@ -101,7 +90,7 @@ return [
     'View spent time' => 'View spent time',
     'View user' => 'View user',
     'Web url' => 'Web url',
-
     'of' => 'of',
-
+    'Logout' => 'Logout',
+    'Act t&m/labels CSV' => 'Act t&m/labels CSV',
 ];

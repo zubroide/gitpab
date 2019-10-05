@@ -31,6 +31,10 @@ class TimeController extends CrudController
             $data = $this->getService()->getTNMList($request->all());
             return $this->downloadCsv($data);
         }
+        if ($request->get('submit') === 'act_tnm_labels.csv') {
+            $data = $this->getService()->getTNMLabelsList($request->all());
+            return $this->downloadCsv($data);
+        }
         return parent::index($request);
     }
 

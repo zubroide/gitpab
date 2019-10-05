@@ -165,4 +165,27 @@ class SpentRepositoryEloquent extends RepositoryAbstractEloquent
             ->selectRaw('sum(hours) as hours')->get()->first()->hours ?: 0;
     }
 
+    public function getTNMLabelsListQuery($parameters)
+    {
+        // Apply standard filters
+        $query = $this->getListQuery($parameters);
+
+        // Translate labels array into table (like join labels)
+        $query = $query->select([
+                DB::raw('unnest(issue.labels) as label'),
+                DB::raw('sum(spent.hours) as hours'),
+            ])
+            ->groupBy('label');
+
+        // Wrap $query to join "label" table for access to description
+        $query = $this->model
+            ->select(['t.*', 'label.description'])
+            ->from(DB::raw("({$query->toSql()}) as t"))
+            ->mergeBindings($query->getQuery())
+            ->join('label', 'label.name', '=', 't.label')
+            ->orderBy('label');
+
+        return $query;
+    }
+
 }

@@ -37,4 +37,10 @@ class EloquentSpentService extends CrudServiceAbstract
         return $query->cursor();
     }
 
+    public function getTNMLabelsList($parameters)
+    {
+        $query = $this->repository->getTNMLabelsListQuery($parameters);
+        return $query->cursor();
+    }
+
 }
