@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
  */
 class EloquentSpentService extends CrudServiceAbstract
 {
-    const DEFAULT_ORDER_COLUMN = 'note.gitlab_created_at';
+    const DEFAULT_ORDER_COLUMN = 'spent.spent_at';
 
     public function __construct()
     {

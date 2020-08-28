@@ -50,7 +50,7 @@
                         'date_start' => $request->get('date_start'),
                         'date_end' => $request->get('date_end'),
                     ],
-                    'label' => __('messages.Created At'),
+                    'label' => __('messages.Spent at'),
                 ])
             </div>
         </div>
