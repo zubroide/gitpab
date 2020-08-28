@@ -52,6 +52,8 @@ class StatSpentTime extends Command
         $stat = [];
         foreach ($data as $item) {
             $stat[] = [
+                $item['gitlab_created_at'],
+                $item['project'],
                 $item['spent_at'],
                 '#' . $item['iid'] . ' ' . $item['issue_title'],
                 $item['hours'],
@@ -60,7 +62,7 @@ class StatSpentTime extends Command
             $total += $item['hours'];
         }
 
-        $this->table(['spent_at', 'issue', 'hours'], $stat);
+        $this->table(['gitlab_created_at', 'project', 'issue', 'hours', 'description'], $stat);
         // $this->table(['spent_at', 'project', 'issue', 'hours', 'description'], $stat);
 
         $this->warn(sprintf('Total spent time: %s', TimeHelper::getHoursIntervalAsString($total)));
