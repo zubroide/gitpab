@@ -31,7 +31,7 @@ export host="https://gitlab.com/" \
 
 Be patient. Loading data from Gitlab may take tens minutes at first time.
 
-Open url http://127.0.0.1:8010  
+Open url http://127.0.0.1:8000  
 And enter  
 login `admin@admin`  
 password `admin`
