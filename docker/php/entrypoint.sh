@@ -23,6 +23,7 @@ setup_db() {
   php artisan db:seed --class=DatabaseSeeder
   php artisan db:seed --class=UserSeeder
   php artisan cache:clear
+  php artisan view:clear
 }
 
 load_data() {

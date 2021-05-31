@@ -47,7 +47,6 @@ RUN apt update -y \
 # composer install: https://hub.docker.com/_/composer?tab=description#php-extensions
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 ENV COMPOSER_ALLOW_SUPERUSER=1
-RUN composer global require hirak/prestissimo
 
 RUN touch /var/log/cron.log
 
