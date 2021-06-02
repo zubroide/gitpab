@@ -68,16 +68,16 @@ class EloquentNoteService extends CrudServiceAbstract
         $hours = 0;
         $spentAt = null;
 
-        $pattern = '/(added|subtracted) ((?:(?:\d{1,3}[wdhms])\s+)+)of time spent at (\d{4}-\d{2}-\d{2})/';
+        $pattern = '/(added|subtracted) ((?:(?:\d{1,3}[wdhms])\s+)+)of time spent( at (\d{4}-\d{2}-\d{2}))?/';
         preg_match($pattern, $item->body, $match);
 
-        if (!empty($match) && count($match) === 4) {
+        if (!empty($match) && (count($match) === 5 || count($match) === 3)) {
             $sign = $match[1] === 'added' ? 1 : -1;
             $times = array_filter(explode(' ', $match[2]));
             foreach ($times as $time) {
                 $hours += $sign * $this->parseTime(trim($time));
             }
-            $spentAt = $match[3];
+            $spentAt = $match[4] ?? $item->gitlab_created_at;
         }
 
         // Get description from previous comment if its corresponds to

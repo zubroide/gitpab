@@ -287,6 +287,22 @@ class EloquentNoteServiceTest extends TestCase
                     'description' => null,
                 ],
             ],
+            [
+                'itemData' => [
+                    'body' => 'added 4h 30m of time spent',
+                    'gitlab_created_at' => '2018-01-02T12:12:12',
+                ],
+                'prevItemData' => [
+                    'body' => 'test primary with hours (separated)',
+                    'gitlab_created_at' => '2018-01-01T12:12:11',
+                ],
+                'expectedRow' => [
+                    'hours' => 4.5,
+                    'spent_at' => '2018-01-02T12:12:12',
+                    'gitlab_created_at' => '2018-01-02T12:12:12',
+                    'description' => null,
+                ],
+            ],
         ];
     }
 
