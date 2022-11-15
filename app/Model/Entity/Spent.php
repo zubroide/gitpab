@@ -4,6 +4,7 @@ namespace App\Model\Entity;
 
 /**
  * @property int note_id
+ * @property Note note
  * @property float hours
  * @property string spent_at
  * @property string description

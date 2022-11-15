@@ -4,6 +4,7 @@ namespace App\Model\Entity;
 
 /**
  * @property int id
+ * @property Issue issue
  * @property int issue_id
  * @property string body
  * @property int author_id
