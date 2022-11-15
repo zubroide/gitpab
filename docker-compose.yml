@@ -1,40 +1,48 @@
-version: "3.3"
+version: "3.7"
 
 volumes:
-  code: {}
   db: {}
 
 services:
 
   nginx:
     container_name: gitpab-nginx
-    image: nginx:alpine
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
     volumes:
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
-#      - /data/gitpab/nginx/ssl:/etc/ssl
-      - code:/var/www/html
     ports:
-      - 8000:80
-      - 8443:443
+      - ${HTTP_PORT}:80
     depends_on:
       - php
-    restart: unless-stopped
+    environment:
+      GITLAB_PRIVATE_TOKEN: ${GITLAB_PRIVATE_TOKEN}
+      GITLAB_RESTRICTIONS_PROJECT_IDS: ${GITLAB_RESTRICTIONS_PROJECT_IDS}
+      GITLAB_HOST: ${GITLAB_HOST}
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
+    restart: always
 
   php:
     container_name: gitpab-php
     build:
       context: .
       dockerfile: docker/php/Dockerfile
-    volumes:
-      - code:/var/www/html
+      target: app
     environment:
-      GITLAB_PRIVATE_TOKEN: ${token}
-      GITLAB_RESTRICTIONS_PROJECT_IDS: ${projects}
-      GITLAB_HOST: ${host}
-      APP_LOCALE: en
-    links:
-      - db
-    restart: unless-stopped
+      GITLAB_PRIVATE_TOKEN: ${GITLAB_PRIVATE_TOKEN}
+      GITLAB_RESTRICTIONS_PROJECT_IDS: ${GITLAB_RESTRICTIONS_PROJECT_IDS}
+      GITLAB_HOST: ${GITLAB_HOST}
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
+    restart: always
 
   db:
     container_name: gitpab-db
@@ -45,4 +53,9 @@ services:
       POSTGRES_DB: gitpab
       POSTGRES_USER: gitpab
       POSTGRES_PASSWORD: gitpab
-    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
+    restart: always

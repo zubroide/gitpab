@@ -173,7 +173,7 @@ return [
         'messages.Projects',
         [
             'text'       => 'messages.Projects',
-            'icon'       => 'gear',
+            'icon'       => 'ion ion-ios-gear',
             'icon_color' => 'aqua',
             'url'        => 'project',
         ],
@@ -197,7 +197,7 @@ return [
         ],
         [
             'text'       => 'messages.Spent time',
-            'icon'       => 'clock-o',
+            'icon'       => 'clock',
             'icon_color' => 'yellow',
             'url'        => 'time',
         ],
@@ -210,7 +210,7 @@ return [
         ],
         [
             'text'       => 'messages.Payments',
-            'icon'       => 'dollar',
+            'icon'       => 'dollar-sign',
             'icon_color' => 'green',
             'url'        => 'payment',
         ],

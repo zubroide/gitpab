@@ -1,21 +1,4 @@
-FROM node:8 as builder
-
-RUN mkdir /frontend
-WORKDIR /frontend
-
-COPY ./package.json .
-COPY ./package-lock.json .
-
-RUN npm ci
-
-COPY ./webpack.mix.js ./webpack.mix.js
-COPY ./resources/assets ./resources/assets
-
-RUN npm run prod
-
-# ---------------------
-
-FROM php:7.1-fpm
+FROM php:7.1-fpm as app
 
 WORKDIR /var/www/html
 
@@ -44,8 +27,6 @@ RUN apt update -y \
     && rm -rf /tmp/pear \
     && docker-php-ext-enable redis memcached
 
-# composer install: https://hub.docker.com/_/composer?tab=description#php-extensions
-COPY --from=composer /usr/bin/composer /usr/bin/composer
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
 RUN touch /var/log/cron.log
@@ -58,17 +39,17 @@ RUN chmod 755 /root/entrypoint.sh \
 COPY ./docker/cron/crontab /etc/cron.d/app
 RUN crontab /etc/cron.d/app
 
-COPY ./composer.json .
-COPY ./composer.lock .
-RUN composer install --no-dev --no-autoloader
-
-# npm run build
-COPY --from=builder /frontend/public/css ./public/css
-COPY --from=builder /frontend/public/js ./public/js
+COPY composer.* ./
+RUN php composer.phar install --no-dev --no-autoloader
 
 # Project files
 ADD . .
-COPY ./docker/php/.env.template ./.env
-RUN composer dump-autoload
+RUN php composer.phar dump-autoload
 
 ENTRYPOINT ["/root/entrypoint.sh"]
+
+# ---------------------
+
+FROM nginx:stable-alpine
+WORKDIR /var/www/html/public
+COPY --from=app /var/www/html/public /var/www/html/public

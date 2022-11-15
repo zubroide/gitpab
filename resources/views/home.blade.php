@@ -46,7 +46,7 @@ use Illuminate\Support\Facades\Auth;
 
         @include('partial/count_widget', [
             'color' => 'yellow',
-            'icon'  => 'fa fa-clock-o',
+            'icon'  => 'fa fa-clock',
             'title' => __('messages.Spent time'),
             'count' => $spent,
             'url' => route('time.index'),

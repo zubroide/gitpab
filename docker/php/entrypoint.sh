@@ -10,7 +10,6 @@ init_project() {
   if [ ! `cat .env | grep APP_KEY=.` ]
   then
     php artisan key:generate
-    php artisan vendor:publish --provider="JeroenNoten\LaravelAdminLte\ServiceProvider" --tag=assets
   fi
   chown -R www-data:www-data /var/www/html
   chmod -R g+w /var/www/html
@@ -32,7 +31,7 @@ load_data() {
 }
 
 log "Waiting for Postgres..."
-/root/wait-for-it.sh db:5432 --timeout=180 -- echo "PostgreSQL started"
+/root/wait-for-it.sh ${DB_HOST}:5432 --timeout=180 -- echo "PostgreSQL started"
 
 init_project
 setup_db

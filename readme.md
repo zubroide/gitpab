@@ -23,10 +23,19 @@ Clone this repo and run containers from `docker` folder:
 ```bash
 git clone git@github.com:zubroide/gitpab.git
 cd gitpab
-export host="https://gitlab.com/" \
-    && export token="your_gitlab_private_token" \
-    && export projects="project_id1,project_id2" \
-    && docker-compose up --build
+cp .env.dockker.example .env
+```
+
+Edit variables `GITLAB_PRIVATE_TOKEN`, `GITLAB_RESTRICTIONS_PROJECT_IDS`:
+
+```bash
+mcedit .env
+```
+
+Run containers:
+
+```bash
+docker-compose -f docker-compose.local.yml up --build
 ```
 
 Be patient. Loading data from Gitlab may take tens minutes at first time.
@@ -46,7 +55,6 @@ cd gitpab
 composer install
 cp .env.example .env
 php artisan key:generate
-php artisan vendor:publish --provider="JeroenNoten\LaravelAdminLte\ServiceProvider" --tag=assets
 ```
 
 Edit environment variables in `.env`:

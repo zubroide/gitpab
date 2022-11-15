@@ -75,7 +75,7 @@ abstract class EloquentServiceAbstract
         try {
             $result = $this->repository->create($attributes);
         }
-        catch (QueryException  $e) {
+        catch (QueryException $e) {
             // Record exists
             if ($e->getCode() == 23505) {
                 $pk = $this->repository->getPkFieldName();
