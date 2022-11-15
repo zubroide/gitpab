@@ -4,6 +4,7 @@ namespace App\Model\Service\Eloquent;
 
 use App\Model\Entity\Note;
 use App\Model\Repository\NoteRepositoryEloquent;
+use App\Model\Repository\SpentRepositoryEloquent;
 use App\Model\Service\ServiceException;
 use App\Providers\AppServiceProvider;
 use Illuminate\Support\Collection;
@@ -78,6 +79,11 @@ class EloquentNoteService extends CrudServiceAbstract
                 $hours += $sign * $this->parseTime(trim($time));
             }
             $spentAt = $match[4] ?? $item->gitlab_created_at;
+        }
+        else if ($item->body == 'removed time spent') {
+            /** @var EloquentSpentService $spentService */
+            $spentService = app(AppServiceProvider::ELOQUENT_SPENT_SERVICE);
+            $spentService->removeTimeSpend($item->issue_id, $item->gitlab_created_at);
         }
 
         // Get description from previous comment if its corresponds to

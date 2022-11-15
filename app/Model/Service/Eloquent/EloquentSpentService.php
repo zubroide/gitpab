@@ -2,6 +2,9 @@
 
 namespace App\Model\Service\Eloquent;
 
+use App\Model\Entity\Note;
+use App\Model\Entity\Spent;
+use App\Model\Repository\NoteRepositoryEloquent;
 use App\Model\Repository\SpentRepositoryEloquent;
 use App\Providers\AppServiceProvider;
 use Illuminate\Support\Collection;
@@ -41,6 +44,39 @@ class EloquentSpentService extends CrudServiceAbstract
     {
         $query = $this->repository->getTNMLabelsListQuery($parameters);
         return $query->cursor();
+    }
+
+    public function removeTimeSpend(int $issueId, $at)
+    {
+        /** @var Spent[] $spent */
+        $spent = $this->repository->with('note')->findWhere([
+            'issue_id' => $issueId,
+        ]);
+        $spentByUsers = [];
+        foreach ($spent as $spentRow) {
+            $spentByUsers[$spentRow->note->author_id] = ($spentByUsers[$spentRow->note->author_id] ?? 0) + $spentRow->hours;
+        }
+
+        foreach ($spentByUsers as $userId => $hours) {
+            if ($hours <= 0) {
+                continue;
+            }
+            /** @var NoteRepositoryEloquent $noteRepo */
+            $noteRepo = app(AppServiceProvider::NOTE_REPOSITORY);
+            /** @var Note $note */
+            $note = $noteRepo->create([
+                'issue_id' => $issueId,
+                'body' => 'remove time spent message processed',
+                'author_id' => $userId,
+                'gitlab_created_at' => $at,
+            ]);
+            $this->create([
+                'note_id' => $note->id,
+                'description' => 'remove time spent',
+                'spent_at' => $at,
+                'hours' => -$hours,
+            ]);
+        }
     }
 
 }
