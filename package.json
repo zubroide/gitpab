@@ -16,7 +16,7 @@
     "jquery": "^3.4",
     "laravel-mix": "^4.0",
     "lodash": "^4.17",
-    "moment": "^2.23",
+    "moment": "^2.29",
     "node-sass": "^4.12.0",
     "select2": "^4.0"
   },
