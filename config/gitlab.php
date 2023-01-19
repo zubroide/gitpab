@@ -23,7 +23,10 @@ return [
         // int[]|null
         'project_ids' => env('GITLAB_RESTRICTIONS_PROJECT_IDS')
             ? explode(',', env('GITLAB_RESTRICTIONS_PROJECT_IDS'))
-            : null,
+            : [],
+        'group_ids' => env('GITLAB_RESTRICTIONS_GROUP_IDS')
+            ? explode(',', env('GITLAB_RESTRICTIONS_GROUP_IDS'))
+            : [],
     ],
 
 ];
