@@ -41,7 +41,7 @@ class IssueController extends CrudController
             $data,
             [
                 'assigneeList' => $contributorRepository->getItemsForSelect(),
-                'projectsList' => $projectRepository->getItemsForSelect(),
+                'projectsList' => $projectRepository->getItemsForSelect(null, null, 'id', 'path_with_namespace'),
                 'labelList' => $labelRepository->getItemsForSelect(null, null, 'name'),
                 'milestoneList' => $milestoneRepository->getItemsForSelect(null, null, 'id', 'title'),
                 'total' => [

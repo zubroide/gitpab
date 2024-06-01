@@ -19,6 +19,10 @@ unset($orderLinkParams['submit']);
         ])
 
         @include('partial.table.thcell', [
+            'label' => __('messages.Domain'),
+        ])
+
+        @include('partial.table.thcell', [
             'column' => $columnTitleName,
             'label' => $columnTitleLabel,
             'order' => $order,
@@ -55,8 +59,11 @@ unset($orderLinkParams['submit']);
         <tr>
             <td class="col-md-1">{{ $item->id }}</td>
             <td class="col-md-3">
+                    {{ parse_url($item->web_url)['host'] ?? null }}
+            </td>
+            <td class="col-md-3">
                 <a href="{{ route($showRoute, [$item->id]) }}">
-                    {{ (isset($columnTitleName)) ? $item->{$columnTitleName} : $item->title }}
+                    {{ $item->path_with_namespace }}
                 </a>
             </td>
             <td class="col-md-2">

@@ -31,18 +31,7 @@
                 ])
             </div>
         </div>
-        <div class="col-md-2">
-            <div class="form-group">
-                @include('partial.form.element.select', [
-                    'name' => 'projects[]',
-                    'list' => $projectsList,
-                    'selected' => $request->input('projects'),
-                    'options' => ['multiple' => 'multiple'],
-                    'label' => __('messages.Projects'),
-                ])
-            </div>
-        </div>
-        <div class="col-md-2">
+        <div class="col-md-4">
             <div class="form-group">
                 @include('partial.form.element.date_range', [
                     'name' => 'date_range',
@@ -54,10 +43,21 @@
                 ])
             </div>
         </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                @include('partial.form.element.select', [
+                    'name' => 'projects[]',
+                    'list' => $projectsList,
+                    'selected' => $request->input('projects'),
+                    'options' => ['multiple' => 'multiple'],
+                    'label' => __('messages.Projects'),
+                ])
+            </div>
+        </div>
     </div>
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="form-group">
                 @include('partial.form.element.select', [
                     'name' => 'labels[]',
@@ -68,7 +68,7 @@
                 ])
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="form-group">
                 @include('partial.form.element.select', [
                     'name' => 'milestones[]',

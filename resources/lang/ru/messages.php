@@ -93,4 +93,5 @@ return [
     'of' => 'из',
     'Logout' => 'Выход',
     'Act t&m/labels CSV' => 'Акт t&m/метки CSV',
+    'Domain' => 'Домен',
 ];
